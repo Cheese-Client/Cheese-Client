@@ -1,390 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cheese Client — Minecraft Hack Client Download & Info</title>
-  <meta name="description" content="Download Cheese Client (Cheese-client.zip): High-performance, customizable Minecraft hack client with installation tutorial and changelog." />
-  <style>
-.download-text {
-  display: inline-block;
-  vertical-align: middle;
-  color: #000;
-  text-align: left;
-  line-height: 1.2;
-}
-
-.download-title {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.download-filename {
-  font-weight: 10;
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-    :root{
-      --accent:#ffb347;
-      --accent-dark:#ff9800;
-      --bg:#f4f6fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --radius:10px;
-      --maxw:1100px;
-      --glass-bg: rgba(255, 255, 255, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.2);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#f7f9fc 0%, var(--bg) 100%);
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
-    header{
-      background:linear-gradient(90deg,var(--accent) 0%, #ffd187 100%);
-      padding:20px;
-      box-shadow:0 6px 20px rgba(16,24,40,0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 20px 20px;
-    }
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px;}
-    .brand{
-      display:flex;align-items:center;gap:14px;justify-content:space-between;
-    }
-    .brand-left{display:flex;align-items:center;gap:14px}
-    .logo{
-      width:64px;height:64px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.08);
-      font-size: 2.5rem;
-    }
-    h1{margin:0;font-size:1.4rem;color:#412200}
-    header p{margin:6px 0 0;color:#523a14;opacity:0.95}
-
-    main{max-width:var(--maxw);margin:22px auto;padding:18px;}
-    .hero{
-      display:flex;gap:28px;align-items:flex-start;
-      margin-bottom:22px;
-    }
-    .hero .left{
-      flex:1;
-      background:var(--card);
-      padding:22px;border-radius:var(--radius);
-      box-shadow:0 8px 30px rgba(17,24,39,0.06);
-    }
-    .hero .right{
-      width:330px;min-width:260px;
-    }
-    .badge{display:inline-block;background:#fff7e6;color:#7a4a00;padding:6px 10px;border-radius:999px;font-weight:600;margin-bottom:12px;font-size:0.9rem}
-    .lead{font-size:1.05rem;margin:8px 0 16px;color:#0f172a}
-    .download-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .btn{
-      display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none;color:#fff;font-weight:700;
-      background:linear-gradient(90deg,var(--accent) 0%, var(--accent-dark) 100%);
-      box-shadow:0 8px 18px rgba(255,183,71,0.12);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(255,183,71,0.2);
-    }
-    .btn-alt{background:#fff;color:#111;padding:12px 14px;border:1px solid #eee;font-weight:600;border-radius:8px;transition: background 0.2s}
-    .btn-alt:hover{background:#f5f5f5}
-    .meta{color:var(--muted);font-size:0.9rem;margin-top:8px}
-
-    section.card{background:var(--card);padding:18px;border-radius:12px;margin-bottom:18px;box-shadow:0 6px 20px rgba(17,24,39,0.04)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .feature{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fffef6);border:1px solid #fff7e6;transition: transform 0.2s}
-    .feature:hover{transform: translateY(-3px)}
-    .feature h3{margin:0 0 8px;font-size:1rem;color:#3b2a07}
-    .feature p{margin:0;color:var(--muted);font-size:0.95rem}
-
-    .screenshots{display:flex;gap:12px;flex-wrap:wrap}
-    .screenshots img{width:240px;border-radius:8px;border:1px solid #eee;box-shadow:0 8px 18px rgba(0,0,0,0.06);object-fit:cover;height:140px;transition: transform 0.3s}
-    .screenshots img:hover{transform: scale(1.03)}
-
-    pre.code{background:#0f172a;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto;font-family:Monaco,Consolas,"Courier New",monospace;font-size:0.95rem}
-
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-    .list{padding:0;margin:0;list-style:none}
-    .list li{padding:10px 0;border-bottom:1px dashed #f1f1f1;color:var(--muted)}
-    .label{display:inline-block;padding:6px 8px;background:#fff9f2;border-radius:6px;color:#7a4a00;font-weight:700;border:1px solid #fff0df}
-
-    footer{max-width:var(--maxw);margin:20px auto;padding:18px;color:var(--muted);font-size:0.95rem}
-    .changelog{max-height:240px;overflow:auto;padding-right:8px}
-    details summary{cursor:pointer;padding:10px;background:#fff;border-radius:8px;border:1px solid #fff4e0}
-    .faq p{margin:8px 0 0;color:var(--muted)}
-    .muted{color:var(--muted)}
-
-    @media (max-width:900px){
-      .hero{flex-direction:column}
-      .two-col{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .hero .right{width:100%}
-      .screenshots img{width:100%;max-width:100%}
-    }
-  </style>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Cheese Client — Minecraft Hack Client Download & Info</title>
+    <meta name="description" content="Download Cheese Client (Cheese-client.zip): High-performance, customizable Minecraft hack client with installation tutorial and changelog."/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #ffb347;
+            --accent-dark: #ff9800;
+            --accent-light: #ffd187;
+            --accent-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            --bg: #f4f6fb;
+            --card: #fff;
+            --card-hover: #fffef6;
+            --text: #111827;
+            --muted: #6b7280;
+            --radius: 16px;
+            --maxw: 1200px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(255, 179, 71, 0.3);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            opacity: 0.05;
+            filter: blur(40px);
+        }
+        
+        .bg-circle:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -100px;
+        }
+        
+        .bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gradient);
+        }
+        
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #412200;
+            font-weight: 700;
+            letter-spacing: -0.1px;
+        }
+        
+        header p {
+            color: #523a14;
+            font-size: 1.1rem;
+            max-width: 500px;
+        }
+        
+        main {
+            max-width: var(--maxw);
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        
+        .hero .left {
+            flex: 1;
+            background: var(--card);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 179, 71, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hero .left:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero .right {
+            width: 350px;
+            min-width: 300px;
+        }
+        
+        .badge-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff7e6;
+            color: #7a4a00;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            background: rgba(255, 179, 71, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .badge i {
+            font-size: 0.9rem;
+        }
+        
+        .lead {
+            font-size: 1.15rem;
+            margin: 16px 0 24px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .download-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            padding: 14px 20px;
+            border: 1px solid #eee;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-alt:hover {
+            background: #f5f5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 12px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        section.card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section.card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature {
+            padding: 20px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #fff, #fffef6);
+            border: 1px solid #fff7e6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gradient);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            background: #fffef6;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .feature h3 {
+            margin: 0 0 12px;
+            font-size: 1.2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature h3 i {
+            color: var(--accent);
+        }
+        
+        .feature p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .screenshots {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .screenshot-container {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .screenshot-container:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .screenshot-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        .screenshot-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot-container:hover .screenshot-overlay {
+            transform: translateY(0);
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 25px;
+            align-items: start;
+        }
+        
+        .list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #f1f1f1;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .list li:last-child {
+            border-bottom: none;
+        }
+        
+        .list li i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        aside .card {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            max-width: var(--maxw);
+            margin: 40px auto 20px;
+            padding: 0 20px;
+            color: var(--muted);
+        }
+        
+        .footer-content {
+            background: var(--card);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .changelog {
+            max-height: 300px;
+            overflow: auto;
+            padding-right: 10px;
+        }
+        
+        .changelog::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .changelog::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .changelog::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        
+        .version {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .version:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .version h4 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .version-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+        
+        .version ul {
+            padding-left: 25px;
+            margin: 0;
+        }
+        
+        .version li {
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+        
+        .faq details {
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq summary {
+            cursor: pointer;
+            padding: 18px 20px;
+            background: #fff;
+            font-weight: 600;
+            list-style: none;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+        
+        .faq summary:hover {
+            background: #f9f9f9;
+        }
+        
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq details[open] summary::after {
+            content: '-';
+        }
+        
+        .faq p {
+            margin: 0;
+            padding: 20px;
+            color: var(--muted);
+            border-top: 1px solid #f1f1f1;
+        }
+        
+        @media (max-width: 1024px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero .right {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-container {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .footer-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 179, 71);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .download-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .download-text {
+            flex: 1;
+        }
+        
+        .download-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+        
+        .download-filename {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        
+        .download-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .progress-container {
+            margin-top: 20px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .counter-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .counter {
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            background: #fff7e6;
+            flex: 1;
+            margin: 0 5px;
+            min-width: 0;
+        }
+        
+        .counter:first-child {
+            margin-left: 0;
+        }
+        
+        .counter:last-child {
+            margin-right: 0;
+        }
+        
+        .counter-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .counter-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        
+        #features.card {
+            margin-top: -300px;
+        }
+    </style>
 </head>
 <body>
-<header>
-  <div class="wrap brand">
-    <div class="brand-left">
-<div class="logo" aria-hidden="true">
-  <img src="images/icon.png" alt="Cheese Client Logo" style="width:70%;height:70%;object-fit:cover;border-radius:inherit;">
-</div>
-      <div>
-        <h1>Cheese Client</h1>
-        <p>Minecraft Hack Client with powerful features and bypass capabilities</p>
-      </div>
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
     </div>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="hero">
-    <div class="left">
-<div style="display:flex; gap:10px; margin-bottom:12px;">
-<div class="badge">Version: v1.3.5</div>
-<div class="badge">Rating: ★★★★☆</div>
-</div>
-      <p class="lead">Cheese Client is a powerful Minecraft hack client with advanced bypass capabilities, offering performance optimization, anti-cheat evasion and convenient tools for competitive gameplay.</p>
-
-      <div class="download-row" style="margin-bottom:14px">
-<a class="btn" id="downloadBtn" href="Cheese-client.zip" download>
-  <img src="images/zip.png" alt="ZIP" style="height:40px;vertical-align:middle;margin-right:3px;">
-  <div class="download-text">
-    <div class="download-title">Download</div>
-    <div class="download-filename">Cheese-client.zip</div>
-  </div>
-</a>
-        <a class="btn-alt" href="#install">Install Guide</a>
-        <a class="btn-alt" href="#changelog">Changelog</a>
-      </div>
-      <div class="meta">File: Cheese-client.zip · Updated: 2025-10-22 · Client version: 1.8</div>
-
-      <section class="card" style="margin-top:18px">
-        <h2 style="margin-top:0">Why choose Cheese Client?</h2>
-        <ul class="list" style="margin-top:8px">
-          <li><strong>Advanced bypass:</strong> Sophisticated anti-cheat evasion techniques and server compatibility.</li>
-          <li><strong>Modular:</strong> Toggleable modules, enable features as needed to reduce conflicts.</li>
-          <li><strong>Usability:</strong> GUI settings and built-in help make it easy for new users.</li>
-          <li><strong>Community-driven:</strong> Plugins and bypass methods contributed by the community with active support.</li>
-        </ul>
-      </section>
-
-      <section id="features" class="card">
-        <h2 style="margin-top:0">Features</h2>
-        <div class="grid" style="margin-top:12px">
-          <div class="feature">
-            <h3>Advanced Bypass System</h3>
-            <p>Sophisticated anti-cheat evasion with multiple bypass methods for popular servers.</p>
-          </div>
-          <div class="feature">
-            <h3>Combat Enhancements</h3>
-            <p>Includes Kill Aura, Reach, Auto Clicker, and advanced PVP modules.</p>
-          </div>
-          <div class="feature">
-            <h3>Movement & Utility</h3>
-            <p>Flight, Speed, No Fall, Inventory management and other utility modules.</p>
-          </div>
-          <div class="feature">
-            <h3>Visual & Render</h3>
-            <p>ESP, X-Ray, Fullbright, Trajectories and other visual enhancements.</p>
-          </div>
-          <div class="feature">
-            <h3>Config System</h3>
-            <p>Multiple configuration profiles for different servers and anti-cheat systems.</p>
-          </div>
-          <div class="feature">
-            <h3>Auto-updates</h3>
-            <p>Built-in update checker with bypass updates and new module additions.</p>
-          </div>
+    
+    <header>
+        <div class="wrap">
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="logo">
+                        <img src="images/icon.png" style="width:90%;height:90%;object-fit:cover;border-radius:inherit">
+                    </div>
+                    <div>
+                        <h1>Cheese Client</h1>
+                        <p>Minecraft Hack Client with powerful features and bypass capabilities</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <section id="install" class="card">
-        <h2 style="margin-top:0">Install & Usage (Beginner Guide)</h2>
-        <ol style="margin-top:8px;padding-left:18px">
-          <li>Download Cheese-client.zip and save it on your machine.</li>
-          <li>Use your preferred extraction tool to extract Cheese client.</li>
-          <li>Copy the extracted files into your Minecraft directory.</li>
-          <li>Launch Minecraft with the appropriate version.</li>
-          <li>Configure Cheese Client settings in-game.</li>
-          <li>Enable desired modules and enjoy enhanced gameplay.</li>
-        </ol>
-      </section>
-
-      <section class="card" style="margin-top:18px">
-        <h2 style="margin-top:0">Screenshots</h2>
-        <div class="screenshots" aria-hidden="false">
-          <img src="images/cheese-client-ui.png" alt="Cheese Client UI" />
-          <img src="images/module-settings.png" alt="Cheese Client Module Settings" />
-          <img src="images/combat-features.png" alt="Cheese Client Combat Features" />
+    </header>
+    
+    <main class="wrap">
+        <div class="hero">
+            <div class="left fade-in">
+                <div class="badge-container">
+                    <div class="badge"><i class="fas fa-tag"></i> Version: v1.3.5</div>
+                    <div class="badge"><i class="fas fa-star"></i> Rating: ★★★★☆</div>
+                    <div class="badge"><i class="fas fa-shield-alt"></i> Anti-Cheat Bypass</div>
+                </div>
+                
+                <p class="lead">Cheese Client is a powerful Minecraft hack client with advanced bypass capabilities, offering performance optimization, anti-cheat evasion and convenient tools for competitive gameplay.</p>
+                
+                <a href="Cheese-client.zip" download class="download-btn fade-in delay-1">
+                    <div class="download-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="download-text">
+                        <div class="download-title">Download Cheese Client</div>
+                        <div class="download-filename">Cheese-client.zip · 34.8 MB</div>
+                    </div>
+                    <div class="download-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
+                <div class="download-row fade-in delay-2">
+                    <a class="btn-alt" href="#install"><i class="fas fa-book"></i> Install Guide</a>
+                    <a class="btn-alt" href="#changelog"><i class="fas fa-history"></i> Changelog</a>
+                    <a class="btn-alt" href="#features"><i class="fas fa-cube"></i> Features</a>
+                </div>
+                
+                <div class="meta fade-in delay-3">
+                    <span><i class="far fa-calendar"></i> Updated: 2025-10-22</span>
+                    <span><i class="fas fa-gamepad"></i> Client version: 1.8</span>
+                    <span><i class="fas fa-download"></i> Downloads: 57,000+</span>
+                </div>
+                
+                <div class="progress-container fade-in delay-4">
+                    <div class="progress-label">
+                        <span>Compatibility</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <aside class="right">
+                <section class="card fade-in delay-1">
+                    <h3><i class="fas fa-server"></i> System Requirements</h3>
+                    <ul class="list">
+                        <li><i class="fas fa-desktop"></i> OS: Windows</li>
+                        <li><i class="fab fa-java"></i> Java: Java 8</li>
+                        <li><i class="fas fa-memory"></i> Memory: 4GB+ recommended</li>
+                        <li><i class="fas fa-hdd"></i> Disk: 35MB free space</li>
+                    </ul>
+                </section>
+                
+                <section class="card fade-in delay-2">
+                    <h3><i class="fas fa-users"></i> Support & Community</h3>
+                    <p style="margin-bottom: 10px; color: var(--muted);">Official support channels:</p>
+                    <ul class="list">
+                        <li><i class="fas fa-envelope"></i> Email: cheese-client@outlook.com</li>
+                        <li><i class="fab fa-discord"></i> Discord: Cheese Client Community</li>
+                    </ul>
+                </section>
+                
+                <section class="card fade-in delay-3">
+                    <h3><i class="fas fa-chart-bar"></i> Client Statistics</h3>
+                    <div class="counter-container">
+                        <div class="counter">
+                            <div class="counter-value" data-target="570">570+</div>
+                            <div class="counter-label">Active Users</div>
+                        </div>
+                        <div class="counter">
+                            <div class="counter-value" data-target="100">100+</div>
+                            <div class="counter-label">Servers</div>
+                        </div>
+                        <div class="counter">
+                            <div class="counter-value" data-target="97">97%</div>
+                            <div class="counter-label">Uptime</div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
         </div>
-    </div>
-
-    <aside class="right">
-      <section class="card">
-        <h3 style="margin-top:0">System Requirements</h3>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li class="muted">OS: Windows</li>
-          <li class="muted">Java: Java 8</li>
-          <li class="muted">Memory: 4GB+ recommended</li>
-          <li class="muted">Disk: 200MB</li>
-        </ul>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">Support & Community</h3>
-        <p class="muted">Official support channels:</p>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li>Email: <a href="https://outlook.com">cheese-client@outlook.com</a></li>
-          <li>Discord: Cheese Client Community</li>
-        </ul>
-        <p class="muted" style="margin-top:6px">When filing issues include: game version, latest.log and reproduction steps.</p>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">Client Statistics</h3>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li>Active Users: 50,000+</li>
-          <li>Supported Servers: 100+</li>
-          <li>Uptime: 99.8%</li>
-        </ul>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">Server Compatibility</h3>
-        <p class="muted">Cheese Client is compatible with:</p>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li>Hypixel</li>
-          <li>Mineplex</li>
-          <li>CubeCraft</li>
-          <li>And many others...</li>
-        </ul>
-      </section>
-    </aside>
-  </div>
-
-  <div class="two-col">
-    <div>
-      <section id="changelog" class="card">
-        <h2 style="margin-top:0">Changelog (Recent)</h2>
-        <div class="changelog">
-          <h4 style="margin:8px 0 6px">v1.3.5 — 2025-10-22</h4>
-          <ul style="padding-left:18px" class="muted">
-            <li>Improved anti-cheat bypass methods</li>
-            <li>Added new combat modules</li>
-            <li>Fixed compatibility issues</li>
-          </ul>
-          <h4 style="margin:8px 0 6px">v1.3.0 — 2025-08-14</h4>
-          <ul style="padding-left:18px" class="muted">
-            <li>Added config profile system</li>
-            <li>Improved performance and stability</li>
-          </ul>
+        
+        <div class="two-col">
+            <div>
+                <section id="features" class="card fade-in">
+                    <h2><i class="fas fa-cubes"></i> Features</h2>
+                    <div class="grid" style="margin-top: 10px;">
+                        <div class="feature">
+                            <h3><i class="fas fa-user-shield"></i> Advanced Bypass System</h3>
+                            <p>Sophisticated anti-cheat evasion with multiple bypass methods for popular servers.</p>
+                        </div>
+                        <div class="feature">
+                            <h3><i class="fas fa-fist-raised"></i> Combat Enhancements</h3>
+                            <p>Includes Kill Aura, Reach, Auto Clicker, and advanced PVP modules.</p>
+                        </div>
+                        <div class="feature">
+                            <h3><i class="fas fa-running"></i> Movement & Utility</h3>
+                            <p>Flight, Speed, No Fall, Inventory management and other utility modules.</p>
+                        </div>
+                        <div class="feature">
+                            <h3><i class="fas fa-eye"></i> Visual & Render</h3>
+                            <p>ESP, X-Ray, Fullbright, Trajectories and other visual enhancements.</p>
+                        </div>
+                        <div class="feature">
+                            <h3><i class="fas fa-sliders-h"></i> Config System</h3>
+                            <p>Multiple configuration profiles for different servers and anti-cheat systems.</p>
+                        </div>
+                        <div class="feature">
+                            <h3><i class="fas fa-sync-alt"></i> Auto-updates</h3>
+                            <p>Built-in update checker with bypass updates and new module additions.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="install" class="card fade-in delay-1">
+                    <h2><i class="fas fa-download"></i> Installation Guide</h2>
+                    <ol style="margin-top: 15px; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Download Cheese-client.zip and save it on your machine.</li>
+                        <li style="margin-bottom: 10px;">Use your preferred extraction tool to extract Cheese client.</li>
+                        <li style="margin-bottom: 10px;">Copy the extracted files into your Minecraft directory.</li>
+                        <li style="margin-bottom: 10px;">Launch Minecraft with the appropriate version.</li>
+                        <li style="margin-bottom: 10px;">Configure Cheese Client settings in-game.</li>
+                        <li>Enable desired modules and enjoy enhanced gameplay.</li>
+                    </ol>
+                </section>
+                
+                <section class="card fade-in delay-2">
+                    <h2><i class="fas fa-images"></i> Screenshots</h2>
+                    <div class="screenshots" style="margin-top: 20px;">
+                        <div class="screenshot-container">
+                            <img src="images/cheese-client-ui.png" alt="Cheese Client UI">
+                            <div class="screenshot-overlay">
+                                <div>Cheese Client User Interface</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-container">
+                            <img src="images/module-settings.png" alt="Module Settings">
+                            <div class="screenshot-overlay">
+                                <div>Module Configuration</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-container">
+                            <img src="images/combat-features.png" alt="Combat Features">
+                            <div class="screenshot-overlay">
+                                <div>Combat Modules</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="changelog" class="card fade-in delay-3">
+                    <h2><i class="fas fa-history"></i> Changelog</h2>
+                    <div class="changelog" style="margin-top: 20px;">
+                        <div class="version">
+                            <h4>
+                                <i class="fas fa-rocket"></i> v1.3.5
+                                <span class="version-date">2025-10-22</span>
+                            </h4>
+                            <ul>
+                                <li>Improved anti-cheat bypass methods</li>
+                                <li>Added new combat modules</li>
+                                <li>Fixed compatibility issues</li>
+                                <li>Enhanced performance optimization</li>
+                            </ul>
+                        </div>
+                        <div class="version">
+                            <h4>
+                                <i class="fas fa-rocket"></i> v1.3.0
+                                <span class="version-date">2025-08-14</span>
+                            </h4>
+                            <ul>
+                                <li>Added config profile system</li>
+                                <li>Improved performance and stability</li>
+                                <li>New visual enhancements</li>
+                                <li>Bug fixes and optimizations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <aside>
+                <section class="card fade-in delay-1">
+                    <h3><i class="fas fa-code-branch"></i> Contribute & License</h3>
+                    <p style="margin-bottom: 15px; color: var(--muted);">Community contributions welcome. Follow project guidelines.</p>
+                    <p><strong>License:</strong> Community Edition</p>
+                </section>
+                
+                <section class="card fade-in delay-2">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Safety Notice</h3>
+                    <p style="color: var(--muted);">Using hack clients carries risks. Only download from trusted sources, use with caution, and understand the potential consequences.</p>
+                </section>
+                
+                <section class="card fade-in delay-3">
+                    <h3><i class="fas fa-newspaper"></i> Latest News</h3>
+                    <ul class="list">
+                        <li><i class="fas fa-bullhorn"></i> v1.3.5 released with improved bypass</li>
+                        <li><i class="fas fa-plus-circle"></i> New combat modules added</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Performance optimizations completed</li>
+                        <li><i class="fas fa-calendar-alt"></i> Community event announced</li>
+                    </ul>
+                </section>
+                
+                <section class="card fade-in delay-4">
+                    <h3><i class="fas fa-shield-alt"></i> Server Compatibility</h3>
+                    <p style="margin-bottom: 10px; color: var(--muted);">Cheese Client is compatible with:</p>
+                    <ul class="list">
+                        <li><i class="fas fa-check-circle"></i> Hypixel</li>
+                        <li><i class="fas fa-check-circle"></i> Mineplex</li>
+                        <li><i class="fas fa-check-circle"></i> CubeCraft</li>
+                        <li><i class="fas fa-check-circle"></i> And many others...</li>
+                    </ul>
+                </section>
+            </aside>
         </div>
-      </section>
-
-      <section class="card" style="margin-top:18px">
-        <h2 style="margin-top:0">FAQ</h2>
-        <div class="faq">
-          <details>
-            <summary><strong>Q: Will Cheese Client's hack features be detected?</strong></summary>
-            <p>A: Cheese Client uses advanced bypass techniques to avoid detection. However, no hack client is 100% undetectable. Use with caution and follow server rules to minimize risks.</p>
-          </details>
-
-          <details style="margin-top:8px">
-            <summary><strong>Q: Why did I launch vanilla Minecraft instead of Cheese Client?</strong></summary>
-            <p>A: This may be caused by improper launcher settings. Check your launcher's launch options for 'file verification' settings. If none exist, try disconnecting from the internet or changing launchers.</p>
-          </details>
-
-          <details style="margin-top:8px">
-            <summary><strong>Q: How do I roll back to an older version?</strong></summary>
-            <p>A: Keep backups of older versions. To roll back, replace current files with backup and restart the game.</p>
-          </details>
-
-          <details style="margin-top:8px">
-            <summary><strong>Q: Can I use Cheese Client on multiplayer servers?</strong></summary>
-            <p>A: Yes, but use at your own risk. Some servers have strict anti-cheat systems that may detect and ban users of hack clients.</p>
-          </details>
-
-          <details style="margin-top:8px">
-            <summary><strong>Q: Is Cheese Client free to use?</strong></summary>
-            <p>A: Yes, Cheese Client is completely free and open source. There are no premium features or paywalls.</p>
-          </details>
+        
+        <section class="card fade-in">
+            <h2><i class="fas fa-file-contract"></i> Disclaimer</h2>
+            <p style="color: var(--muted);">Cheese Client is a community-maintained hack client. Developers are not liable for account bans, data loss or other damages. Use at your own risk and follow server rules. The use of hack clients may violate the terms of service of Minecraft and various servers, which could result in permanent bans from those platforms. Users assume all responsibility for any consequences resulting from the use of this software. The developers and distributors of Cheese Client do not endorse or encourage cheating, and this software is provided for educational and experimental purposes only. By downloading and using Cheese Client, you acknowledge that you understand these risks and accept full responsibility for your actions.</p>
+        </section>
+    </main>
+    
+    <footer class="wrap">
+        <div class="footer-content">
+            <div class="footer-row">
+                <div class="footer-info">
+                    <div><strong>Cheese Client</strong> · File: Cheese-client.zip · Version: v1.3.5</div>
+                    <div id="generatedInfo" style="font-size: 0.9rem; color: var(--muted);">Generated: 2025-10-25 · Contact: admin@cheese-client.example</div>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <small class="muted">© 2023-2025 Cheese Client Community. All rights reserved.</small>
+            </div>
         </div>
-      </section>
-
-      <section class="card" style="margin-top:18px">
-        <h2 style="margin-top:0">Troubleshooting</h2>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li class="muted"><strong>Crash on launch:</strong> Check latest.log and crash-reports, ensure Java version and launcher permissions.</li>
-          <li class="muted"><strong>Low FPS:</strong> Try disabling visual effects, lowering render distance and checking background usage.</li>
-          <li class="muted"><strong>Modules not working:</strong> Try switching configs or restarting the game.</li>
-          <li class="muted"><strong>Connection issues:</strong> Check firewall settings and ensure Minecraft has network access.</li>
-        </ul>
-      </section>
-    </div>
-
-    <aside>
-      <section class="card">
-        <h3 style="margin-top:0">Contribute & License</h3>
-        <p class="muted">Community contributions welcome. Follow project guidelines.</p>
-        <p style="margin-top:8px"><strong>License:</strong> Community Edition</p>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">Safety Notice</h3>
-        <p class="muted">Using hack clients carries risks. Only download from trusted sources, use with caution, and understand the potential consequences.</p>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <h3 style="margin-top:0">Latest News</h3>
-        <ul style="padding-left:18px;margin-top:8px">
-          <li>v1.3.5 released with improved bypass</li>
-          <li>New combat modules added</li>
-          <li>Performance optimizations completed</li>
-          <li>Community event announced</li>
-        </ul>
-      </section>
-    </aside>
-  </div>
-
-  <section class="card" style="margin-top:18px">
-    <h2 style="margin-top:0">Disclaimer</h2>
-    <p class="muted">Cheese Client is a community-maintained hack client. Developers are not liable for account bans, data loss or other damages. Use at your own risk and follow server rules.</p>
-  </section>
-</main>
-
-<footer class="wrap">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <div>
-      <strong>Cheese Client</strong> · <span>File:</span>Cheese-client.zip · <span>Version:</span>v1.3.5
-      <div style="font-size:0.9rem;color:var(--muted);margin-top:6px" id="generatedInfo">Generated: 2025-10-25 · Contact: admin@cheese-client.example</div>
-    </div>
-    <div style="text-align:right">
-      <small class="muted">© 2023-2025 Cheese Client Community. All rights reserved.</small>
-    </div>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const downloadBtn = document.getElementById('downloadBtn');
-  
-  downloadBtn.addEventListener('click', function() {
-    console.log('Cheese Client download initiated');
-  });
-  
-  const generatedInfo = document.getElementById('generatedInfo');
-  if (generatedInfo) {
-    const now = new Date();
-    generatedInfo.textContent = `Generated: ${now.toISOString().split('T')[0]} · Contact: cheese-client@outlook.com`;
-  }
-});
-</script>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.querySelector('.download-btn');
+            downloadBtn.addEventListener('click', function() {
+                console.log('Cheese Client download initiated');
+            });
+            
+            const generatedInfo = document.getElementById('generatedInfo');
+            if (generatedInfo) {
+                generatedInfo.textContent = `Generated: ${new Date().toISOString().split('T')[0]} · Contact: cheese-client@outlook.com`;
+            }
+            
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            });
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll();
+            
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                setTimeout(() => {
+                    progressFill.style.width = '95%';
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
