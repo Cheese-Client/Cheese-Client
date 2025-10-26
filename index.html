@@ -54,6 +54,24 @@
             opacity: 0.05;
             filter: blur(40px);
         }
+
+.share-btn {
+  position: relative;
+}
+
+.share-btn.copied::after {
+  content: "Copied!";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
         
         .bg-circle:nth-child(1) {
             width: 600px;
@@ -848,6 +866,7 @@
                     <a class="btn-alt" href="#install"><i class="fas fa-book"></i> Install Guide</a>
                     <a class="btn-alt" href="#changelog"><i class="fas fa-history"></i> Changelog</a>
                     <a class="btn-alt" href="#features"><i class="fas fa-cube"></i> Features</a>
+                    <a class="btn-alt share-btn" href="#" id="shareBtn"><i class="fas fa-share-alt"></i> Share</a>
                 </div>
                 
                 <div class="meta fade-in delay-3">
@@ -1070,47 +1089,127 @@
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const downloadBtn = document.querySelector('.download-btn');
-            downloadBtn.addEventListener('click', function() {
-                console.log('Cheese Client download initiated');
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    // 下载按钮点击事件
+    const downloadBtn = document.querySelector('.download-btn');
+    downloadBtn.addEventListener('click', function() {
+        console.log('Cheese Client download initiated');
+    });
+
+    // 更新生成日期
+    const generatedInfo = document.getElementById('generatedInfo');
+    if (generatedInfo) {
+        generatedInfo.textContent = `Generated: ${new Date().toISOString().split('T')[0]} · Contact: cheese-client@outlook.com`;
+    }
+
+    // Share按钮功能
+    const shareBtn = document.getElementById('shareBtn');
+    const shareTexts = [
+        "Want to do whatever you want in Minecraft? [Cheese Client] fulfills you! Flying, wall hacking, infinite resources... Anything is possible. Most importantly, it's completely free! Download now: https://cheese-client.github.io/Cheese-Client",
+        "What's missing in your Minecraft client? Try [Cheese Client]! This free top-tier modded client will open the door to a new world for you. Click to explore: https://cheese-client.github.io/Cheese-Client",
+        "Say goodbye to the ordinary Minecraft experience! [Cheese Client] redefines your gaming with its powerful features and stable performance. Unlock all potential for free—what are you waiting for? Official website: https://cheese-client.github.io/Cheese-Client",
+        "Discover a gem! [Cheese Client] - The most user-friendly free Minecraft mod client I've used so far. Your gaming experience will be completely transformed: https://cheese-client.github.io/Cheese-Client",
+        "Still looking for the strongest Minecraft client? [Cheese Client] has the answer! Free, powerful, and ready to use with a click: https://cheese-client.github.io/Cheese-Client",
+        "Wild! [Cheese client] will take you into the door of hacking!and ready to use with a click: https://cheese-client.github.io/Cheese-Client"
+    ];
+
+    if (shareBtn) {
+        shareBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            const generatedInfo = document.getElementById('generatedInfo');
-            if (generatedInfo) {
-                generatedInfo.textContent = `Generated: ${new Date().toISOString().split('T')[0]} · Contact: cheese-client@outlook.com`;
-            }
+            // 随机选择一条分享文本
+            const randomText = shareTexts[Math.floor(Math.random() * shareTexts.length)];
             
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.style.opacity = "1";
-                        element.style.transform = "translateY(0)";
-                    }
-                });
-            };
-            
-            fadeElements.forEach(element => {
-                element.style.opacity = "0";
-                element.style.transform = "translateY(20px)";
-                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-            });
-            
-            window.addEventListener('scroll', fadeInOnScroll);
-            fadeInOnScroll();
-            
-            const progressFill = document.querySelector('.progress-fill');
-            if (progressFill) {
+            // 复制到剪贴板
+            navigator.clipboard.writeText(randomText).then(() => {
+                // 显示复制成功提示
+                this.classList.add('copied');
                 setTimeout(() => {
-                    progressFill.style.width = '95%';
-                }, 500);
+                    this.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // 备用方案
+                const textArea = document.createElement('textarea');
+                textArea.value = randomText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // 显示复制成功提示
+                this.classList.add('copied');
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    }
+
+    // 添加滚动动画
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.style.opacity = "1";
+                element.style.transform = "translateY(0)";
             }
         });
+    };
+    
+    // 初始设置
+    fadeElements.forEach(element => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+        element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    });
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll(); // 初始调用
+    
+    // 进度条动画
+    const progressFill = document.querySelector('.progress-fill');
+    if (progressFill) {
+        // 延迟执行以确保动画可见
+        setTimeout(() => {
+            progressFill.style.width = '95%';
+        }, 500);
+    }
+
+    // 计数器动画
+    const counters = document.querySelectorAll('.counter-value');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        let count = 0;
+        const increment = target / 100;
+        
+        const updateCount = () => {
+            if (count < target) {
+                count += increment;
+                counter.innerText = Math.ceil(count);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        
+        // 使用Intersection Observer来触发计数器
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(counter);
+    });
+});
     </script>
 </body>
 </html>
