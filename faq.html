@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Cheese Client</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --accent: #667eea;
+            --bg: #f9fafc;
+            --card: #fff;
+            --card-hover: #fffef6;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --radius: 16px;
+            --maxw: 1200px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(255, 179, 71, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .hero {
+            background: var(--primary-gradient);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            color: #412200;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            background: var(--primary-gradient);
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Styles */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+        }
+
+        .category-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .faq-question {
+            padding: 24px 30px;
+            background: var(--card);
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--card-hover);
+        }
+
+        .faq-question i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--card);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 24px 30px;
+            max-height: 1000px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .faq-answer ul, .faq-answer ol {
+            color: var(--text-light);
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        /* Quick Help Section */
+        .quick-help {
+            background: var(--card);
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .help-card {
+            background: var(--card);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .help-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 1.75rem;
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+        }
+
+        .help-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .help-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Search Bar */
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1.125rem;
+            background: var(--card);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.25rem;
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.125rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.25rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .faq-question {
+                padding: 20px;
+                font-size: 1rem;
+            }
+            
+            .faq-answer {
+                padding: 0 20px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="./images/Logo.png" alt="Cheese Client Logo">
+                    </div>
+                    <div class="brand-text">
+                        <h1>Cheese Client</h1>
+                        <span>Minecraft Hacked Client</span>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="features.html">Features</a>
+                    <a href="download.html">Download</a>
+                    <a href="changelog.html">Changelog</a>
+                    <a href="faq.html" class="active">FAQ</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about Cheese Client and get the help you need</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>General Questions</h3>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is Cheese Client?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cheese Client is a powerful Minecraft enhancement suite designed to elevate your gaming experience with advanced features, performance optimization, and intuitive controls. It provides tools for combat, movement, visual improvements, and utilities that enhance gameplay while maintaining security and stability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is Cheese Client free to use?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Cheese Client is completely free with no hidden costs, subscriptions, or premium tiers. We believe powerful Minecraft enhancement should be accessible to everyone.</p>
+                            <p>There are no plans to introduce paid versions or premium features. You get access to all features without any limitations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is Cheese Client safe to use?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cheese Client is developed with security in mind. However, like any third-party software, it should be used responsibly:</p>
+                            <ul>
+                                <li>Only download from official sources (our website or GitHub)</li>
+                                <li>Use antivirus software to scan downloads</li>
+                                <li>Be aware of server rules and use features appropriately</li>
+                                <li>Keep your client updated to the latest version</li>
+                            </ul>
+                            <p>We regularly update our security measures and encourage responsible usage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What Minecraft versions are supported?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cheese Client currently supports Minecraft 1.16.5 through 1.20.4. We regularly update to support new versions as they are released. Check our changelog for specific version compatibility information.</p>
+                            <p>We maintain backward compatibility where possible, but some features may be version-specific.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Installation & Setup -->
+                <div class="faq-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Installation & Setup</h3>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I install Cheese Client?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Follow these simple steps to install Cheese Client:</p>
+                            <ol>
+                                <li>Download the latest version from our Download page</li>
+                                <li>Extract the ZIP file to a folder of your choice</li>
+                                <li>Run the Cheese Client executable file</li>
+                                <li>Configure your settings in the client interface</li>
+                                <li>Launch Minecraft through the client</li>
+                            </ol>
+                            <p>Detailed installation guides with screenshots are available in our documentation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Does Cheese Client work with other mods?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cheese Client is designed to work with most popular Minecraft mods, but compatibility may vary. Here's what you should know:</p>
+                            <ul>
+                                <li><strong>OptiFine:</strong> Generally compatible, but some visual features may conflict</li>
+                                <li><strong>Forge mods:</strong> Check individual mod compatibility in our forums</li>
+                                <li><strong>Fabric mods:</strong> Limited compatibility - use with caution</li>
+                                <li><strong>Performance mods:</strong> Usually compatible, but may require configuration</li>
+                            </ul>
+                            <p>We recommend testing compatibility with your specific mod setup before regular use.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I update Cheese Client?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Updating Cheese Client is straightforward:</p>
+                            <ol>
+                                <li>Download the latest version from our website</li>
+                                <li>Backup your current configuration and profiles</li>
+                                <li>Extract the new version to a fresh folder</li>
+                                <li>Copy your backed-up configuration files to the new installation</li>
+                                <li>Launch the updated client</li>
+                            </ol>
+                            <p>Some major updates may require a clean installation - check the release notes for specific instructions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features & Usage -->
+                <div class="faq-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Features & Usage</h3>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the most popular features?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Based on community feedback, these are the most popular Cheese Client features:</p>
+                            <ul>
+                                <li><strong>Advanced Combat System:</strong> Improved aim assist, reach, and hit detection</li>
+                                <li><strong>Movement Enhancements:</strong> Flight, speed, no fall damage, and step assist</li>
+                                <li><strong>Visual Improvements:</strong> X-ray, fullbright, ESP, and tracers</li>
+                                <li><strong>Player Utilities:</strong> Auto inventory management, fishing, and building</li>
+                                <li><strong>Performance Boost:</strong> FPS optimization and lag reduction</li>
+                                <li><strong>Customizable GUI:</strong> Themes, HUD elements, and keybind configuration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I configure keybinds and settings?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cheese Client features an intuitive configuration system:</p>
+                            <ol>
+                                <li>Press <code>RIGHT SHIFT</code> (default) to open the main menu</li>
+                                <li>Navigate to the "Modules" section to enable/disable features</li>
+                                <li>Click on any module to configure its specific settings</li>
+                                <li>Go to "Keybinds" to assign or change keyboard shortcuts</li>
+                                <li>Use the "Settings" tab for general preferences and themes</li>
+                            </ol>
+                            <p>You can save multiple configurations as profiles for different gameplay scenarios.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I get banned for using Cheese Client?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The use of any Minecraft enhancement client carries risk. Here's what you should know:</p>
+                            <ul>
+                                <li><strong>Single Player:</strong> Generally safe to use all features</li>
+                                <li><strong>Multiplayer Servers:</strong> Each server has its own rules</li>
+                                <li><strong>Popular Servers:</strong> Many have anti-cheat systems that may detect clients</li>
+                                <li><strong>Use Responsibly:</strong> Avoid obvious cheating in competitive environments</li>
+                            </ul>
+                            <p>We include anti-detection features, but no client is 100% undetectable. Always respect server rules and use features discreetly on multiplayer servers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Troubleshooting -->
+                <div class="faq-category fade-in">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Troubleshooting</h3>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Cheese Client won't launch. What should I do?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If Cheese Client won't launch, try these troubleshooting steps:</p>
+                            <ol>
+                                <li><strong>Check Java:</strong> Ensure you have Java 8 or higher installed</li>
+                                <li><strong>Update Drivers:</strong> Update your graphics card drivers</li>
+                                <li><strong>Reinstall:</strong> Delete and reinstall the client fresh</li>
+                                <li><strong>Antivirus:</strong> Check if your antivirus is blocking the client</li>
+                                <li><strong>Compatibility Mode:</strong> Try running as administrator or in compatibility mode</li>
+                                <li><strong>Check Logs:</strong> Look for error logs in the client folder</li>
+                            </ol>
+                            <p>If problems persist, visit our Discord community for support.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>I'm experiencing lag or low FPS. How can I fix it?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Try these optimization tips for better performance:</p>
+                            <ul>
+                                <li><strong>Disable resource-intensive features:</strong> Turn off ESP, tracers, or complex visual effects</li>
+                                <li><strong>Allocate more RAM:</strong> Increase Minecraft's memory allocation in the launcher</li>
+                                <li><strong>Update Java:</strong> Make sure you're using the latest Java version</li>
+                                <li><strong>Lower in-game settings:</strong> Reduce render distance and graphics settings</li>
+                                <li><strong>Close background applications:</strong> Free up system resources</li>
+                                <li><strong>Use performance mods:</strong> Consider OptiFine or Sodium for additional optimization</li>
+                            </ul>
+                            <p>Cheese Client is optimized for performance, but some features may impact FPS on lower-end systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Some features aren't working. What could be wrong?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If specific features aren't working:</p>
+                            <ol>
+                                <li><strong>Check Activation:</strong> Ensure the module is enabled in the settings</li>
+                                <li><strong>Verify Keybinds:</strong> Check if the correct key is assigned</li>
+                                <li><strong>Update Client:</strong> Make sure you're using the latest version</li>
+                                <li><strong>Server Compatibility:</strong> Some servers may block certain features</li>
+                                <li><strong>Minecraft Version:</strong> Verify the feature works with your Minecraft version</li>
+                                <li><strong>Reinstall:</strong> Try a clean reinstall of the client</li>
+                            </ol>
+                            <p>Check our known issues list on GitHub for any current bugs affecting specific features.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cheese Client</h3>
+                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="download.html">Download</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="term.html">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 Cheese Client. All rights reserved.</p>
+                <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            const searchInput = document.querySelector('.search-input');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // FAQ search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                        
+                        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide categories based on visible items
+                    document.querySelectorAll('.faq-category').forEach(category => {
+                        const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
+                        const allItems = category.querySelectorAll('.faq-item');
+                        
+                        if (visibleItems.length === 0 && searchTerm !== '') {
+                            category.style.display = 'none';
+                        } else {
+                            category.style.display = 'block';
+                        }
+                    });
+                });
+            }
+            
+            // Fade in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Initialize animations
+            fadeInOnScroll();
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Open first FAQ item by default
+            if (faqItems.length > 0) {
+                faqItems[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
