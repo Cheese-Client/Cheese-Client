@@ -1,134 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Cheese Client — Minecraft Hack Client Download & Info</title>
-    <meta name="description" content="Download Cheese Client (Cheese-client.zip): High-performance, customizable Minecraft hack client with installation tutorial and changelog."/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Client - Official Minecraft Enhancement Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #ffb347;
-            --accent-dark: #ff9800;
-            --accent-light: #ffd187;
-            --accent-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            --bg: #f4f6fb;
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --accent: #667eea;
+            --bg: #f9fafc;
             --card: #fff;
             --card-hover: #fffef6;
             --text: #111827;
-            --muted: #6b7280;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
             --radius: 16px;
             --maxw: 1200px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --glow: 0 0 20px rgba(255, 179, 71, 0.3);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 20px rgba(255, 179, 71, 0.2);
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        .bg-decoration {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            opacity: 0.05;
-            filter: blur(40px);
-        }
 
-.share-btn {
-  position: relative;
-}
-
-.share-btn.copied::after {
-  content: "Copied!";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-        
-        .bg-circle:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -100px;
-        }
-        
-        .bg-circle:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -100px;
-        }
-        
-        header {
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-            padding: 20px 0;
-            box-shadow: var(--shadow);
-            border-radius: 0 0 20px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-gradient);
-        }
-        
-        .wrap {
+        .container {
             max-width: var(--maxw);
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        .brand {
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-content {
             display: flex;
             align-items: center;
-            gap: 20px;
             justify-content: space-between;
         }
-        
-        .brand-left {
+
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
-        
+
         .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             background: #fff;
             display: flex;
             align-items: center;
@@ -136,140 +87,173 @@
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
-        
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
         .logo:hover {
             transform: rotate(5deg) scale(1.05);
         }
-        
-        .logo::before {
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
-            animation: shine 3s infinite linear;
         }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #412200;
-            font-weight: 700;
-            letter-spacing: -0.1px;
+
+        .nav-links a.active {
+            color: var(--primary);
         }
-        
-        header p {
-            color: #523a14;
-            font-size: 1.1rem;
-            max-width: 500px;
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
         }
-        
-        main {
-            max-width: var(--maxw);
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        #changelog.card {
-            width: 150%;
-            max-width: none;
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
         }
 
         .hero {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            margin-bottom: 40px;
+            background: var(--primary-gradient);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .hero .left {
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
             flex: 1;
-            background: var(--card);
-            padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 179, 71, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #412200;
         }
-        
-        .hero .left:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .hero .right {
-            width: 350px;
-            min-width: 300px;
-        }
-        
-        .badge-container {
-            display: flex;
-            gap: 12px;
+
+        .hero-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            line-height: 1.1;
+            letter-spacing: -1px;
         }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #fff7e6;
-            color: #7a4a00;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 179, 71, 0.2);
-            transition: all 0.3s ease;
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            max-width: 500px;
+            font-weight: 400;
         }
-        
-        .badge:hover {
-            background: rgba(255, 179, 71, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .badge i {
-            font-size: 0.9rem;
-        }
-        
-        .lead {
-            font-size: 1.15rem;
-            margin: 16px 0 24px;
-            color: var(--text);
-            line-height: 1.7;
-        }
-        
-        .download-row {
+
+        .hero-image {
+            flex: 1;
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            position: relative;
         }
-        
+
+        .hero-image .logo {
+            width: 240px;
+            height: 240px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 16px 32px;
             border-radius: 12px;
             text-decoration: none;
             color: #fff;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.2);
+            font-weight: 600;
+            background: var(--primary-gradient);
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -280,945 +264,663 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.3);
-        }
-        
+
         .btn:hover::before {
             left: 100%;
         }
-        
-        .btn-alt {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            background: rgba(255, 255, 255, 0.05);
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
             color: var(--text);
-            padding: 14px 20px;
-            border: 1px solid #eee;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
         }
-        
-        .btn-alt:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
-        
-        .meta {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-top: 12px;
+
+        .button-group {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             flex-wrap: wrap;
         }
-        
-        section.card {
-            background: var(--card);
-            padding: 25px;
-            border-radius: var(--radius);
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .section {
+            padding: 100px 0;
         }
-        
-        section.card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
         }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--text);
-            position: relative;
-            display: inline-block;
+
+        .section-title h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gradient);
-            border-radius: 3px;
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
-        .grid {
+
+        .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
-        
-        .feature {
-            padding: 20px;
-            border-radius: 12px;
-            background: linear-gradient(145deg, #fff, #fffef6);
-            border: 1px solid #fff7e6;
+
+        .content-card {
+            background: var(--card);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        
-        .feature::before {
+
+        .content-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 4px;
             height: 100%;
-            background: var(--accent-gradient);
+            background: var(--primary-gradient);
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-            background: #fffef6;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature:hover::before {
+
+        .content-card:hover::before {
             transform: scaleY(1);
         }
-        
-        .feature h3 {
-            margin: 0 0 12px;
-            font-size: 1.2rem;
-            color: var(--text);
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .content-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: var(--primary-gradient);
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .feature h3 i {
-            color: var(--accent);
-        }
-        
-        .feature p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .screenshots {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
             justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 1.75rem;
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
         }
-        
-        .screenshot-container {
+
+        .content-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .content-card p {
+            color: var(--text-light);
+        }
+
+        .about-section {
+            background: var(--card);
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
             position: relative;
-            width: 280px;
-            height: 180px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
-        
-        .screenshot-container:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .screenshot-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .screenshot-container:hover img {
-            transform: scale(1.1);
-        }
-        
-        .screenshot-overlay {
+
+        .about-section::before {
+            content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.03"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="%23ffb347"/></svg>');
         }
-        
-        .screenshot-container:hover .screenshot-overlay {
-            transform: translateY(0);
+
+        .about-container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
-        
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 25px;
-            align-items: start;
+
+        .about-info {
+            flex: 1;
         }
-        
-        .list {
-            padding: 0;
-            margin: 0;
-            list-style: none;
+
+        .about-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
-        
-        .list li {
-            padding: 12px 0;
-            border-bottom: 1px dashed #f1f1f1;
-            color: var(--muted);
+
+        .about-info p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .about-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 700;
         }
-        
-        .list li:last-child {
+
+        .about-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .about-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-list li:last-child {
             border-bottom: none;
         }
-        
-        .list li i {
-            color: var(--accent);
+
+        .about-list i {
+            color: var(--primary);
             width: 20px;
         }
-        
-        aside .card {
-            margin-bottom: 20px;
+
+        .cta-section {
+            background: var(--primary-gradient);
+            padding: 100px 0;
+            color: #412200;
+            text-align: center;
         }
-        
-        footer {
-            max-width: var(--maxw);
-            margin: 40px auto 20px;
-            padding: 0 20px;
-            color: var(--muted);
-        }
-        
-        .footer-content {
-            background: var(--card);
-            padding: 30px;
+
+        .cta-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
         }
-        
-        .footer-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
         }
-        
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+
+        .cta-card p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
         }
-        
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+            font-weight: 700;
+        }
+
         .footer-links {
-            display: flex;
-            gap: 20px;
+            list-style: none;
         }
-        
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
         .footer-links a {
-            color: var(--muted);
+            color: #9ca3af;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
-        
-        .changelog {
-            max-height: 300px;
-            overflow: auto;
-            padding-right: 10px;
-        }
-        
-        .changelog::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .changelog::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-        
-        .changelog::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-        
-        .version {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .version:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        
-        .version h4 {
-            margin: 0 0 8px;
-            font-size: 1.1rem;
-            color: var(--text);
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid #374151;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-        
-        .version-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-left: auto;
+
+        .footer-bottom p {
+            color: #9ca3af;
         }
-        
-        .version ul {
-            padding-left: 25px;
-            margin: 0;
+
+        .social-links {
+            display: flex;
+            gap: 20px;
         }
-        
-        .version li {
-            color: var(--muted);
-            margin-bottom: 5px;
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        
-        .faq details {
-            margin-bottom: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
         }
-        
-        .faq summary {
-            cursor: pointer;
-            padding: 18px 20px;
-            background: #fff;
-            font-weight: 600;
-            list-style: none;
-            position: relative;
-            transition: background 0.3s ease;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .faq summary:hover {
-            background: #f9f9f9;
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
         }
-        
-        .faq summary::-webkit-details-marker {
-            display: none;
-        }
-        
-        .faq summary::after {
-            content: '+';
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            color: var(--accent);
-            transition: transform 0.3s ease;
-        }
-        
-        .faq details[open] summary::after {
-            content: '-';
-        }
-        
-        .faq p {
-            margin: 0;
-            padding: 20px;
-            color: var(--muted);
-            border-top: 1px solid #f1f1f1;
-        }
-        
+
         @media (max-width: 1024px) {
-            .two-col {
-                grid-template-columns: 1fr;
+            .hero-content {
+                gap: 40px;
             }
             
-            .hero .right {
-                width: 100%;
+            .hero-text h2 {
+                font-size: 3rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .about-card {
+                max-width: 100%;
             }
         }
         
         @media (max-width: 768px) {
-            .hero {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
                 flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
             }
             
-            .grid {
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text p {
+                font-size: 1.125rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.25rem;
+            }
+            
+            .content-grid {
                 grid-template-columns: 1fr;
             }
             
-            .screenshot-container {
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .footer-row {
+            .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
-            
-            .footer-links {
-                justify-content: center;
-            }
-            
-            h1 {
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text h2 {
                 font-size: 2rem;
             }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        
-        .download-btn {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            background: var(--card);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 179, 71);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text);
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
-        }
-        
-        .download-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: var(--accent-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .download-text {
-            flex: 1;
-        }
-        
-        .download-title {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 4px;
-        }
-        
-        .download-filename {
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
-        
-        .download-arrow {
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-        
-        .progress-container {
-            margin-top: 20px;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s ease;
-        }
-        
-        .counter-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        
-        .counter {
-            text-align: center;
-            padding: 15px;
-            border-radius: 12px;
-            background: #fff7e6;
-            flex: 1;
-            margin: 0 5px;
-            min-width: 0;
-        }
-        
-        .counter:first-child {
-            margin-left: 0;
-        }
-        
-        .counter:last-child {
-            margin-right: 0;
-        }
-        
-        .counter-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-        
-        .counter-label {
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
-        
-        #features.card {
-            margin-top: -300px;
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-decoration">
-        <div class="bg-circle"></div>
-        <div class="bg-circle"></div>
-    </div>
-    
-    <header>
-        <div class="wrap">
-            <div class="brand">
-                <div class="brand-left">
-                  <div class="logo">
-                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="90" height="80" viewBox="0 0 612 542" style="width:90%;height:90%;">
-<?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="612" height="542">
-<path d="M0 0 C1.20527344 0.33257812 2.41054688 0.66515625 3.65234375 1.0078125 C17.0332837 5.09657507 29.48482563 11.9099871 41.99815369 18.07136536 C48.65866144 21.34160138 55.38360175 24.46230827 62.125 27.5625 C71.632016 31.9440995 81.08412502 36.42685846 90.5 41 C99.95775475 45.5933731 109.45220822 50.09579975 119 54.5 C129.16150431 59.18729323 139.2571904 63.99672815 149.32275391 68.88525391 C158.17368445 73.18143059 167.06591908 77.37889197 176 81.5 C185.54779535 85.90420189 195.04217935 90.40675838 204.5 95 C214.08421874 99.65429497 223.70308717 104.21728819 233.375 108.6875 C237.91707959 110.7907762 242.45874163 112.89495127 247 115 C248.12986328 115.52319824 249.25972656 116.04639648 250.42382812 116.58544922 C253.66185924 118.08962436 256.89413373 119.60550793 260.125 121.125 C261.09743652 121.57447998 262.06987305 122.02395996 263.07177734 122.48706055 C263.95816895 122.90640869 264.84456055 123.32575684 265.7578125 123.7578125 C266.5327002 124.1202002 267.30758789 124.48258789 268.10595703 124.85595703 C270 126 270 126 272 129 C272.25447559 131.52599144 272.25447559 131.52599144 272.26069641 134.60409546 C272.26778122 135.77056107 272.27486603 136.93702667 272.28216553 138.13883972 C272.27968811 139.41995132 272.27721069 140.70106293 272.2746582 142.02099609 C272.27900507 143.38276957 272.28418813 144.7445406 272.29014587 146.10630798 C272.30355135 149.80678876 272.30411274 153.5071675 272.30158257 157.20766783 C272.30051371 160.29661846 272.30539417 163.38554838 272.310188 166.47449458 C272.32128897 173.7626345 272.32171757 181.05072289 272.31567383 188.33886719 C272.30963528 195.85687611 272.3219406 203.37469782 272.3432439 210.8926748 C272.36086088 217.3471246 272.36686103 223.80151481 272.36360615 230.25598776 C272.36179298 234.110981 272.3644326 237.96584076 272.37832069 241.82081223 C272.39089574 245.44715388 272.38895822 249.07320392 272.37590981 252.69954109 C272.37241613 254.6630695 272.38372498 256.6266068 272.39547729 258.59010315 C272.38846298 259.7622084 272.38144867 260.93431366 272.3742218 262.14193726 C272.37447341 263.66672982 272.37447341 263.66672982 272.37473011 265.22232628 C271.76870822 269.71444217 269.92265365 272.25737633 266.4375 275.0625 C262.82071311 277.10105261 259.18648911 278.57449677 255.328125 280.08203125 C248.92693112 282.60599193 245.89052392 285.81050855 243 292 C240.23580776 300.22738351 241.21194859 305.85172072 244.5625 313.625 C248.29528338 319.67183359 254.7846469 322.65510328 261.25 325 C266.67773984 327.00902346 269.38842163 329.77684326 272 335 C272.11388621 337.62260641 272.16782672 340.2192762 272.17700195 342.84277344 C272.18685875 344.05770477 272.18685875 344.05770477 272.19691467 345.29718018 C272.21666656 347.98457935 272.2283152 350.67192255 272.23828125 353.359375 C272.24235678 354.27678719 272.2464323 355.19419937 272.25063133 356.13941193 C272.27150135 360.99625932 272.28579834 365.85307838 272.29516602 370.70996094 C272.30622505 375.72487977 272.34061641 380.73935422 272.38033772 385.75411606 C272.40649609 389.61119405 272.41485722 393.46816612 272.41844749 397.32532501 C272.42331643 399.17367805 272.43493919 401.02202626 272.45348549 402.87029266 C272.47785786 405.46043465 272.47691547 408.04942666 272.4699707 410.63964844 C272.48278076 411.40039673 272.49559082 412.16114502 272.50878906 412.94494629 C272.45816384 418.13698638 271.37809201 421.07197889 268 425 C262.99245189 429.12506395 259.40422844 429.5762473 253.19458008 429.50793457 C252.31980672 429.51417453 251.44503336 429.5204145 250.54375172 429.52684355 C247.61873566 429.54277138 244.69455318 429.53017007 241.76953125 429.51757812 C239.67002883 429.52299933 237.57053022 429.53012198 235.47103882 429.53881836 C229.77273101 429.55705471 224.07471287 429.54998275 218.37639999 429.53730202 C212.41344165 429.52717605 206.45050814 429.53656658 200.48754883 429.54284668 C190.47375027 429.55012424 180.46006971 429.54053246 170.44628906 429.52148438 C158.8684522 429.49971551 147.29089709 429.5067668 135.71306705 429.52879 C125.77320729 429.54694082 115.83343235 429.54950384 105.89356136 429.53903532 C99.95663268 429.53279868 94.01983644 429.53196955 88.08291626 429.54518127 C82.50140821 429.55673443 76.9202635 429.54872346 71.33879471 429.52560425 C69.29014311 429.52031435 67.24146095 429.52183571 65.1928215 429.53065491 C62.39660793 429.54158269 59.60155923 429.52788008 56.80541992 429.50793457 C55.58878017 429.5213189 55.58878017 429.5213189 54.34756184 429.53497362 C49.10658225 429.46243929 46.18929057 428.41351484 42 425 C39.07662261 421.98803541 37.47054135 418.89761558 35.75 415.125 C32.03533211 407.51446092 26.16859531 402.83481806 18.3515625 399.71875 C9.19034891 396.91864485 0.87854495 397.86603332 -7.625 402.125 C-15.51148899 406.84317776 -19.45041538 413.58676445 -23.5859375 421.5703125 C-25.70777404 425.21612003 -28.29517611 427.14758805 -32 429 C-34.29356274 429.10331586 -36.59021721 429.13956015 -38.88609314 429.14717102 C-39.60282953 429.15084771 -40.31956593 429.1545244 -41.05802161 429.1583125 C-43.47220059 429.16937092 -45.88633656 429.17319691 -48.30053711 429.17700195 C-50.026806 429.18326527 -51.75307355 429.18991195 -53.4793396 429.19691467 C-59.16199805 429.2179834 -64.84465685 429.22832366 -70.52734375 429.23828125 C-72.48411129 429.24232857 -74.4408787 429.24644549 -76.39764595 429.25063133 C-85.59577422 429.26969377 -94.79389443 429.28391929 -103.99203867 429.2922433 C-114.6008481 429.30200252 -125.20944814 429.32828321 -135.81818384 429.36874419 C-144.02130238 429.39895297 -152.2243611 429.41371693 -160.42753416 429.41702431 C-165.32459103 429.41937053 -170.2214245 429.42827426 -175.11842155 429.45348549 C-179.73217166 429.47685275 -184.34555271 429.4809648 -188.95934677 429.47072411 C-190.64631316 429.47023064 -192.33329823 429.47649499 -194.02020836 429.49028015 C-207.74563155 429.59609881 -218.71448793 427.81887258 -229 418 C-237.35320101 409.24981518 -240.62536677 399.45984364 -240.50793457 387.49717712 C-240.51417453 386.50000831 -240.5204145 385.50283949 -240.52684355 384.47545344 C-240.54267737 381.16559853 -240.53020651 377.85648998 -240.51757812 374.54663086 C-240.52300374 372.16044692 -240.53012886 369.77426633 -240.53881836 367.38809204 C-240.55512281 361.59688849 -240.55279253 355.80591818 -240.5411678 350.01470768 C-240.53210097 345.30067188 -240.53092347 340.58669408 -240.53526306 335.87265205 C-240.53587599 335.19937595 -240.53648893 334.52609985 -240.53712043 333.83242144 C-240.53839948 332.46419646 -240.53969633 331.0959715 -240.5410108 329.72774655 C-240.55239849 316.91728503 -240.5393346 304.10693826 -240.51780933 291.29649556 C-240.49996853 280.34059111 -240.50302098 269.38485641 -240.52148438 258.42895508 C-240.54297266 245.67237277 -240.55127011 232.91589112 -240.53903532 220.15929323 C-240.5377613 218.79421494 -240.53650381 217.42913663 -240.53526306 216.0640583 C-240.53464596 215.39262897 -240.53402886 214.72119964 -240.53339306 214.02942396 C-240.52996177 209.33289361 -240.53591969 204.63644719 -240.54518127 199.93992424 C-240.55682111 193.59418742 -240.54856646 187.24876766 -240.52560425 180.90306473 C-240.52035877 178.58692638 -240.52175859 176.27076091 -240.53065491 173.95463371 C-240.58975861 156.98975589 -238.96297771 141.39292488 -232.8125 125.4375 C-232.51915771 124.66140381 -232.22581543 123.88530762 -231.92358398 123.08569336 C-222.68149568 99.40989918 -207.43413057 79.22884877 -190 61 C-189.04480469 59.98292969 -189.04480469 59.98292969 -188.0703125 58.9453125 C-145.87788806 15.13786703 -59.97973152 -16.69338806 0 0 Z " fill="#FEDB63" transform="translate(290,43)"/>
-<path d="M0 0 C1.20527344 0.33257812 2.41054688 0.66515625 3.65234375 1.0078125 C17.0332837 5.09657507 29.48482563 11.9099871 41.99815369 18.07136536 C48.65866144 21.34160138 55.38360175 24.46230827 62.125 27.5625 C71.632016 31.9440995 81.08412502 36.42685846 90.5 41 C99.95775475 45.5933731 109.45220822 50.09579975 119 54.5 C129.16150431 59.18729323 139.2571904 63.99672815 149.32275391 68.88525391 C158.17368445 73.18143059 167.06591908 77.37889197 176 81.5 C185.54779535 85.90420189 195.04217935 90.40675838 204.5 95 C214.08421874 99.65429497 223.70308717 104.21728819 233.375 108.6875 C237.91707959 110.7907762 242.45874163 112.89495127 247 115 C248.12986328 115.52319824 249.25972656 116.04639648 250.42382812 116.58544922 C253.66185924 118.08962436 256.89413373 119.60550793 260.125 121.125 C261.09743652 121.57447998 262.06987305 122.02395996 263.07177734 122.48706055 C263.95816895 122.90640869 264.84456055 123.32575684 265.7578125 123.7578125 C266.5327002 124.1202002 267.30758789 124.48258789 268.10595703 124.85595703 C270 126 270 126 272 129 C272.25447559 131.52599144 272.25447559 131.52599144 272.26069641 134.60409546 C272.26778122 135.77056107 272.27486603 136.93702667 272.28216553 138.13883972 C272.27968811 139.41995132 272.27721069 140.70106293 272.2746582 142.02099609 C272.27900507 143.38276957 272.28418813 144.7445406 272.29014587 146.10630798 C272.30355135 149.80678876 272.30411274 153.5071675 272.30158257 157.20766783 C272.30051371 160.29661846 272.30539417 163.38554838 272.310188 166.47449458 C272.32128897 173.7626345 272.32171757 181.05072289 272.31567383 188.33886719 C272.30963528 195.85687611 272.3219406 203.37469782 272.3432439 210.8926748 C272.36086088 217.3471246 272.36686103 223.80151481 272.36360615 230.25598776 C272.36179298 234.110981 272.3644326 237.96584076 272.37832069 241.82081223 C272.39089574 245.44715388 272.38895822 249.07320392 272.37590981 252.69954109 C272.37241613 254.6630695 272.38372498 256.6266068 272.39547729 258.59010315 C272.38846298 259.7622084 272.38144867 260.93431366 272.3742218 262.14193726 C272.37447341 263.66672982 272.37447341 263.66672982 272.37473011 265.22232628 C271.76870822 269.71444217 269.92265365 272.25737633 266.4375 275.0625 C262.82071311 277.10105261 259.18648911 278.57449677 255.328125 280.08203125 C248.92693112 282.60599193 245.89052392 285.81050855 243 292 C240.23580776 300.22738351 241.21194859 305.85172072 244.5625 313.625 C248.29528338 319.67183359 254.7846469 322.65510328 261.25 325 C266.67773984 327.00902346 269.38842163 329.77684326 272 335 C272.11388621 337.62260641 272.16782672 340.2192762 272.17700195 342.84277344 C272.18685875 344.05770477 272.18685875 344.05770477 272.19691467 345.29718018 C272.21666656 347.98457935 272.2283152 350.67192255 272.23828125 353.359375 C272.24235678 354.27678719 272.2464323 355.19419937 272.25063133 356.13941193 C272.27150135 360.99625932 272.28579834 365.85307838 272.29516602 370.70996094 C272.30622505 375.72487977 272.34061641 380.73935422 272.38033772 385.75411606 C272.40649609 389.61119405 272.41485722 393.46816612 272.41844749 397.32532501 C272.42331643 399.17367805 272.43493919 401.02202626 272.45348549 402.87029266 C272.47785786 405.46043465 272.47691547 408.04942666 272.4699707 410.63964844 C272.48278076 411.40039673 272.49559082 412.16114502 272.50878906 412.94494629 C272.45816384 418.13698638 271.37809201 421.07197889 268 425 C262.99245189 429.12506395 259.40422844 429.5762473 253.19458008 429.50793457 C252.31980672 429.51417453 251.44503336 429.5204145 250.54375172 429.52684355 C247.61873566 429.54277138 244.69455318 429.53017007 241.76953125 429.51757812 C239.67002883 429.52299933 237.57053022 429.53012198 235.47103882 429.53881836 C229.77273101 429.55705471 224.07471287 429.54998275 218.37639999 429.53730202 C212.41344165 429.52717605 206.45050814 429.53656658 200.48754883 429.54284668 C190.47375027 429.55012424 180.46006971 429.54053246 170.44628906 429.52148438 C158.8684522 429.49971551 147.29089709 429.5067668 135.71306705 429.52879 C125.77320729 429.54694082 115.83343235 429.54950384 105.89356136 429.53903532 C99.95663268 429.53279868 94.01983644 429.53196955 88.08291626 429.54518127 C82.50140821 429.55673443 76.9202635 429.54872346 71.33879471 429.52560425 C69.29014311 429.52031435 67.24146095 429.52183571 65.1928215 429.53065491 C62.39660793 429.54158269 59.60155923 429.52788008 56.80541992 429.50793457 C55.58878017 429.5213189 55.58878017 429.5213189 54.34756184 429.53497362 C49.10658225 429.46243929 46.18929057 428.41351484 42 425 C39.07662261 421.98803541 37.47054135 418.89761558 35.75 415.125 C32.03533211 407.51446092 26.16859531 402.83481806 18.3515625 399.71875 C9.19034891 396.91864485 0.87854495 397.86603332 -7.625 402.125 C-15.51148899 406.84317776 -19.45041538 413.58676445 -23.5859375 421.5703125 C-25.70777404 425.21612003 -28.29517611 427.14758805 -32 429 C-34.29356274 429.10331586 -36.59021721 429.13956015 -38.88609314 429.14717102 C-39.60282953 429.15084771 -40.31956593 429.1545244 -41.05802161 429.1583125 C-43.47220059 429.16937092 -45.88633656 429.17319691 -48.30053711 429.17700195 C-50.026806 429.18326527 -51.75307355 429.18991195 -53.4793396 429.19691467 C-59.16199805 429.2179834 -64.84465685 429.22832366 -70.52734375 429.23828125 C-72.48411129 429.24232857 -74.4408787 429.24644549 -76.39764595 429.25063133 C-85.59577422 429.26969377 -94.79389443 429.28391929 -103.99203867 429.2922433 C-114.6008481 429.30200252 -125.20944814 429.32828321 -135.81818384 429.36874419 C-144.02130238 429.39895297 -152.2243611 429.41371693 -160.42753416 429.41702431 C-165.32459103 429.41937053 -170.2214245 429.42827426 -175.11842155 429.45348549 C-179.73217166 429.47685275 -184.34555271 429.4809648 -188.95934677 429.47072411 C-190.64631316 429.47023064 -192.33329823 429.47649499 -194.02020836 429.49028015 C-207.74563155 429.59609881 -218.71448793 427.81887258 -229 418 C-237.35320101 409.24981518 -240.62536677 399.45984364 -240.50793457 387.49717712 C-240.51417453 386.50000831 -240.5204145 385.50283949 -240.52684355 384.47545344 C-240.54267737 381.16559853 -240.53020651 377.85648998 -240.51757812 374.54663086 C-240.52300374 372.16044692 -240.53012886 369.77426633 -240.53881836 367.38809204 C-240.55512281 361.59688849 -240.55279253 355.80591818 -240.5411678 350.01470768 C-240.53210097 345.30067188 -240.53092347 340.58669408 -240.53526306 335.87265205 C-240.53587599 335.19937595 -240.53648893 334.52609985 -240.53712043 333.83242144 C-240.53839948 332.46419646 -240.53969633 331.0959715 -240.5410108 329.72774655 C-240.55239849 316.91728503 -240.5393346 304.10693826 -240.51780933 291.29649556 C-240.49996853 280.34059111 -240.50302098 269.38485641 -240.52148438 258.42895508 C-240.54297266 245.67237277 -240.55127011 232.91589112 -240.53903532 220.15929323 C-240.5377613 218.79421494 -240.53650381 217.42913663 -240.53526306 216.0640583 C-240.53464596 215.39262897 -240.53402886 214.72119964 -240.53339306 214.02942396 C-240.52996177 209.33289361 -240.53591969 204.63644719 -240.54518127 199.93992424 C-240.55682111 193.59418742 -240.54856646 187.24876766 -240.52560425 180.90306473 C-240.52035877 178.58692638 -240.52175859 176.27076091 -240.53065491 173.95463371 C-240.58975861 156.98975589 -238.96297771 141.39292488 -232.8125 125.4375 C-232.51915771 124.66140381 -232.22581543 123.88530762 -231.92358398 123.08569336 C-222.68149568 99.40989918 -207.43413057 79.22884877 -190 61 C-189.04480469 59.98292969 -189.04480469 59.98292969 -188.0703125 58.9453125 C-145.87788806 15.13786703 -59.97973152 -16.69338806 0 0 Z M-177 70 C-177.87269531 70.78761719 -178.74539062 71.57523438 -179.64453125 72.38671875 C-195.33891358 87.32046865 -207.10248515 106.38287285 -216 126 C-216 126.66 -216 127.32 -216 128 C-215.37857129 127.85864949 -214.75714257 127.71729897 -214.11688268 127.57166511 C-206.0882574 125.91216095 -198.29195161 125.71548497 -190.11978149 125.73930359 C-188.63717087 125.73627789 -187.15456181 125.73238632 -185.67195547 125.72771102 C-181.62467071 125.71747718 -177.57747498 125.71960094 -173.53018308 125.72389162 C-169.15531551 125.72636708 -164.78046892 125.71733484 -160.40560913 125.70985413 C-151.8475262 125.69713058 -143.28947467 125.69531028 -134.73138388 125.69765439 C-127.7775472 125.69943932 -120.82372003 125.69768417 -113.86988449 125.69342995 C-112.87923917 125.69283476 -111.88859385 125.69223957 -110.86792897 125.69162634 C-108.8553685 125.69041458 -106.84280803 125.68920045 -104.83024757 125.68798397 C-85.97655381 125.67711874 -67.12287796 125.67926687 -48.2691832 125.68536881 C-31.01407875 125.69054443 -13.75903063 125.67926373 3.49606268 125.66027059 C21.21842489 125.64091261 38.94076041 125.63263214 56.66313326 125.63639385 C66.61125013 125.63830805 76.55931897 125.63579645 86.50742722 125.62167931 C94.97028487 125.60979099 103.43306487 125.60833236 111.89592354 125.62046947 C116.21453818 125.62637439 120.53301059 125.627413 124.85161591 125.61546707 C128.80279983 125.6046641 132.7537218 125.60764444 136.70489319 125.62172876 C138.13600309 125.62439102 139.56713316 125.62196148 140.99822335 125.61399289 C142.94028266 125.60392746 144.88241548 125.61407553 146.82446861 125.62526989 C147.90412624 125.62521487 148.98378386 125.62515986 150.09615839 125.62510318 C153.4219109 126.05447028 155.32375392 127.00755533 158 129 C158.8123285 131.86871255 158.33710103 133.9660907 158 137 C155.29768062 139.70231938 153.92292419 139.25015837 150.14117336 139.25053978 C148.88523575 139.25553848 147.62929814 139.26053717 146.33530182 139.26568735 C144.92856634 139.2611461 143.52183142 139.25642942 142.11509705 139.2515564 C140.63073074 139.25369312 139.1463655 139.25671717 137.66200262 139.26055682 C133.56789836 139.26863011 129.47388492 139.26427428 125.37978089 139.25803804 C120.96991596 139.25351928 116.56006879 139.26053669 112.15020752 139.26634216 C104.50276503 139.27499064 96.85534568 139.27677953 89.20789909 139.27439499 C78.14106435 139.2713026 67.07428095 139.28291819 56.00745911 139.29894479 C38.040866 139.32493258 20.07427285 139.34493706 2.10766602 139.35839844 C1.03154588 139.35920881 -0.04457426 139.36001918 -1.15330409 139.3608541 C-16.41571261 139.37206906 -31.67811749 139.37735492 -46.94052958 139.38024123 C-48.01452738 139.38044522 -49.08852517 139.38064921 -50.19506836 139.38085938 C-51.26775969 139.38105931 -52.34045102 139.38125925 -53.44564814 139.38146524 C-71.33500899 139.38519855 -89.22431434 139.40428852 -107.1136474 139.43595374 C-118.15077942 139.45487246 -129.18776916 139.46082724 -140.22491293 139.45013656 C-147.79158627 139.44381624 -155.35815765 139.45186144 -162.92480863 139.47119068 C-167.29047 139.48187164 -171.6558838 139.48602605 -176.0215435 139.47271919 C-180.02086654 139.46065152 -184.01972581 139.46704636 -188.01900869 139.48791118 C-189.46324093 139.49220693 -190.90751259 139.48979447 -192.35171712 139.47987001 C-202.30596374 139.41645004 -208.9462374 140.69561676 -217.25 146.125 C-223.64609693 152.81182861 -225.74954792 160.02686153 -225.63491821 169.09472656 C-225.64271817 170.05993351 -225.65051812 171.02514046 -225.65855443 172.0195961 C-225.67836561 175.22700369 -225.66275218 178.43321037 -225.64697266 181.640625 C-225.65375358 183.95097542 -225.66265937 186.26132044 -225.67352295 188.57165527 C-225.69626596 194.82786886 -225.68750024 201.08366896 -225.67162752 207.33988953 C-225.65894281 213.89620046 -225.67071579 220.45247669 -225.67855835 227.00878906 C-225.68922713 238.72219846 -225.67271942 250.43543438 -225.64726166 262.14881372 C-225.62492493 272.75424995 -225.62880572 283.35941246 -225.65185547 293.96484375 C-225.67865511 306.30129255 -225.68855085 318.63756702 -225.67379415 330.97404099 C-225.66601078 337.49679889 -225.66492767 344.01936855 -225.68147659 350.54211426 C-225.69595106 356.67530525 -225.68584434 362.80798085 -225.65700531 368.94111633 C-225.65041053 371.18804571 -225.6522645 373.43501868 -225.66331863 375.68193054 C-225.67704872 378.75695791 -225.65976704 381.83034939 -225.63491821 384.90527344 C-225.64607182 385.78758762 -225.65722543 386.66990181 -225.66871703 387.57895279 C-225.55422168 394.9184722 -223.25248121 401.43599611 -218.24466765 406.9234581 C-212.51783689 412.27681669 -206.51178687 414.3780932 -198.74232483 414.36076355 C-198.04622351 414.36332682 -197.35012218 414.3658901 -196.63292688 414.36853105 C-194.31892638 414.37344123 -192.00558997 414.35702275 -189.69165039 414.34057617 C-188.02561458 414.3397293 -186.35957764 414.34020622 -184.69354248 414.34190369 C-180.18367151 414.34276271 -175.67404102 414.32515203 -171.16422582 414.30418181 C-166.44636464 414.28539951 -161.72849766 414.28366335 -157.01060486 414.28010559 C-148.08241959 414.2707897 -139.15434481 414.24618206 -130.22620815 414.21605712 C-120.05938665 414.18249895 -109.8925598 414.16602354 -99.72569668 414.15097082 C-78.8170695 414.11963212 -57.90854172 414.06688046 -37 414 C-36.59284256 413.24133133 -36.18568512 412.48266266 -35.76618958 411.70100403 C-34.96117256 410.21089058 -34.96117256 410.21089058 -34.13989258 408.69067383 C-33.60898514 407.70513016 -33.0780777 406.71958649 -32.53108215 405.70417786 C-26.34631956 394.7807287 -16.3400886 387.30859833 -4.4375 383.6953125 C10.03138799 380.76865107 23.31318356 383.39693857 35.75390625 391.37890625 C43.97432929 397.31190723 48.52370482 405.04740963 53 414 C120.32 414 187.64 414 257 414 C257 389.58 257 365.16 257 340 C253.04 338.35 249.08 336.7 245 335 C235.44723528 328.63149019 228.90377805 320.26863869 226 309 C224.6469523 296.23061229 227.32690035 285.34263812 235 275 C241.28853065 268.72273912 248.863427 265.2546292 257 262 C257 221.74 257 181.48 257 140 C232.12353077 139.78988943 232.12353077 139.78988943 207.24682617 139.61206055 C202.43615723 139.56213379 202.43615723 139.56213379 200.1842804 139.5349884 C198.61112542 139.51883583 197.0379036 139.50854944 195.4646759 139.50288391 C193.08179974 139.49316485 190.69979869 139.46485195 188.31713867 139.43237305 C187.61593745 139.43379901 186.91473623 139.43522497 186.19228649 139.43669415 C183.35231798 139.38129363 181.43723599 139.30435369 179.07002258 137.65657043 C177.35551964 135.00223871 177.56090655 133.07365413 178 130 C179.36035156 127.84667969 179.36035156 127.84667969 182 126 C185.54978358 125.37415215 189.07433726 125.3950125 192.671875 125.390625 C193.70942932 125.37408875 194.74698364 125.35755249 195.815979 125.34051514 C199.1273791 125.29196015 202.43831971 125.27064698 205.75 125.25 C207.99611696 125.22184668 210.24221245 125.19192016 212.48828125 125.16015625 C217.99210387 125.08619938 223.49579687 125.0346008 229 125 C226.00244732 122.69713164 223.10266017 120.95526729 219.6875 119.3203125 C218.6267627 118.81056885 217.56602539 118.3008252 216.47314453 117.77563477 C215.32700684 117.23092529 214.18086914 116.68621582 213 116.125 C211.78880242 115.54569497 210.57770397 114.96618263 209.36669922 114.38647461 C199.82345138 109.82785076 190.2293137 105.38033437 180.62695312 100.94775391 C171.59520852 96.76838289 162.62925808 92.4624243 153.67779541 88.11502075 C144.8266821 83.81875102 135.93426722 79.62119397 127 75.5 C116.83849569 70.81270677 106.7428096 66.00327185 96.67724609 61.11474609 C86.68249395 56.2633668 76.62632883 51.55528698 66.53710938 46.90332031 C58.60419855 43.23563107 50.72285346 39.47325081 42.8621521 35.65426636 C-33.18975526 -1.27675622 -113.57444196 12.63004906 -177 70 Z " fill="#010100" transform="translate(290,43)"/>
-<path d="M0 0 C8.46217768 4.12754969 16.96586276 8.1489976 25.51782227 12.08837891 C35.67959431 16.77507978 45.77502239 21.58511178 55.84057617 26.47363281 C64.69150672 30.7698095 73.58374135 34.96727087 82.51782227 39.08837891 C92.67932658 43.77567214 102.77501267 48.58510706 112.84057617 53.47363281 C122.83179183 58.32329552 132.88483355 63.02873166 142.96972656 67.68066406 C152.8716654 72.26023231 162.69682689 76.98886963 172.51269531 81.74902344 C180.81304689 85.77284593 189.13573562 89.73754117 197.51782227 93.58837891 C197.51782227 93.91837891 197.51782227 94.24837891 197.51782227 94.58837891 C196.93788513 94.59202454 196.357948 94.59567017 195.76043701 94.59942627 C189.72554417 94.64122959 183.69141341 94.7105595 177.65698242 94.79589844 C175.4047813 94.82412802 173.15248074 94.84533261 170.90014648 94.859375 C167.66281144 94.88077651 164.42667453 94.92741385 161.18969727 94.97900391 C160.18227478 94.98023254 159.17485229 94.98146118 158.13690186 94.98272705 C152.68788416 95.01054005 152.68788416 95.01054005 147.97583008 97.43896484 C146.81516163 99.15003735 145.66471376 100.86804166 144.51782227 102.58837891 C141.7704924 102.94711621 139.32772492 103.09804435 136.58032227 103.08837891 C135.85135742 103.11673828 135.12239258 103.14509766 134.37133789 103.17431641 C132.24047852 103.18212891 132.24047852 103.18212891 128.51782227 102.58837891 C126.76391602 100.18212891 126.76391602 100.18212891 125.51782227 97.58837891 C122.22419728 95.36683156 119.37149773 95.33787098 115.46533871 95.33669662 C113.59298452 95.32887338 113.59298452 95.32887338 111.682805 95.3208921 C110.2951228 95.32521638 108.90744117 95.3297297 107.51976013 95.33441162 C106.04746743 95.33210789 104.57517588 95.32893196 103.10288674 95.32495713 C99.05136631 95.31658774 94.99993979 95.32074418 90.94841897 95.32692957 C86.58081504 95.33144458 82.21322753 95.32447484 77.84562683 95.31896973 C69.28523604 95.31006234 60.72488025 95.31200417 52.16448807 95.31779501 C45.20481532 95.32230827 38.24515239 95.32292585 31.28547859 95.32074738 C30.29561718 95.32044091 29.30575577 95.32013444 28.28589856 95.31981869 C26.27504173 95.31917924 24.26418491 95.31853082 22.25332809 95.31787351 C3.38135963 95.31216574 -15.49058944 95.31873402 -34.36255472 95.32947424 C-50.54770247 95.33840048 -66.73282152 95.33686623 -82.91796875 95.32763672 C-101.71067987 95.31692528 -120.50337394 95.3127253 -139.29608768 95.31886125 C-141.30176635 95.31949834 -143.30744503 95.32012708 -145.3131237 95.32074738 C-146.29994739 95.32105593 -147.28677109 95.32136448 -148.30349853 95.32168238 C-155.24942578 95.32340742 -162.1953422 95.32049812 -169.14126778 95.31578827 C-177.61435915 95.31016931 -186.08741348 95.31171682 -194.56050063 95.32234976 C-198.88180549 95.32759429 -203.20304867 95.32968415 -207.52435303 95.32305145 C-211.48533392 95.31706401 -215.44619635 95.32041299 -219.40716659 95.33100656 C-220.83522672 95.3332289 -222.26329699 95.33213069 -223.69135053 95.32725498 C-231.85184541 95.30154487 -239.51206665 95.77426393 -247.48217773 97.58837891 C-245.52737269 91.07539927 -242.99841898 85.38262326 -239.54467773 79.52587891 C-239.06450195 78.70659912 -238.58432617 77.88731934 -238.08959961 77.04321289 C-221.55044111 49.38077493 -198.34115103 27.59450921 -170.48217773 11.58837891 C-169.87245117 11.23565918 -169.26272461 10.88293945 -168.63452148 10.51953125 C-143.15214085 -4.06848817 -115.3291325 -11.87415279 -86.48217773 -16.41162109 C-85.3805127 -16.58951172 -85.3805127 -16.58951172 -84.2565918 -16.77099609 C-52.66095792 -21.75743714 -28.24734717 -13.77855346 0 0 Z " fill="#FEEF81" transform="translate(321.482177734375,73.41162109375)"/>
-<path d="M0 0 C1.44143236 0.45573972 2.88082641 0.91792942 4.31933594 1.3828125 C5.52200104 1.76783936 5.52200104 1.76783936 6.7489624 2.16064453 C13.87459726 4.81761507 18.91880014 11.0458562 22.0625 17.75 C24.36877817 23.36385859 25.12456113 28.3834283 25.13130188 34.44288635 C25.13531006 35.74502579 25.13931824 37.04716522 25.14344788 38.38876343 C25.14297282 39.82501223 25.14243672 41.26126101 25.1418457 42.69750977 C25.14487914 44.21570435 25.14840111 45.73389803 25.15237427 47.25209045 C25.16025147 50.51887169 25.16540383 53.78564207 25.16866493 57.05243111 C25.17459054 62.22712137 25.19114709 67.40174341 25.21000671 72.57640076 C25.21634395 74.35067459 25.22266957 76.12494846 25.22898388 77.89922237 C25.23214969 78.78775304 25.2353155 79.6762837 25.23857725 80.59173954 C25.2805814 92.63414556 25.31360617 104.67651974 25.32592773 116.71899414 C25.33433024 124.84779699 25.35690258 132.97643057 25.3952834 141.10514873 C25.41497225 145.40133459 25.42747266 149.69726784 25.42244911 153.99350166 C25.41777401 158.04104221 25.43176256 162.08810517 25.45946121 166.13554955 C25.46632548 167.61243751 25.4665515 169.08937537 25.45926094 170.56626129 C25.40416052 182.99356063 27.47323184 193.85426865 35 204 C35.44085938 204.60457031 35.88171875 205.20914063 36.3359375 205.83203125 C43.22027251 214.56106376 52.70655931 218.5688531 63 222 C64.58292306 222.09677093 66.16957009 222.1375759 67.75543213 222.14476013 C69.22312798 222.15510788 69.22312798 222.15510788 70.72047424 222.16566467 C71.79272751 222.16827805 72.86498077 222.17089142 73.96972656 222.17358398 C75.10008835 222.180271 76.23045013 222.18695801 77.39506531 222.19384766 C79.85375128 222.20791204 82.31245042 222.21980166 84.77115631 222.22979546 C88.66313948 222.24618858 92.55502539 222.26942675 96.44696045 222.29469299 C107.51423016 222.36584312 118.58154646 222.42559664 129.64892578 222.47680664 C136.41514659 222.5081978 143.18125098 222.54990312 149.94738007 222.59700203 C152.5261205 222.61301089 155.10488653 222.6253376 157.68366241 222.63390923 C161.29345452 222.64607902 164.90298625 222.67023732 168.51269531 222.69702148 C169.57685165 222.69761063 170.641008 222.69819977 171.7374115 222.69880676 C180.63123061 222.78613548 186.37431794 223.85912395 193 230 C191.35 233.3 189.7 236.6 188 240 C166.13790937 240.11692499 144.27587048 240.20503311 122.41353035 240.25906086 C112.26190854 240.28481634 102.11048129 240.31991607 91.95898438 240.37719727 C83.10847301 240.42711356 74.25810259 240.45931031 65.40745437 240.47044247 C60.72326255 240.47694731 56.03947385 240.49217996 51.35541153 240.52865028 C46.9410987 240.56273991 42.52735273 240.57302696 38.11292076 240.56553841 C36.49808223 240.56690719 34.88322356 240.5767624 33.26849937 240.59602737 C23.40102808 240.70792008 14.74200884 240.31159608 7.10214424 233.24440479 C1.03001834 226.85771524 -0.44952455 220.29546991 -0.36076355 211.76820374 C-0.36332682 210.85975769 -0.3658901 209.95131164 -0.36853105 209.01533693 C-0.37345761 205.98277952 -0.3569945 202.95072414 -0.34057617 199.91821289 C-0.33972966 197.73986828 -0.34020552 195.56152282 -0.34190369 193.38317871 C-0.34276411 187.47668167 -0.32513056 181.57036756 -0.30418181 175.66391301 C-0.28542294 169.48863354 -0.28366519 163.31334983 -0.28010559 157.13804626 C-0.27078283 145.44742815 -0.24616583 133.75689425 -0.21605712 122.06631321 C-0.18252038 108.75565198 -0.16602892 95.44499525 -0.15097082 82.13430035 C-0.11961655 54.75615356 -0.06685146 27.3780815 0 0 Z " fill="#FEC750" transform="translate(65,217)"/>
-<path d="M0 0 C0.82967285 0.00942627 1.6593457 0.01885254 2.51416016 0.02856445 C10.15368432 0.21659353 16.38100444 1.0843232 22.6875 5.625 C24.5625 8.375 24.5625 8.375 24.375 11.75 C24.17290378 15.31965475 24.17290378 15.31965475 26.1484375 17.09765625 C27.57099864 18.25844499 29.00504736 19.40527253 30.44921875 20.5390625 C33.61791744 23.29190609 35.75745498 26.60002605 37.5625 30.375 C37.5625 31.035 37.5625 31.695 37.5625 32.375 C38.655625 32.4575 39.74875 32.54 40.875 32.625 C44.5625 33.375 44.5625 33.375 46.4375 35.1875 C51.03531198 44.12768997 48.46493347 55.2953119 45.5625 64.375 C40.43427954 76.46865386 32.26764881 85.40066607 20.5625 91.375 C17.27156994 92.63044597 13.99096045 93.5805261 10.5625 94.375 C9.91152344 94.55804688 9.26054687 94.74109375 8.58984375 94.9296875 C-3.06076265 97.48878023 -14.96093224 93.83972915 -24.97265625 87.96484375 C-35.93878018 80.89160692 -43.49130675 70.16356451 -46.4375 57.375 C-47.60909024 47.0950358 -47.7743032 36.51200362 -42.4375 27.375 C-41.99019531 26.52808594 -41.54289062 25.68117188 -41.08203125 24.80859375 C-34.59557455 13.13992768 -24.62797471 4.99783965 -11.83300781 0.95507812 C-7.87961644 -0.00224535 -4.05098941 -0.07138126 0 0 Z " fill="#FDC64F" transform="translate(401.4375,320.625)"/>
-<path d="M0 0 C1.88374487 1.26286932 3.32679059 2.38898364 4.7421875 4.16796875 C4.8453125 5.44671875 4.9484375 6.72546875 5.0546875 8.04296875 C5.3827975 11.65874096 5.53886969 11.98356423 8.4296875 14.60546875 C8.96207031 14.981875 9.49445313 15.35828125 10.04296875 15.74609375 C13.37021691 18.53027382 15.65327611 22.39755776 17.7421875 26.16796875 C17.7421875 26.82796875 17.7421875 27.48796875 17.7421875 28.16796875 C18.4640625 28.08546875 19.1859375 28.00296875 19.9296875 27.91796875 C23.61396425 28.24546002 25.09331352 29.66625443 27.7421875 32.16796875 C30.97935966 38.64231307 29.53615503 50.45673769 28.05859375 57.36328125 C27.12213148 59.78020877 26.04620097 61.92961541 24.7421875 64.16796875 C24.31808594 64.99167969 23.89398438 65.81539063 23.45703125 66.6640625 C16.91510138 78.63634085 6.9698817 86.82798493 -6.16430664 90.73510742 C-16.58720567 92.89018614 -30.03919839 92.71721293 -39.2578125 87.16796875 C-39.95648438 86.78253906 -40.65515625 86.39710938 -41.375 86 C-53.24341241 79.08049163 -60.91736851 69.16452615 -64.9453125 55.98046875 C-67.95841048 44.1672116 -66.62105487 31.51277898 -60.5078125 20.85546875 C-55.25207095 12.88791953 -49.62375428 6.85976864 -41.2578125 2.16796875 C-40.43152344 1.67941406 -39.60523438 1.19085938 -38.75390625 0.6875 C-27.6392326 -4.95679373 -11.34066926 -5.42108915 0 0 Z " fill="#FDC64F" transform="translate(204.2578125,227.83203125)"/>
-<path d="M0 0 C0.82967285 0.00942627 1.6593457 0.01885254 2.51416016 0.02856445 C10.20030125 0.2177409 16.42201923 1.09661199 22.75 5.6875 C24.5625 8.375 24.5625 8.375 24.625 11.4375 C23.36974531 14.90791001 22.71533328 16.4044792 19.5625 18.375 C15.72847439 18.47050953 12.01313729 18.10031865 8.5625 16.375 C-2.00871167 15.37842993 -10.50393691 15.97829605 -19.4375 22.375 C-22.238573 24.79988533 -24.38611688 27.29506824 -26.4375 30.375 C-27.08525391 31.33986328 -27.08525391 31.33986328 -27.74609375 32.32421875 C-31.53310692 39.20374095 -31.75012921 47.74251377 -30.4375 55.375 C-28.88085564 59.69848481 -26.83752449 63.47029694 -24.4375 67.375 C-24.12554687 68.10203125 -23.81359375 68.8290625 -23.4921875 69.578125 C-22.1260391 71.90563709 -20.90995699 72.34811501 -18.4375 73.375 C-17.21353516 73.99568359 -17.21353516 73.99568359 -15.96484375 74.62890625 C-15.11019531 75.06074219 -14.25554687 75.49257813 -13.375 75.9375 C-12.51777344 76.37191406 -11.66054688 76.80632812 -10.77734375 77.25390625 C-4.00761847 80.49749749 3.99979441 80.14278262 11.203125 78.31640625 C19.71185798 74.92136544 26.62510708 68.61936062 30.5625 60.375 C33.0518468 53.91484146 32.62108038 47.42944684 32.2421875 40.609375 C32.633717 36.65588197 33.74372202 35.11786833 36.5625 32.375 C39.5 31.75 39.5 31.75 42.5625 32.375 C45.99069338 35.1175547 47.79034204 37.08434904 48.5625 41.375 C49.94632417 55.82531779 44.99056211 69.06677712 35.875 80.125 C28.80704609 87.6372253 20.54066255 92.06276982 10.5625 94.375 C9.91152344 94.55804688 9.26054687 94.74109375 8.58984375 94.9296875 C-3.06076265 97.48878023 -14.96093224 93.83972915 -24.97265625 87.96484375 C-35.93878018 80.89160692 -43.49130675 70.16356451 -46.4375 57.375 C-47.60909024 47.0950358 -47.7743032 36.51200362 -42.4375 27.375 C-41.99019531 26.52808594 -41.54289062 25.68117188 -41.08203125 24.80859375 C-34.59557455 13.13992768 -24.62797471 4.99783965 -11.83300781 0.95507812 C-7.87961644 -0.00224535 -4.05098941 -0.07138126 0 0 Z " fill="#040401" transform="translate(401.4375,320.625)"/>
-<path d="M0 0 C1.85939804 1.24654712 3.30570592 2.44854383 4.7421875 4.16796875 C5.44120426 8.18731513 5.05353845 9.71067205 2.7421875 13.10546875 C-0.40809643 15.27128895 -0.84018836 15.45474978 -4.3828125 15.04296875 C-8.2578125 14.16796875 -8.2578125 14.16796875 -11.2578125 13.16796875 C-21.04797894 12.39008946 -28.86693496 12.46881826 -37.2578125 18.16796875 C-38.1653125 18.72484375 -39.0728125 19.28171875 -40.0078125 19.85546875 C-46.62403432 26.65547451 -50.17064818 34.93841684 -50.6953125 44.35546875 C-50.54764778 52.01293919 -47.58446636 59.36825115 -43.0703125 65.54296875 C-34.73717859 73.3205604 -26.60642435 75.73845695 -15.484375 75.5078125 C-7.85263244 75.09338033 -1.06274248 72.13317568 4.6796875 67.10546875 C12.00100739 58.7101166 13.33067068 49.32016455 13.37841797 38.57910156 C13.38760254 37.79245117 13.39678711 37.00580078 13.40625 36.1953125 C13.40061035 35.49140381 13.3949707 34.78749512 13.38916016 34.06225586 C13.85616707 31.55637296 14.72877267 30.69242802 16.7421875 29.16796875 C20.94512792 28.54531091 22.9436529 28.59659349 26.43359375 31.09375 C29.64234897 35.36666093 29.46530521 38.64741547 29.3046875 43.85546875 C29.28809082 44.75378418 29.27149414 45.65209961 29.25439453 46.57763672 C29.02401533 53.14881556 28.08456104 58.43074813 24.7421875 64.16796875 C24.31808594 64.99167969 23.89398438 65.81539063 23.45703125 66.6640625 C16.91510138 78.63634085 6.9698817 86.82798493 -6.16430664 90.73510742 C-16.58720567 92.89018614 -30.03919839 92.71721293 -39.2578125 87.16796875 C-39.95648438 86.78253906 -40.65515625 86.39710938 -41.375 86 C-53.24341241 79.08049163 -60.91736851 69.16452615 -64.9453125 55.98046875 C-67.95841048 44.1672116 -66.62105487 31.51277898 -60.5078125 20.85546875 C-55.25207095 12.88791953 -49.62375428 6.85976864 -41.2578125 2.16796875 C-40.43152344 1.67941406 -39.60523438 1.19085938 -38.75390625 0.6875 C-27.6392326 -4.95679373 -11.34066926 -5.42108915 0 0 Z " fill="#040301" transform="translate(204.2578125,227.83203125)"/>
-<path d="M0 0 C9.08850231 5.21611624 14.20445921 11.55087763 17.5 21.4375 C18.36553254 32.34888567 17.26977304 40.91493347 10.5 49.6875 C4.2120929 56.21418838 -3.02563977 59.67550271 -12.06689453 59.98828125 C-22.19366183 60.04112805 -30.01311609 57.68140187 -37.5 50.4375 C-43.92013326 41.97652968 -46.75388775 33.03124395 -45.5 22.4375 C-43.33634466 13.52269225 -38.2599311 6.82746561 -30.83984375 1.54296875 C-20.960706 -4.13454379 -10.39545675 -4.82089307 0 0 Z " fill="#040301" transform="translate(151.5,363.5625)"/>
-<path d="M0 0 C2.16268036 1.51110359 2.86668199 2.35170852 3.3984375 4.9375 C3.39070313 5.618125 3.38296875 6.29875 3.375 7 C3.38660156 8.0209375 3.38660156 8.0209375 3.3984375 9.0625 C2.86550764 11.65400206 2.14125228 12.44849941 0 14 C-2.7421875 14.7734375 -2.7421875 14.7734375 -5.875 15.375 C-12.85119543 16.97581779 -15.06400261 19.09600392 -19 25 C-19.70579636 30.15395484 -19.78202168 35.32090629 -17.3125 40 C-14.31123146 43.91020225 -14.31123146 43.91020225 -10 46 C-3.7615789 46.67725978 1.69601616 46.71278869 7 43 C10.3324857 39.24368195 11.00956913 35.45933126 12.05859375 30.65625 C13.16894006 27.52332265 14.40613929 26.05506243 17 24 C22.97709481 23.26597081 22.97709481 23.26597081 25.6875 25.2109375 C28.39537458 28.90202844 27.50166989 33.65599482 27 38 C24.99154889 46.15335511 20.67171204 53.14585374 13.4296875 57.5703125 C4.49264817 62.13002644 -5.17172951 64.14272551 -15 61.05859375 C-17.47719432 59.85398249 -19.72393793 58.548749 -22 57 C-22.58265625 56.61585938 -23.1653125 56.23171875 -23.765625 55.8359375 C-29.6967027 51.43256163 -33.05280802 44.97743793 -35 38 C-36.21254806 27.71665973 -35.02631128 19.53192045 -29 11 C-21.46802872 2.2837565 -11.52392987 -1.92065498 0 0 Z " fill="#040301" transform="translate(350,209)"/>
-<path d="M0 0 C5.35802049 3.21707784 9.96774356 8.13788763 11.84765625 14.109375 C12.87688713 22.73641134 12.16772596 30.03726311 6.84765625 37.109375 C1.67377727 42.12678587 -3.61124134 45.10843722 -10.83984375 45.546875 C-17.52785998 45.3873992 -23.13614948 42.90122424 -28.04296875 38.359375 C-33.8117755 31.86246643 -34.78729162 26.55299842 -34.51953125 17.8828125 C-33.89607559 11.47581076 -31.89162329 7.36892082 -26.921875 3.26953125 C-18.72926877 -2.41049754 -9.423218 -4.10209901 0 0 Z " fill="#040301" transform="translate(269.15234375,346.890625)"/>
-<path d="M0 0 C7.17535739 4.30521443 11.84948722 8.5894564 14.125 16.875 C15.41690279 24.5167269 13.46925019 30.54418315 9.125 36.875 C4.55753407 42.01605467 -0.12172796 44.43261682 -7.0234375 45.24609375 C-14.3709892 45.39731455 -19.33708872 44.90831799 -24.875 39.875 C-30.29115359 34.5557798 -33.1481168 29.83618839 -33.25 22.0625 C-33.09979018 15.25298795 -31.7234866 10.82271667 -26.96875 5.90234375 C-19.2516664 -1.10926019 -10.32407504 -3.97441613 0 0 Z " fill="#040301" transform="translate(475.875,234.125)"/>
-<path d="M0 0 C6.30423914 3.75252329 12.03911931 9.15296339 15 16 C14.3125 18.125 14.3125 18.125 13 20 C10.55898175 23.66152737 10.84878959 25.28715123 11 29.625 C11.10654583 39.99190891 9.64440952 46.80587397 3 55 C2.67 55 2.34 55 2 55 C1.97421875 54.02160156 1.9484375 53.04320312 1.921875 52.03515625 C1.58655522 44.28469684 1.03967819 37.78458772 -3 31 C-3.63421875 29.86304688 -3.63421875 29.86304688 -4.28125 28.703125 C-10.22131427 18.8690186 -18.21510333 14.28850948 -29 11 C-29.99 10.67 -30.98 10.34 -32 10 C-36.13734585 9.5015246 -40.26084178 9.02279125 -43.98828125 11.1171875 C-45.81804613 12.61199728 -45.81804613 12.61199728 -48 15 C-45.12233292 8.54957717 -39.23073279 4.35276489 -32.80078125 1.6875 C-25.21134303 -0.17545834 -16.15652856 -0.19894298 -9 3 C-5.55748903 3.20655066 -3.28151792 3.09383931 0 2 C0 1.34 0 0.68 0 0 Z " fill="#DEA345" transform="translate(424,335)"/>
-<path d="M0 0 C5.99891695 4.6855446 12.50971384 10.20199103 14 18 C15.65 18 17.3 18 19 18 C19 18.33 19 18.66 19 19 C17.2984375 19.4640625 17.2984375 19.4640625 15.5625 19.9375 C12.21224901 20.62924531 12.21224901 20.62924531 11 22 C10.92372798 24.07841244 10.85283833 26.15718096 10.81103516 28.23657227 C10.59672217 37.28143733 9.93730638 45.13741094 5 53 C4.01 53.66 3.02 54.32 2 55 C1.90203125 54.03320312 1.8040625 53.06640625 1.703125 52.0703125 C0.21859064 39.14462543 -2.64556785 27.88188836 -13.171875 19.2109375 C-22.5392037 12.65380741 -31.85787163 11.23317827 -43 10 C-38.31600644 4.74824964 -34.09037062 2.28260026 -27.02734375 1.63671875 C-25.66395804 1.63802593 -24.30050078 1.65507848 -22.9375 1.6875 C-21.9155957 1.68266602 -21.9155957 1.68266602 -20.87304688 1.67773438 C-16.52665966 1.72366162 -13.06885657 2.56051865 -9 4 C-5.29945591 3.9363921 -5.29945591 3.9363921 -2 3 C-1.34 2.01 -0.68 1.02 0 0 Z " fill="#DFA345" transform="translate(208,238)"/>
-<path d="M0 0 C0.33 1.32 0.66 2.64 1 4 C1.721875 4.0825 2.44375 4.165 3.1875 4.25 C8.37750968 5.63400258 10.92762335 8.67513612 13.625 13.125 C14.00914062 13.80820313 14.39328125 14.49140625 14.7890625 15.1953125 C16.03344379 17.29807839 16.03344379 17.29807839 19 19 C17.88625 19.2475 16.7725 19.495 15.625 19.75 C12.00948414 20.58156666 12.00948414 20.58156666 10.82421875 22.8046875 C9.99395263 25.01610722 9.55931749 27.04603332 9.1875 29.375 C8.17012218 34.1995964 6.56865136 36.59733243 3 40 C-2.24756962 42.54907067 -7.26890299 42.79644185 -13 42 C-17.03260226 40.30397775 -19.36744451 37.85701066 -21.9375 34.375 C-23.64089736 28.96420839 -24.3937511 23.17178747 -22.05078125 17.83984375 C-19.0782233 13.42320402 -15.828022 10.62646057 -10.53125 9.453125 C-8.76142912 9.11746932 -6.98648655 8.8074679 -5.20703125 8.52734375 C-2.80892481 8.15787022 -2.80892481 8.15787022 -1 6 C-0.60235737 4.01178687 -0.26224651 2.01055661 0 0 Z " fill="#FCC54F" transform="translate(353,214)"/>
-<path d="M0 0 C3.77702297 2.63513231 6.60374735 5.7074947 8.6875 9.875 C9.49614098 16.26458937 8.68310207 21.71214339 4.6875 26.875 C1.08831077 30.15567691 -2.52272902 32.14903352 -7.4375 32.375 C-14.34129611 31.4841876 -17.78698728 28.77167664 -22.11328125 23.59375 C-24.80595467 19.7345438 -24.89644891 15.40477515 -24.3125 10.875 C-22.67251793 6.06372729 -19.60583365 2.51331741 -15.37109375 -0.24609375 C-10.27877087 -2.42023539 -5.11170811 -1.73605181 0 0 Z " fill="#FAC44E" transform="translate(145.3125,377.125)"/>
-<path d="M0 0 C0.33 1.32 0.66 2.64 1 4 C1.721875 4.0825 2.44375 4.165 3.1875 4.25 C8.37750968 5.63400258 10.92762335 8.67513612 13.625 13.125 C14.00914062 13.80820313 14.39328125 14.49140625 14.7890625 15.1953125 C16.03344379 17.29807839 16.03344379 17.29807839 19 19 C17.88625 19.2475 16.7725 19.495 15.625 19.75 C12.01166592 20.58077723 12.01166592 20.58077723 10.83203125 22.79296875 C9.70837456 25.77356045 9.20373108 28.7493929 8.66015625 31.87890625 C7.90422735 34.30771923 6.9139316 35.36768231 5 37 C4.81824219 36.32453125 4.63648438 35.6490625 4.44921875 34.953125 C4.19785156 34.06109375 3.94648438 33.1690625 3.6875 32.25 C3.44386719 31.36828125 3.20023437 30.4865625 2.94921875 29.578125 C1.97717017 26.93799305 0.71145395 25.20523478 -1 23 C-1 22.34 -1 21.68 -1 21 C-1.57878906 20.71511719 -2.15757812 20.43023437 -2.75390625 20.13671875 C-4.17277716 19.41864669 -5.57891432 18.67428876 -6.96484375 17.89453125 C-11.166444 15.54405946 -11.166444 15.54405946 -15.875 15.1875 C-18.00895847 15.96352623 -18.00895847 15.96352623 -20 17 C-18.52057434 13.09969598 -16.77034452 11.72807457 -13 10 C-10.41059839 9.41687491 -7.82892247 8.94008525 -5.20703125 8.52734375 C-2.80892481 8.15787022 -2.80892481 8.15787022 -1 6 C-0.60235737 4.01178687 -0.26224651 2.01055661 0 0 Z " fill="#DDA345" transform="translate(353,214)"/>
-<path d="M0 0 C5.67458978 1.92721917 9.32050871 5.64101742 12 11 C12.85835109 17.78238078 11.39931105 22.15743413 8 28 C7.67 28 7.34 28 7 28 C6.84144531 27.20335937 6.68289062 26.40671875 6.51953125 25.5859375 C4.69693017 17.30871051 2.91022007 12.3620265 -4.375 7.625 C-8.31651092 5.85811579 -10.73347807 5.50770901 -15 6 C-15.99 6.66 -16.98 7.32 -18 8 C-15.08397566 -0.16486815 -7.55487018 -0.99827812 0 0 Z " fill="#DCA244" transform="translate(142,376)"/>
-<path d="M0 0 C3.44150865 2.43773529 4.762119 3.85817119 5.625 8 C4.762119 12.14182881 3.44150865 13.56226471 0 16 C-3.07549372 16.75517074 -4.73164594 16.51878636 -8 16 C-11.2883921 13.28707652 -11.90851499 11.65183071 -12.5 7.4375 C-12 4 -12 4 -10.5 1.5625 C-7.02759567 -0.6077527 -3.92105015 -0.89291241 0 0 Z " fill="#D99F43" transform="translate(470,248)"/>
-<path d="M0 0 C2.9375 1.5 2.9375 1.5 5 4 C5.9352036 8.00332769 5.61385602 10.97690664 3.5 14.5 C-0.03588973 16.62153384 -2.97901723 16.791013 -7 16 C-9.5 14.5 -9.5 14.5 -11 12 C-11.79669284 7.95014472 -11.64099302 5.02558884 -9.4375 1.5 C-6.03618625 -0.59311615 -3.92927257 -0.55147685 0 0 Z " fill="#DCA144" transform="translate(261,360)"/>
-                    </svg>
-                </div>
-                    <div>
-                        <h1>Cheese Client</h1>
-                        <p>Minecraft Hack Client with powerful features and bypass capabilities</p>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="images/Logo.png" alt="Cheese Client Logo">
                     </div>
+                    <div class="brand-text">
+                        <h1>Cheese Client</h1>
+                        <span>Minecraft Hacked Client</span>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="features.html">Features</a>
+                    <a href="download.html">download</a>
+                    <a href="changelog.html">Changelog</a>
+                    <a href="faq.html">FAQ</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </header>
     
-    <main class="wrap">
-        <div class="hero">
-            <div class="left fade-in">
-                <div class="badge-container">
-                    <div class="badge"><i class="fas fa-tag"></i> Version: v1.3.5</div>
-                    <div class="badge"><i class="fas fa-star"></i> Rating: ★★★★☆</div>
-                    <div class="badge"><i class="fas fa-shield-alt"></i> Anti-Cheat Bypass</div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>What is Cheese Client?</h2>
+                    <p>Cheese Client is a powerful Minecraft enhancement suite designed to elevate your gaming experience with advanced features, performance optimization, and intuitive controls.</p>
+                    <div class="button-group">
+                        <a href="download.html" class="btn">
+                            <i class="fas fa-download"></i> View download
+                        </a>
+                        <a href="features.html" class="btn btn-secondary">
+                            <i class="fas fa-cube"></i> Explore Features
+                        </a>
+                    </div>
                 </div>
-                
-                <p class="lead">Cheese Client is a powerful Minecraft hack client with advanced bypass capabilities, offering performance optimization, anti-cheat evasion and convenient tools for competitive gameplay.</p>
-                
-                <a href="https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip" download class="download-btn fade-in delay-1">
-                    <div class="download-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <div class="download-text">
-                        <div class="download-title">Download Cheese Client</div>
-                        <div class="download-filename">Cheese-client.zip · 34.8 MB</div>
-                    </div>
-                    <div class="download-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </a>
-                
-                <div class="download-row fade-in delay-2">
-                    <a class="btn-alt" href="#install"><i class="fas fa-book"></i> Install Guide</a>
-                    <a class="btn-alt" href="#changelog"><i class="fas fa-history"></i> Changelog</a>
-                    <a class="btn-alt" href="#features"><i class="fas fa-cube"></i> Features</a>
-                    <a class="btn-alt share-btn" href="#" id="shareBtn"><i class="fas fa-share-alt"></i> Share</a>
-                </div>
-                
-                <div class="meta fade-in delay-3">
-                    <span><i class="far fa-calendar"></i> Updated: 2025-10-22</span>
-                    <span><i class="fas fa-gamepad"></i> Client version: 1.8</span>
-                    <span><i class="fas fa-download"></i> Downloads: 57,000+</span>
-                </div>
-                
-                <div class="progress-container fade-in delay-4">
-                    <div class="progress-label">
-                        <span>Compatibility</span>
-                        <span>95%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 95%"></div>
+                <div class="hero-image">
+                    <div class="logo">
+                        <img src="images/Logo.png" alt="Cheese Client Logo">
                     </div>
                 </div>
             </div>
-            
-            <aside class="right">
-                <section class="card fade-in delay-1">
-                    <h3><i class="fas fa-server"></i> System Requirements</h3>
-                    <ul class="list">
-                        <li><i class="fas fa-desktop"></i> OS: Windows</li>
-                        <li><i class="fab fa-java"></i> Java: Java 8</li>
-                        <li><i class="fas fa-memory"></i> Memory: 4GB+ recommended</li>
-                        <li><i class="fas fa-hdd"></i> Disk: 35MB free space</li>
-                    </ul>
-                </section>
-                
-                <section class="card fade-in delay-2">
-                    <h3><i class="fas fa-users"></i> Support & Community</h3>
-                    <p style="margin-bottom: 10px; color: var(--muted);">Official support channels:</p>
-                    <ul class="list">
-                        <li><i class="fas fa-envelope"></i> Email: cheese-client@outlook.com</li>
-                        <li><i class="fab fa-discord"></i> Discord: Cheese Client Community</li>
-                    </ul>
-                </section>
-                
-                <section class="card fade-in delay-3">
-                    <h3><i class="fas fa-chart-bar"></i> Client Statistics</h3>
-                    <div class="counter-container">
-                        <div class="counter">
-                            <div class="counter-value" data-target="570">570</div>
-                            <div class="counter-label">Active Users</div>
-                        </div>
-                        <div class="counter">
-                            <div class="counter-value" data-target="1500">1500</div>
-                            <div class="counter-label">Servers</div>
-                        </div>
-                        <div class="counter">
-                            <div class="counter-value" data-target="97">97</div>
-                            <div class="counter-label">Uptime</div>
-                        </div>
-                    </div>
-                </section>
-            </aside>
         </div>
-        
-        <div class="two-col">
-            <div>
-                <section id="features" class="card fade-in">
-                    <h2><i class="fas fa-cubes"></i> Features</h2>
-                    <div class="grid" style="margin-top: 10px;">
-                        <div class="feature">
-                            <h3><i class="fas fa-user-shield"></i> Advanced Bypass System</h3>
-                            <p>Sophisticated anti-cheat evasion with multiple bypass methods for popular servers.</p>
-                        </div>
-                        <div class="feature">
-                            <h3><i class="fas fa-fist-raised"></i> Combat Enhancements</h3>
-                            <p>Includes Kill Aura, Reach, Auto Clicker, and advanced PVP modules.</p>
-                        </div>
-                        <div class="feature">
-                            <h3><i class="fas fa-running"></i> Movement & Utility</h3>
-                            <p>Flight, Speed, No Fall, Inventory management and other utility modules.</p>
-                        </div>
-                        <div class="feature">
-                            <h3><i class="fas fa-eye"></i> Visual & Render</h3>
-                            <p>ESP, X-Ray, Fullbright, Trajectories and other visual enhancements.</p>
-                        </div>
-                        <div class="feature">
-                            <h3><i class="fas fa-sliders-h"></i> Config System</h3>
-                            <p>Multiple configuration profiles for different servers and anti-cheat systems.</p>
-                        </div>
-                        <div class="feature">
-                            <h3><i class="fas fa-sync-alt"></i> Auto-updates</h3>
-                            <p>Built-in update checker with bypass updates and new module additions.</p>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="install" class="card fade-in delay-1">
-                    <h2><i class="fas fa-download"></i> Installation Guide</h2>
-                    <ol style="margin-top: 15px; padding-left: 20px;">
-                        <li style="margin-bottom: 10px;">Download Cheese-client.zip and save it on your machine.</li>
-                        <li style="margin-bottom: 10px;">Use your preferred extraction tool to extract Cheese client.</li>
-                        <li style="margin-bottom: 10px;">Copy the extracted files into your Minecraft directory.</li>
-                        <li style="margin-bottom: 10px;">Launch Minecraft with the appropriate version.</li>
-                        <li style="margin-bottom: 10px;">Configure Cheese Client settings in-game.</li>
-                        <li>Enable desired modules and enjoy enhanced gameplay.</li>
-                    </ol>
-                </section>
-                
-                <section class="card fade-in delay-2">
-                    <h2><i class="fas fa-images"></i> Screenshots</h2>
-                    <div class="screenshots" style="margin-top: 20px;">
-                        <div class="screenshot-container">
-                            <img src="images/cheese-client-ui.png" alt="Cheese Client UI">
-                            <div class="screenshot-overlay">
-                                <div>Cheese Client User Interface</div>
-                            </div>
-                        </div>
-                        <div class="screenshot-container">
-                            <img src="images/module-settings.png" alt="Module Settings">
-                            <div class="screenshot-overlay">
-                                <div>Module Configuration</div>
-                            </div>
-                        </div>
-                        <div class="screenshot-container">
-                            <img src="images/combat-features.png" alt="Combat Features">
-                            <div class="screenshot-overlay">
-                                <div>Combat Modules</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="changelog" class="card fade-in delay-3">
-            <h2><i class="fas fa-file-contract"></i> Changelog</h2>
-                    <div class="changelog" style="margin-top: 20px;">
-                        <div class="version">
-                            <h4>
-                                <i class="fas fa-rocket"></i> v1.3.5
-                                <span class="version-date">2025-10-22</span>
-                            </h4>
-                            <ul>
-                                <li>Improved anti-cheat bypass methods</li>
-                                <li>Added new combat modules</li>
-                                <li>Fixed compatibility issues</li>
-                                <li>Enhanced performance optimization</li>
-                                <li>Added Minecraft News zone</li>
-                            </ul>
-                        </div>
-                        <div class="version">
-                            <h4>
-                                <i class="fas fa-rocket"></i> v1.3.0
-                                <span class="version-date">2025-08-14</span>
-                            </h4>
-                            <ul>
-                                <li>fixes config profile system</li>
-                                <li>Improved performance and stability</li>
-                                <li>New visual enhancements</li>
-                                <li>Bug fixes and optimizations</li>
-                                <li>Added god mode</li>
-                                <li>Added more ui</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            
-            <aside>
-                <section class="card fade-in delay-1">
-                    <h3><i class="fas fa-code-branch"></i> Contribute & License</h3>
-                    <p style="margin-bottom: 15px; color: var(--muted);">Community contributions welcome. Follow project guidelines.</p>
-                    <p><strong>License:</strong> Community Edition</p>
-                </section>
-                
-                <section class="card fade-in delay-2">
-                    <h3><i class="fas fa-exclamation-triangle"></i> Safety Notice</h3>
-                    <p style="color: var(--muted);">Using hack clients carries risks. Only download from trusted sources, use with caution, and understand the potential consequences.</p>
-                </section>
-                
-                <section class="card fade-in delay-3">
-                    <h3><i class="fas fa-newspaper"></i> Latest News</h3>
-                    <ul class="list">
-                        <li><i class="fas fa-bullhorn"></i> v1.3.5 released with improved bypass</li>
-                        <li><i class="fas fa-plus-circle"></i> New combat modules added</li>
-                        <li><i class="fas fa-tachometer-alt"></i> Performance optimizations completed</li>
-                        <li><i class="fas fa-calendar-alt"></i> Community event announced</li>
-                    </ul>
-                </section>
-                
-                <section class="card fade-in delay-4">
-                    <h3><i class="fas fa-shield-alt"></i> Server Compatibility</h3>
-                    <p style="margin-bottom: 10px; color: var(--muted);">Cheese Client is compatible with:</p>
-                    <ul class="list">
-                        <li><i class="fas fa-check-circle"></i> Hypixel</li>
-                        <li><i class="fas fa-check-circle"></i> Mineplex</li>
-                        <li><i class="fas fa-check-circle"></i> CubeCraft</li>
-                        <li><i class="fas fa-check-circle"></i> And many others...</li>
-                    </ul>
-                </section>
-            </aside>
-        </div>
-        
-        <section class="card fade-in">
-            <h2><i class="fas fa-file-contract"></i> Disclaimer</h2>
-            <p style="color: var(--muted);">Cheese Client is a community-maintained hack client. Developers are not liable for account bans, data loss or other damages. Use at your own risk and follow server rules. The use of hack clients may violate the terms of service of Minecraft and various servers, which could result in permanent bans from those platforms. Users assume all responsibility for any consequences resulting from the use of this software. The developers and distributors of Cheese Client do not endorse or encourage cheating, and this software is provided for educational and experimental purposes only. By downloading and using Cheese Client, you acknowledge that you understand these risks and accept full responsibility for your actions.</p>
-        </section>
-    </main>
+    </section>
     
-    <footer class="wrap">
-        <div class="footer-content">
-            <div class="footer-row">
-                <div class="footer-info">
-                    <div><strong>Cheese Client</strong> · File: Cheese-client.zip · Version: v1.3.5</div>
-                    <div id="generatedInfo" style="font-size: 0.9rem; color: var(--muted);">Generated: 2025-10-25 · Contact: admin@cheese-client.example</div>
+    <section id="what-is" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Understanding Cheese Client</h2>
+                <p>Discover the revolutionary Minecraft enhancement suite that's changing how players experience the game</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Enhanced Gameplay</h3>
+                    <p>Cheese Client transforms your Minecraft experience with powerful tools that enhance movement, combat, and exploration capabilities.</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
-                    <a href="html/github"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Advanced Protection</h3>
+                    <p>Built with sophisticated anti-detection systems to ensure your gameplay remains secure while using advanced features.</p>
+                </div>
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Performance Boost</h3>
+                    <p>Optimize your Minecraft performance with built-in tools that reduce lag and improve frame rates for smoother gameplay.</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <small class="muted">© 2023-2025 Cheese Client Community. All rights reserved.</small>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-info">
+                    <h2>Why Choose Cheese Client?</h2>
+                    <p>Cheese Client stands out from other Minecraft enhancement tools with its unique combination of power, stability, and user-friendly design. Developed by experienced Minecraft enthusiasts, it offers features that cater to both casual players and competitive gamers.</p>
+                    <p>Our client focuses on providing meaningful enhancements that respect the Minecraft experience while giving players the tools they need to excel. Whether you're building massive structures, exploring new dimensions, or engaging in intense PVP battles, Cheese Client enhances every aspect of your gameplay.</p>
+                    <a href="features.html" class="btn">
+                        <i class="fas fa-arrow-right"></i> Learn More About Features
+                    </a>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-star"></i> Key Highlights</h3>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check"></i> Advanced combat enhancements</li>
+                        <li><i class="fas fa-check"></i> Sophisticated movement tools</li>
+                        <li><i class="fas fa-check"></i> Visual and rendering improvements</li>
+                        <li><i class="fas fa-check"></i> Customizable user interface</li>
+                        <li><i class="fas fa-check"></i> Regular updates and support</li>
+                        <li><i class="fas fa-check"></i> Active community and resources</li>
+                    </ul>
+                    <a href="download.html" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Get Started Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="rights" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Rights with Cheese Client</h2>
+                <p>We believe in empowering players with the tools they need to enhance their Minecraft experience</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Full Access</h3>
+                    <p>Gain complete access to all Cheese Client features without any restrictions or limitations.</p>
+                </div>
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Powered</h3>
+                    <p>Join a thriving community of players who contribute to the development and improvement of Cheese Client.</p>
+                </div>
+                <div class="content-card">
+                    <div class="content-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Transparent Development</h3>
+                    <p>Our development process is open and transparent, with regular updates and community feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Enhance Your Minecraft Experience?</h2>
+                <p>Join thousands of players who have already transformed their gameplay with Cheese Client</p>
+                <div class="button-group">
+                    <a href="download.html" class="btn">
+                        <i class="fas fa-download"></i> View download
+                    </a>
+                    <a href="download.html" class="btn btn-secondary">
+                        <i class="fas fa-cube"></i> Explore Features
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cheese Client</h3>
+                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="price.html">download</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="term.html">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2025 Cheese Client. All rights reserved.</p>
+                <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
             </div>
         </div>
     </footer>
     
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const downloadBtn = document.querySelector('.download-btn');
-    downloadBtn.addEventListener('click', function() {
-        console.log('Cheese Client download initiated');
-    });
-
-    const generatedInfo = document.getElementById('generatedInfo');
-    if (generatedInfo) {
-        generatedInfo.textContent = `Generated: ${new Date().toISOString().split('T')[0]} · Contact: cheese-client@outlook.com`;
-    }
-
-    const shareBtn = document.getElementById('shareBtn');
-    const shareTexts = [
-        "Want to do whatever you want in Minecraft? [Cheese Client] fulfills you! Flying, wall hacking, infinite resources... Anything is possible. Most importantly, it's completely free! Download now: https://cheese-client.github.io/Cheese-Client",
-        "What's missing in your Minecraft client? Try [Cheese Client]! This free top-tier modded client will open the door to a new world for you. Click to explore: https://cheese-client.github.io/Cheese-Client",
-        "Say goodbye to the ordinary Minecraft experience! [Cheese Client] redefines your gaming with its powerful features and stable performance. Unlock all potential for free—what are you waiting for? Official website: https://cheese-client.github.io/Cheese-Client",
-        "Discover a gem! [Cheese Client] - The most user-friendly free Minecraft mod client I've used so far. Your gaming experience will be completely transformed: https://cheese-client.github.io/Cheese-Client",
-        "Still looking for the strongest Minecraft client? [Cheese Client] has the answer! Free, powerful, and ready to use with a click: https://cheese-client.github.io/Cheese-Client",
-        "Wild! [Cheese client] will take you into the door of hacking!and ready to use with a click: https://cheese-client.github.io/Cheese-Client"
-    ];
-
-    if (shareBtn) {
-        shareBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
             
-            const randomText = shareTexts[Math.floor(Math.random() * shareTexts.length)];
-            
-            navigator.clipboard.writeText(randomText).then(() => {
-                this.classList.add('copied');
-                setTimeout(() => {
-                    this.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                const textArea = document.createElement('textarea');
-                textArea.value = randomText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                this.classList.add('copied');
-                setTimeout(() => {
-                    this.classList.remove('copied');
-                }, 2000);
-            });
-        });
-    }
-
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const fadeInOnScroll = () => {
-        fadeElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.style.opacity = "1";
-                element.style.transform = "translateY(0)";
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
             }
-        });
-    };
-    
-    fadeElements.forEach(element => {
-        element.style.opacity = "0";
-        element.style.transform = "translateY(20px)";
-        element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    });
-    
-    window.addEventListener('scroll', fadeInOnScroll);
-    fadeInOnScroll();
-    
-    const progressFill = document.querySelector('.progress-fill');
-    if (progressFill) {
-        setTimeout(() => {
-            progressFill.style.width = '95%';
-        }, 500);
-    }
-
-    const counters = document.querySelectorAll('.counter-value');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        let count = 0;
-        const increment = target / 100;
-        
-        const updateCount = () => {
-            if (count < target) {
-                count += increment;
-                counter.innerText = Math.ceil(count);
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target;
-            }
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    updateCount();
-                    observer.unobserve(entry.target);
+            
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
                 }
             });
+            
+            const fadeElements = document.querySelectorAll('.content-card');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            fadeInOnScroll();
+            
+            window.addEventListener('scroll', fadeInOnScroll);
         });
-        
-        observer.observe(counter);
-    });
-});
     </script>
 </body>
 </html>
