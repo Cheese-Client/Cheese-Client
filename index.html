@@ -172,20 +172,59 @@
         }
 
         .hero {
-            background: var(--primary-gradient);
-            padding: 120px 0 80px;
+            padding: 120px 0;
             position: relative;
             overflow: hidden;
+            min-height: 690px;
+            display: flex;
+            align-items: center;
         }
 
-        .hero::before {
-            content: '';
+        .hero-carousel {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
+            z-index: 1;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(
+                90deg, 
+                rgba(255, 179, 71, 1) 30%,
+                rgba(255, 179, 71, 0.9) 50%,
+                rgba(255, 179, 71, 0.6) 60%,
+                rgba(255, 179, 71, 0.3) 70%,
+                rgba(255, 179, 71, 0.1) 80%,
+                rgba(255, 179, 71, 0) 90%
+            );
         }
 
         .hero-content {
@@ -193,7 +232,8 @@
             align-items: center;
             gap: 60px;
             position: relative;
-            z-index: 1;
+            z-index: 3;
+            width: 100%;
         }
 
         .hero-text {
@@ -212,7 +252,7 @@
         .hero-text p {
             font-size: 1.25rem;
             margin-bottom: 32px;
-            max-width: 500px;
+            max-width: 5000px;
             font-weight: 400;
         }
 
@@ -585,26 +625,60 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero-overlay {
+                background: linear-gradient(
+                    90deg, 
+                    rgba(255, 179, 71, 1) 0%,
+                    rgba(255, 179, 71, 1) 35%,
+                    rgba(255, 179, 71, 0.8) 45%,
+                    rgba(255, 179, 71, 0.5) 55%,
+                    rgba(255, 179, 71, 0.2) 65%,
+                    rgba(255, 179, 71, 0) 80%
+                );
+            }
+            
             .hero-content {
-                padding: 40px 20px;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 500px;
+                padding: 80px 0;
             }
             
-            .hero-text h2 {
-                font-size: 3rem;
+            .hero-overlay {
+                background: linear-gradient(
+                    90deg, 
+                    rgba(255, 179, 71, 1) 0%,
+                    rgba(255, 179, 71, 1) 30%,
+                    rgba(255, 179, 71, 0.8) 40%,
+                    rgba(255, 179, 71, 0.5) 50%,
+                    rgba(255, 179, 71, 0.2) 60%,
+                    rgba(255, 179, 71, 0) 70%
+                );
             }
             
-            .about-container {
+            .hero-content {
                 flex-direction: column;
+                text-align: center;
                 gap: 50px;
             }
             
-            .about-card {
-                max-width: 100%;
+            .hero-text h2 {
+                font-size: 2.5rem;
             }
-        }
-        
-        @media (max-width: 768px) {
+            
+            .hero-text p {
+                font-size: 1.125rem;
+            }
+            
             .nav-links {
                 display: none;
                 position: absolute;
@@ -626,24 +700,6 @@
                 display: block;
             }
             
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 50px;
-            }
-            
-            .hero-text h2 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-text p {
-                font-size: 1.125rem;
-            }
-            
             .section {
                 padding: 80px 0;
             }
@@ -660,9 +716,31 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .hero-image .logo {
+                width: 180px;
+                height: 180px;
+            }
         }
         
         @media (max-width: 480px) {
+            .hero {
+                min-height: 400px;
+                padding: 60px 0;
+            }
+            
+            .hero-overlay {
+                background: linear-gradient(
+                    90deg, 
+                    rgba(255, 179, 71, 1) 0%,
+                    rgba(255, 179, 71, 1) 25%,
+                    rgba(255, 179, 71, 0.7) 35%,
+                    rgba(255, 179, 71, 0.4) 45%,
+                    rgba(255, 179, 71, 0.1) 55%,
+                    rgba(255, 179, 71, 0) 65%
+                );
+            }
+            
             .hero-text h2 {
                 font-size: 2rem;
             }
@@ -679,6 +757,11 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .hero-image .logo {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -712,7 +795,22 @@
         </div>
     </header>
     
+    <!-- 整合的hero区域，包含轮播图作为背景 -->
     <section class="hero">
+        <!-- 轮播图背景 -->
+        <div class="hero-carousel">
+            <div class="carousel-slide active">
+                <img src="./images/background1.png" alt="Cheese Client Background 1" class="carousel-image">
+            </div>
+            <div class="carousel-slide">
+                <img src="./images/background2.png" alt="Cheese Client Background 2" class="carousel-image">
+            </div>
+        </div>
+        
+        <!-- 黄色渐变覆盖层 -->
+        <div class="hero-overlay"></div>
+        
+        <!-- 英雄内容 -->
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -918,8 +1016,31 @@
             };
             
             fadeInOnScroll();
-            
             window.addEventListener('scroll', fadeInOnScroll);
+            
+            const carouselSlides = document.querySelectorAll('.carousel-slide');
+            let currentSlide = 0;
+            const slideCount = carouselSlides.length;
+            const slideInterval = 4500;
+            let isTransitioning = false;
+            function initCarousel() {
+                if (slideCount === 0) return;
+                carouselSlides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                if (slideCount === 0 || isTransitioning) return;
+                isTransitioning = true;
+                carouselSlides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slideCount;
+                carouselSlides[currentSlide].classList.add('active');
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 1500);
+            }
+
+            initCarousel();
+            setInterval(nextSlide, slideInterval);
         });
     </script>
 </body>
