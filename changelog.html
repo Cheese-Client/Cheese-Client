@@ -251,17 +251,6 @@
             box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
         .section {
             padding: 100px 0;
         }
@@ -285,7 +274,6 @@
             margin: 0 auto;
         }
 
-        /* Changelog Timeline Styles */
         .changelog-timeline {
             position: relative;
             max-width: 900px;
@@ -453,7 +441,6 @@
             color: #9f7aea;
         }
 
-        /* Latest Version Highlight */
         .latest-version {
             position: relative;
             overflow: visible;
@@ -472,61 +459,6 @@
             font-weight: 600;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(255, 183, 71, 0.3);
-        }
-
-        /* Update Highlights */
-        .update-highlights {
-            background: var(--card);
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .highlight-card {
-            background: var(--card);
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .highlight-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            color: white;
-            font-size: 1.75rem;
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
-        }
-
-        .highlight-card h3 {
-            font-size: 1.375rem;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .highlight-card p {
-            color: var(--text-light);
         }
 
         footer {
@@ -612,7 +544,6 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
             .version-content {
                 width: calc(50% - 30px);
@@ -658,7 +589,6 @@
                 font-size: 2.25rem;
             }
             
-            /* Timeline Responsive */
             .changelog-timeline::before {
                 left: 30px;
             }
@@ -1020,7 +950,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -1030,7 +959,6 @@
                 });
             }
             
-            // Header scroll effect
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -1040,7 +968,6 @@
                 }
             });
             
-            // Fade in animation on scroll
             const fadeElements = document.querySelectorAll('.fade-in');
             
             const fadeInOnScroll = () => {
@@ -1054,15 +981,12 @@
                 });
             };
             
-            // Initialize animations
             fadeInOnScroll();
             window.addEventListener('scroll', fadeInOnScroll);
             
-            // Version card click effect (optional enhancement)
             const versionCards = document.querySelectorAll('.version-content');
             versionCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    // Optional: Add detailed view functionality here
                     this.style.transform = this.style.transform === 'translateY(-5px) scale(1.02)' 
                         ? 'translateY(-5px)' 
                         : 'translateY(-5px) scale(1.02)';
