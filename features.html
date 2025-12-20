@@ -22,6 +22,8 @@
             --maxw: 1200px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
+            --disabled: #ef4444;
+            --toggle-bg: #d1d5db;
         }
 
         * {
@@ -169,8 +171,7 @@
         }
 
         .hero {
-            background: var(--primary-gradient);
-            padding: 100px 0 60px;
+            padding: 100px 0 20px;
             position: relative;
             overflow: hidden;
         }
@@ -182,16 +183,50 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
         }
 
         .hero-content {
             text-align: center;
             position: relative;
             z-index: 1;
-            color: #412200;
             width: 100%;
         }
+
+        .hero-text {
+            flex: 1;
+            color: #412200;
+        }
+
+        .hero-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            max-width: 5000px;
+            font-weight: 400;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image .logo {
+            width: 240px;
+            height: 240px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
 
         .hero-content h1 {
             font-size: 3.5rem;
@@ -208,6 +243,10 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 400;
+        }
+
+        .gray-text {
+            color: var(--text-light);
         }
 
         .btn {
@@ -260,16 +299,16 @@
         }
 
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.75rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
@@ -282,141 +321,218 @@
             margin: 0 auto;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .content-card {
+        .tab-container {
             background: var(--card);
-            padding: 40px 30px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
             overflow: hidden;
+            margin-bottom: 30px;
         }
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary-gradient);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .content-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .content-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .content-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            background: var(--primary-gradient);
+        .tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            color: white;
-            font-size: 1.75rem;
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+            background: #f3f4f6;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            padding: 0 20px;
         }
 
-        .content-card h3 {
-            font-size: 1.375rem;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .content-card p {
+        .tab {
+            padding: 20px 30px;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--text-light);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+            background: rgba(255, 179, 71, 0.05);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background: white;
+        }
+
+        .tab-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
         }
 
-        .feature-category {
+        .features-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .features-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .features-grid::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .feature-card {
             background: var(--card);
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 20px;
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
-        .feature-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-            font-weight: 700;
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .feature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+        }
+
+        .feature-header h3 i {
             color: var(--primary);
         }
 
-        .feature-list {
-            list-style: none;
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
         }
 
-        .feature-list li {
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
-        .feature-list li:last-child {
-            border-bottom: none;
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
         }
 
-        .feature-list i {
-            color: var(--primary);
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
             width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
         }
 
-        .feature-highlight {
-            background: var(--primary-gradient);
-            padding: 80px 0;
-            color: #412200;
+        input:checked + .slider {
+            background-color: var(--enabled);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .feature-hotkey {
+            display: inline-block;
+            background: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 20px 30px;
+            margin-top: 40px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-item {
             text-align: center;
         }
 
-        .feature-highlight-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .feature-highlight-content h2 {
+        .stat-value {
             font-size: 2.5rem;
-            margin-bottom: 20px;
             font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
 
-        .feature-highlight-content p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer {
             background: #111827;
             color: #fff;
             padding: 80px 0 40px;
+            margin-top: 80px;
         }
 
         .footer-content {
@@ -481,19 +597,10 @@
             transform: translateY(-3px);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
         }
 
         @media (max-width: 768px) {
@@ -515,8 +622,8 @@
             }
 
             .header .logo {
-            width: 40px;
-            height: 40px;
+                width: 40px;
+                height: 40px;
             }
             
             .mobile-menu-btn {
@@ -532,15 +639,30 @@
             }
             
             .section {
-                padding: 80px 0;
+                padding: 60px 0;
             }
             
             .section-title h2 {
                 font-size: 2.25rem;
             }
             
-            .content-grid, .features-grid {
+            .tabs {
+                flex-wrap: wrap;
+                padding: 0;
+            }
+            
+            .tab {
+                padding: 15px 20px;
+                flex: 1 0 auto;
+            }
+            
+            .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 30px;
             }
             
             .footer-bottom {
@@ -557,6 +679,10 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .tab-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -570,7 +696,7 @@
                     </div>
                     <div class="brand-text">
                         <h1>Cheese Client</h1>
-                        <span>Minecraft Hacked client</span>
+                        <span>Minecraft Hacked Client</span>
                     </div>
                 </div>
                 <nav class="nav-links">
@@ -589,119 +715,72 @@
         </div>
     </header>
 
-    <section class="section">
+    <section class="hero">
         <div class="container">
-            <div class="section-title">
-                <h2>Comprehensive Feature Set!</h2>
-                <p>Cheese Client offers a wide range of features designed to enhance every aspect of your Minecraft gameplay</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-fighter-jet"></i> Combat Enhancements</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Advanced Aim Assist</li>
-                        <li><i class="fas fa-check"></i> Trigger Bot</li>
-                        <li><i class="fas fa-check"></i> Reach Extension</li>
-                        <li><i class="fas fa-check"></i> Hitbox Expansion</li>
-                        <li><i class="fas fa-check"></i> Auto Weapon Switch</li>
-                        <li><i class="fas fa-check"></i> Critical Hit Control</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-running"></i> Movement Tools</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Speed Modification</li>
-                        <li><i class="fas fa-check"></i> Flight Capabilities</li>
-                        <li><i class="fas fa-check"></i> No Fall Damage</li>
-                        <li><i class="fas fa-check"></i> Step Assistance</li>
-                        <li><i class="fas fa-check"></i> Spider Climbing</li>
-                        <li><i class="fas fa-check"></i> Jesus Mode</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-eye"></i> Visual Improvements</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> X-Ray Vision</li>
-                        <li><i class="fas fa-check"></i> Fullbright Mode</li>
-                        <li><i class="fas fa-check"></i> Entity ESP</li>
-                        <li><i class="fas fa-check"></i> Tracers</li>
-                        <li><i class="fas fa-check"></i> Nametag Enhancement</li>
-                        <li><i class="fas fa-check"></i> Chunk Borders</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-user-cog"></i> Player Utilities</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Auto Inventory Management</li>
-                        <li><i class="fas fa-check"></i> Auto Fishing</li>
-                        <li><i class="fas fa-check"></i> Auto Mining</li>
-                        <li><i class="fas fa-check"></i> Auto Building</li>
-                        <li><i class="fas fa-check"></i> Fast Use/Eat</li>
-                        <li><i class="fas fa-check"></i> Inventory Sort</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-shield-alt"></i> Protection Systems</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Anti-Kick Protection</li>
-                        <li><i class="fas fa-check"></i> Anti-Ban Measures</li>
-                        <li><i class="fas fa-check"></i> Server Bypass</li>
-                        <li><i class="fas fa-check"></i> Ghost Mode</li>
-                        <li><i class="fas fa-check"></i> Stealth Features</li>
-                        <li><i class="fas fa-check"></i> Detection Evasion</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-category fade-in">
-                    <h3><i class="fas fa-palette"></i> Customization</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Custom GUI Themes</li>
-                        <li><i class="fas fa-check"></i> Keybind Configuration</li>
-                        <li><i class="fas fa-check"></i> Module Toggles</li>
-                        <li><i class="fas fa-check"></i> HUD Customization</li>
-                        <li><i class="fas fa-check"></i> Color Settings</li>
-                        <li><i class="fas fa-check"></i> Profile System</li>
-                    </ul>
-                </div>
+            <div class="hero-content">
+                <h1>Comprehensive Feature Set!</h1>
+                <p class="gray-text">Cheese Client offers a wide range of features designed to enhance every aspect of your Minecraft gameplay</p>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <div class="section-title">
-                <h2>Why Our Features Can Stand Out?</h2>
-                <p>Cheese Client offers unique advantages that set it apart from other Minecraft Hacked Client</p>
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab active" data-tab="visual">Visual</button>
+                    <button class="tab" data-tab="movement">Movement</button>
+                    <button class="tab" data-tab="combat">Combat</button>
+                    <button class="tab" data-tab="player">Player</button>
+                    <button class="tab" data-tab="world">World</button>
+                    <button class="tab" data-tab="exploit">Exploit</button>
+                    <button class="tab" data-tab="other">Other</button>
+                </div>
+
+                <div class="tab-content active" id="visual">
+                    <div class="features-grid">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="movement">
+                    <div class="features-grid">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="combat">
+                    <div class="features-grid">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="player">
+                    <div class="features-grid">
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="world">
+                    <div class="features-grid">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="exploit">
+                    <div class="features-grid">
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="other">
+                    <div class="features-grid">
+                    </div>
+                </div>
             </div>
             
-            <div class="content-grid">
-                <div class="content-card fade-in">
-                    <div class="content-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Lightweight Design</h3>
-                    <p>Optimized code ensures minimal impact on game performance while delivering maximum functionality.</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value" id="enabledCount">0</div>
+                    <div class="stat-label">Features Enabled</div>
                 </div>
-                
-                <div class="content-card fade-in">
-                    <div class="content-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>User-Friendly Interface</h3>
-                    <p>Intuitive controls and organized menus make it easy for both beginners and advanced users.</p>
-                </div>
-                
-                <div class="content-card fade-in">
-                    <div class="content-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Regular Updates</h3>
-                    <p>Continuous development ensures compatibility with the latest Minecraft versions and new features.</p>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-label">Total Features</div>
                 </div>
             </div>
         </div>
@@ -746,6 +825,186 @@
     </footer>
     
     <script>
+        const features = {
+            visual: [
+                { name: "ESP", desc: "See entities through walls", hotkey: "RAlt + E", icon: "eye" },
+                { name: "Tracers", desc: "Draw lines to entities", hotkey: "RAlt + T", icon: "route" },
+                { name: "Hitboxes", desc: "Show entity hitboxes", hotkey: "RAlt + H", icon: "vector-square" },
+                { name: "Snaplines", desc: "Draw lines from crosshair to targets", hotkey: "RAlt + S", icon: "project-diagram" },
+                { name: "Nametags", desc: "Enhanced nametag display", hotkey: "RAlt + N", icon: "tag" },
+                { name: "Radar / Minimap", desc: "Show entities on radar", hotkey: "RAlt + R", icon: "map" },
+                { name: "Fullbright / Night Vision", desc: "Maximum brightness", hotkey: "RAlt + F", icon: "sun" },
+                { name: "Cave Finder", desc: "Highlight cave entrances", hotkey: "RAlt + C", icon: "mountain" },
+                { name: "Chest ESP", desc: "Highlight chests through walls", hotkey: "RAlt + X", icon: "chest" },
+                { name: "X-Ray", desc: "See through blocks", hotkey: "RAlt + Z", icon: "gem" },
+                { name: "Chunk Borders", desc: "Display chunk boundaries", hotkey: "RAlt + B", icon: "border-all" },
+                { name: "Block Information", desc: "Show block details", hotkey: "RAlt + I", icon: "info-circle" },
+                { name: "Light Level Overlay", desc: "Display light levels", hotkey: "RAlt + L", icon: "lightbulb" },
+                { name: "Mob Spawnable Areas", desc: "Highlight spawnable areas", hotkey: "RAlt + M", icon: "ghost" },
+                { name: "Player Inspection", desc: "Show player stats", hotkey: "RAlt + P", icon: "user-secret" },
+                { name: "Potion Effects HUD", desc: "Display active effects", hotkey: "RAlt + O", icon: "flask" },
+                { name: "Armor Status HUD", desc: "Show armor durability", hotkey: "None", icon: "shield-alt" },
+                { name: "Direction HUD", desc: "Compass and coordinates", hotkey: "None", icon: "compass" },
+                { name: "Clock / Game Time HUD", desc: "Display game time", hotkey: "None", icon: "clock" },
+                { name: "Scoreboard Manipulation", desc: "Modify scoreboard display", hotkey: "None", icon: "list-ol" },
+                { name: "Enchantment Glint", desc: "Customize glint effects", hotkey: "None", icon: "magic" },
+                { name: "Custom Sky & Weather", desc: "Modify sky and weather", hotkey: "None", icon: "cloud-sun" },
+                { name: "No Fire / No Overlay", desc: "Remove fire overlay", hotkey: "None", icon: "fire" },
+                { name: "No Fog", desc: "Disable fog effects", hotkey: "None", icon: "smog" },
+                { name: "No Blindness Effect", desc: "Remove blindness", hotkey: "None", icon: "low-vision" },
+                { name: "Zoom", desc: "Zoom in/out", hotkey: "C", icon: "search-plus" }
+            ],
+            movement: [
+                { name: "Flight", desc: "Fly in survival mode", hotkey: "RAlt + G", icon: "feather-alt" },
+                { name: "Speed / Sprint", desc: "Increase movement speed", hotkey: "RAlt + V", icon: "tachometer-alt" },
+                { name: "Bunny Hop / Auto Jump", desc: "Auto bunny hopping", hotkey: "None", icon: "rabbit" },
+                { name: "Spider / Wall Climb", desc: "Climb walls like spider", hotkey: "None", icon: "spider" },
+                { name: "Jesus / Water Walk", desc: "Walk on water", hotkey: "None", icon: "water" },
+                { name: "Step", desc: "Step up blocks automatically", hotkey: "None", icon: "stairs" },
+                { name: "No Fall", desc: "No fall damage", hotkey: "RAlt + J", icon: "umbrella" },
+                { name: "Air Jump / Double Jump", desc: "Jump in mid-air", hotkey: "None", icon: "redo" },
+                { name: "Glide", desc: "Glide through air", hotkey: "None", icon: "parachute-box" },
+                { name: "Fast Swim / Dolphin", desc: "Swim faster", hotkey: "None", icon: "fish" },
+                { name: "Auto Walk", desc: "Automatic walking", hotkey: "None", icon: "walking" },
+                { name: "Teleport", desc: "Teleport to locations", hotkey: "None", icon: "location-arrow" },
+                { name: "Blink", desc: "Teleport short distances", hotkey: "None", icon: "bolt" },
+                { name: "Long Jump", desc: "Jump extremely far", hotkey: "None", icon: "long-arrow-alt-right" },
+                { name: "Phase / Clip", desc: "Phase through blocks", hotkey: "None", icon: "door-closed" },
+                { name: "Elytra Boost / Control", desc: "Enhanced elytra control", hotkey: "None", icon: "wind" },
+                { name: "Boat Fly", desc: "Fly with boats", hotkey: "None", icon: "ship" },
+                { name: "Inventory Move", desc: "Move while in inventory", hotkey: "None", icon: "box-open" },
+                { name: "Safe Walk", desc: "Prevent falling off edges", hotkey: "None", icon: "hand-paper" },
+                { name: "Yaw / Pitch Lock", desc: "Lock view angles", hotkey: "None", icon: "lock" },
+                { name: "Anti AFK", desc: "Prevent AFK kicking", hotkey: "None", icon: "user-clock" }
+            ],
+            combat: [
+                { name: "Kill Aura", desc: "Auto attack nearby entities", hotkey: "RAlt + K", icon: "skull-crossbones" },
+                { name: "Triggerbot", desc: "Auto attack when aiming", hotkey: "RAlt + U", icon: "mouse-pointer" },
+                { name: "Aim Assist / AimBot", desc: "Assist aiming", hotkey: "RAlt + A", icon: "crosshairs" },
+                { name: "Auto Clicker", desc: "Automatic clicking", hotkey: "None", icon: "mouse" },
+                { name: "Hitbox Expand / Reach", desc: "Extend attack range", hotkey: "RAlt + R", icon: "expand-arrows-alt" },
+                { name: "Criticals / Always Crit", desc: "Always critical hits", hotkey: "None", icon: "star" },
+                { name: "Auto Weapon / Tool Swap", desc: "Auto switch weapons", hotkey: "None", icon: "exchange-alt" },
+                { name: "Shield Automation", desc: "Auto block with shield", hotkey: "None", icon: "shield" },
+                { name: "Bow Aimbot", desc: "Perfect bow aiming", hotkey: "None", icon: "bullseye" },
+                { name: "Auto Potion", desc: "Auto drink/throw potions", hotkey: "None", icon: "wine-bottle" },
+                { name: "Regeneration / Fast Heal", desc: "Fast health regeneration", hotkey: "None", icon: "heartbeat" },
+                { name: "Anti Knockback", desc: "Reduce knockback", hotkey: "None", icon: "arrows-alt" },
+                { name: "Anti Combo / Keep Sprint", desc: "Maintain sprint in combat", hotkey: "None", icon: "running" },
+                { name: "Combat Modules", desc: "Advanced combat settings", hotkey: "None", icon: "cogs" },
+                { name: "Potion Predict / Trajectory", desc: "Predict potion trajectory", hotkey: "None", icon: "chart-line" },
+                { name: "TNT / Crystal Aura", desc: "Auto place/explode TNT", hotkey: "None", icon: "bomb" },
+                { name: "Bed Aura", desc: "Auto break beds in Bed Wars", hotkey: "None", icon: "bed" }
+            ],
+            player: [
+                { name: "Auto Armor", desc: "Auto equip best armor", hotkey: "None", icon: "tshirt" },
+                { name: "Fast Use", desc: "Use items faster", hotkey: "None", icon: "bolt" },
+                { name: "Fast Eat", desc: "Eat food faster", hotkey: "None", icon: "apple-alt" },
+                { name: "Fast Break", desc: "Break blocks faster", hotkey: "None", icon: "hammer" },
+                { name: "Fast Place", desc: "Place blocks faster", hotkey: "None", icon: "cube" },
+                { name: "No Slow", desc: "No slowdown effects", hotkey: "None", icon: "tachometer-alt" },
+                { name: "Auto Respawn", desc: "Auto respawn after death", hotkey: "None", icon: "redo" },
+                { name: "Auto Totem", desc: "Auto use totems", hotkey: "None", icon: "gem" },
+                { name: "Visual Range", desc: "Show entity range", hotkey: "None", icon: "ruler" },
+                { name: "Nuker", desc: "Break multiple blocks", hotkey: "None", icon: "mountain" },
+                { name: "InstaBreak", desc: "Instant block breaking", hotkey: "None", icon: "bolt" },
+                { name: "Automine / Veinminer", desc: "Mine entire veins", hotkey: "None", icon: "digging" },
+                { name: "Scaffold", desc: "Auto place blocks under you", hotkey: "None", icon: "layer-group" },
+                { name: "Auto Build", desc: "Auto build structures", hotkey: "None", icon: "city" },
+                { name: "Auto Farm", desc: "Auto farming", hotkey: "None", icon: "tractor" },
+                { name: "Auto Fish", desc: "Auto fishing", hotkey: "None", icon: "fish" },
+                { name: "Auto Eat", desc: "Auto eat when hungry", hotkey: "None", icon: "hamburger" },
+                { name: "Auto Trap / Cage", desc: "Auto trap players", hotkey: "None", icon: "cubes" },
+                { name: "Auto Disconnect", desc: "Auto disconnect at low health", hotkey: "None", icon: "power-off" },
+                { name: "Auto Reply", desc: "Auto reply to messages", hotkey: "None", icon: "reply" },
+                { name: "Auto Accept", desc: "Auto accept requests", hotkey: "None", icon: "check-circle" },
+                { name: "Auto Login", desc: "Auto login to servers", hotkey: "None", icon: "sign-in-alt" },
+                { name: "Pathfinder", desc: "Find optimal paths", hotkey: "None", icon: "road" },
+                { name: "Ghost Hand", desc: "Interact through blocks", hotkey: "None", icon: "hand-rock" },
+                { name: "Server Crasher", desc: "Crash servers", hotkey: "None", icon: "server" },
+                { name: "Auto Drop", desc: "Auto drop items", hotkey: "None", icon: "trash" },
+                { name: "Auto Stealer", desc: "Steal from containers", hotkey: "None", icon: "user-ninja" },
+                { name: "Item Highlight", desc: "Highlight important items", hotkey: "None", icon: "search" },
+                { name: "Armor Overlay", desc: "Show armor status", hotkey: "None", icon: "user-shield" },
+                { name: "Custom Inventory GUI", desc: "Custom inventory interface", hotkey: "None", icon: "th-large" },
+                { name: "Shulker Box Preview", desc: "Preview shulker contents", hotkey: "None", icon: "box" },
+                { name: "Dupe", desc: "Duplicate items", hotkey: "None", icon: "copy" },
+                { name: "Speed", desc: "Various speed enhancements", hotkey: "None", icon: "rocket" },
+                { name: "Timer", desc: "Change game speed", hotkey: "None", icon: "stopwatch" },
+                { name: "Fast Ladder", desc: "Climb ladders faster", hotkey: "None", icon: "sign" },
+                { name: "No Clip / Phase", desc: "Walk through blocks", hotkey: "None", icon: "ghost" },
+                { name: "Freecam", desc: "Free camera movement", hotkey: "None", icon: "camera" },
+                { name: "High Jump", desc: "Jump higher", hotkey: "None", icon: "arrow-up" },
+                { name: "No Rotation / Derp", desc: "Random head movement", hotkey: "None", icon: "random" },
+                { name: "Anti Hunger", desc: "Reduce hunger loss", hotkey: "None", icon: "drumstick-bite" },
+                { name: "Auto Sprint", desc: "Auto sprint always", hotkey: "None", icon: "running" },
+                { name: "Infinite Durability", desc: "Items don't break", hotkey: "None", icon: "infinity" },
+                { name: "Creative Flight", desc: "Fly in survival mode", hotkey: "None", icon: "feather-alt" },
+                { name: "Auto Steal", desc: "Steal XP and items", hotkey: "None", icon: "hand-holding" },
+                { name: "Force OP", desc: "Attempt to get OP", hotkey: "None", icon: "crown" }
+            ],
+            world: [
+                { name: "World Downloader", desc: "Download worlds", hotkey: "None", icon: "download" },
+                { name: "Seed Cracker", desc: "Find world seed", hotkey: "None", icon: "key" },
+                { name: "Map Data Extractor", desc: "Extract map data", hotkey: "None", icon: "database" },
+                { name: "Chunk Loader", desc: "Force load chunks", hotkey: "None", icon: "expand" },
+                { name: "Chunk Ban", desc: "Cause chunk errors", hotkey: "None", icon: "ban" },
+                { name: "Entity Control", desc: "Control entities", hotkey: "None", icon: "gamepad" },
+                { name: "Entity Desync", desc: "Desync entities", hotkey: "None", icon: "sync" },
+                { name: "Sign / Book Crasher", desc: "Crash with signs/books", hotkey: "None", icon: "book" },
+                { name: "Packet Logger", desc: "Log network packets", hotkey: "None", icon: "network-wired" },
+                { name: "Mass Block Update", desc: "Create lag machines", hotkey: "None", icon: "cube" },
+                { name: "Barrier Vision", desc: "See barrier blocks", hotkey: "None", icon: "eye-slash" },
+                { name: "End Portal Finder", desc: "Find end portals", hotkey: "None", icon: "door-open" },
+                { name: "Slime Chunk Finder", desc: "Find slime chunks", hotkey: "None", icon: "poo" },
+                { name: "Profanity Filter Bypass", desc: "Bypass chat filter", hotkey: "None", icon: "comment-slash" },
+                { name: "Auto Tool", desc: "Auto select best tool", hotkey: "None", icon: "tools" },
+                { name: "Auto Switch", desc: "Auto switch items", hotkey: "None", icon: "exchange-alt" },
+                { name: "Stack Size Display", desc: "Show stack sizes", hotkey: "None", icon: "layer-group" },
+                { name: "Durability Alert", desc: "Alert when low durability", hotkey: "None", icon: "exclamation-triangle" },
+                { name: "Recipe Book Unlock", desc: "Unlock all recipes", hotkey: "None", icon: "book-open" },
+                { name: "Waypoints", desc: "Create waypoints", hotkey: "None", icon: "map-marker-alt" },
+                { name: "Death Coordinates", desc: "Save death locations", hotkey: "None", icon: "skull" },
+                { name: "Schematica Integration", desc: "Import schematics", hotkey: "None", icon: "project-diagram" },
+                { name: "Auto Coordinates Log", desc: "Log coordinates", hotkey: "None", icon: "file-alt" },
+                { name: "Chat Logger", desc: "Log chat messages", hotkey: "None", icon: "comments" },
+                { name: "Ping Display", desc: "Show ping", hotkey: "None", icon: "signal" },
+                { name: "Server Brand Detection", desc: "Detect server type", hotkey: "None", icon: "fingerprint" },
+                { name: "Packet Loss Indicator", desc: "Show packet loss", hotkey: "None", icon: "chart-line" },
+                { name: "Time Changer", desc: "Change client time", hotkey: "None", icon: "clock" },
+                { name: "Weather Changer", desc: "Change client weather", hotkey: "None", icon: "cloud-sun-rain" }
+            ],
+            exploit: [
+                { name: "Name Spoof / Nick Hider", desc: "Hide your name", hotkey: "None", icon: "user-secret" },
+                { name: "Skin Spoof / Blinker", desc: "Change your skin", hotkey: "None", icon: "user" },
+                { name: "UUID Spoofer", desc: "Spoof your UUID", hotkey: "None", icon: "id-card" },
+                { name: "Fake OP", desc: "Fake OP status", hotkey: "None", icon: "crown" },
+                { name: "Anti Bot", desc: "Hide from bot detection", hotkey: "None", icon: "robot" },
+                { name: "Ghost Mode", desc: "Fake leaving server", hotkey: "None", icon: "ghost" },
+                { name: "False Movement", desc: "Send false positions", hotkey: "None", icon: "walking" },
+                { name: "Fake Lag", desc: "Simulate lag", hotkey: "None", icon: "hourglass-half" },
+                { name: "Client Brand Spoofer", desc: "Spoof client brand", hotkey: "None", icon: "mask" },
+                { name: "Resource Pack Spoofer", desc: "Fake resource pack", hotkey: "None", icon: "box-open" },
+                { name: "Ping Spoof", desc: "Fake ping value", hotkey: "None", icon: "signal" },
+                { name: "Anti Screen Share", desc: "Hide from screenshare", hotkey: "None", icon: "desktop" },
+                { name: "Chat Encrypt", desc: "Encrypt chat messages", hotkey: "None", icon: "lock" }
+            ],
+            other: [
+                { name: "ClickGUI / Menu System", desc: "Custom GUI interface", hotkey: "RSHIFT", icon: "th-large" },
+                { name: "HUD Editor", desc: "Customize HUD elements", hotkey: "None", icon: "edit" },
+                { name: "Module Toggle & Binding", desc: "Manage module keybinds", hotkey: "None", icon: "keyboard" },
+                { name: "Config System", desc: "Save/load configurations", hotkey: "None", icon: "save" },
+                { name: "Friend System", desc: "Manage friends list", hotkey: "None", icon: "user-friends" },
+                { name: "Enemy System", desc: "Mark enemies", hotkey: "None", icon: "user-times" },
+                { name: "Macro System", desc: "Create macros", hotkey: "None", icon: "keyboard" },
+                { name: "Alt Manager", desc: "Manage multiple accounts", hotkey: "None", icon: "users" },
+                { name: "Cosmetics / Capes", desc: "Custom cosmetics", hotkey: "None", icon: "tshirt" },
+                { name: "Notifications", desc: "Display alerts", hotkey: "None", icon: "bell" },
+                { name: "Crosshair Customization", desc: "Custom crosshair", hotkey: "None", icon: "crosshairs" },
+                { name: "Perspective Toggle", desc: "Change perspective", hotkey: "None", icon: "camera" }
+            ]
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
@@ -755,7 +1014,7 @@
                     navLinks.classList.toggle('active');
                 });
             }
-            
+
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -764,23 +1023,88 @@
                     header.classList.remove('header-scrolled');
                 }
             });
+
+            let totalFeaturesCount = 0;
+            for (const category in features) {
+                totalFeaturesCount += features[category].length;
+            }
+            document.getElementById('totalCount').textContent = totalFeaturesCount;
+
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
             
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('fade-in');
-                    }
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                            if (content.querySelector('.features-grid').children.length === 0) {
+                                populateFeatures(tabId, content.querySelector('.features-grid'));
+                            }
+                        }
+                    });
+
+                    updateEnabledCount();
                 });
-            };
-            
-            fadeInOnScroll();
-            
-            window.addEventListener('scroll', fadeInOnScroll);
+            });
+
+            const activeTab = document.querySelector('.tab.active');
+            const activeTabId = activeTab.getAttribute('data-tab');
+            const activeContent = document.getElementById(activeTabId);
+            populateFeatures(activeTabId, activeContent.querySelector('.features-grid'));
+
+            updateEnabledCount();
+
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.nav-links') && 
+                    !event.target.closest('.mobile-menu-btn') && 
+                    navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            function populateFeatures(category, container) {
+                container.innerHTML = '';
+                const categoryFeatures = features[category] || [];
+                
+                categoryFeatures.forEach(feature => {
+                    const card = document.createElement('div');
+                    card.className = 'feature-card';
+
+                    const enabled = Math.random() > 0.7;
+                    
+                    card.innerHTML = `
+                        <div class="feature-header">
+                            <h3><i class="fas fa-${feature.icon}"></i> ${feature.name}</h3>
+                            <label class="toggle-switch">
+                                <input type="checkbox" ${enabled ? 'checked' : ''}>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="feature-description">${feature.desc}</p>
+                        <div class="feature-hotkey">${feature.hotkey}</div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+
+                container.querySelectorAll('.toggle-switch input').forEach(switchElement => {
+                    switchElement.addEventListener('change', updateEnabledCount);
+                });
+            }
+
+            function updateEnabledCount() {
+                const allToggles = document.querySelectorAll('.toggle-switch input');
+                const enabledCount = Array.from(allToggles).filter(toggle => toggle.checked).length;
+                
+                document.getElementById('enabledCount').textContent = enabledCount;
+            }
         });
     </script>
 </body>
