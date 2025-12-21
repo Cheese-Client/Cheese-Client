@@ -39,6 +39,7 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -172,12 +173,93 @@
         }
 
         .hero {
-            padding: 120px 0;
+            padding: 120px 0 100px;
             position: relative;
             overflow: hidden;
-            min-height: 690px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+
+        .hero-scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #412200;
+            margin-bottom: 12px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid rgba(255, 183, 71, 0.2);
+        }
+
+        .scroll-button i {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            transition: all 0.3s ease;
+        }
+
+        .hero-scroll-down:hover .scroll-text {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: var(--primary-dark);
+        }
+
+        .hero-scroll-down:hover .scroll-button {
+            background: white;
+            transform: translateY(5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 183, 71, 0.4);
+        }
+
+        .hero-scroll-down:hover .scroll-button i {
+            color: var(--primary-dark);
+            transform: translateY(3px);
+        }
+
+        .scroll-button::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .hero-scroll-down:hover .scroll-button::after {
+            opacity: 0.1;
         }
 
         .hero-carousel {
@@ -285,7 +367,7 @@
             text-decoration: none;
             color: #fff;
             font-weight: 600;
-            background: var(--primary-gradient);
+            background: var(--primary-dark);
             box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
             transition: all 0.3s ease;
             border: none;
@@ -345,6 +427,20 @@
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -352,6 +448,192 @@
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .enhanced-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .enhanced-card {
+            background: var(--card);
+            padding: 50px 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .enhanced-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .enhanced-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-gradient);
+            transform: scaleY(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .enhanced-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .card-icon-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(255, 183, 71, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-icon-container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            opacity: 0.2;
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .enhanced-card:hover .card-icon-container {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(255, 183, 71, 0.4);
+        }
+
+        .enhanced-card:hover .card-icon-container::before {
+            transform: scale(1.1);
+            opacity: 0.3;
+        }
+
+        .enhanced-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--text);
+            position: relative;
+            z-index: 2;
+        }
+
+        .enhanced-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            font-size: 1.05rem;
+        }
+
+        .card-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card-decorations::before,
+        .card-decorations::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card-decorations::before {
+            top: 20px;
+            right: 20px;
+        }
+
+        .card-decorations::after {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .enhanced-card:hover .card-decorations::before,
+        .enhanced-card:hover .card-decorations::after {
+            opacity: 0.2;
+        }
+
+        .decorative-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-bg::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .decorative-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            opacity: 0.03;
+            z-index: 0;
         }
 
         .content-grid {
@@ -627,7 +909,7 @@
 
         @media (max-width: 1024px) {
             .hero {
-                min-height: 600px;
+                min-height: 100vh;
             }
             
             .hero-overlay {
@@ -649,8 +931,8 @@
 
         @media (max-width: 768px) {
             .hero {
-                min-height: 500px;
-                padding: 80px 0;
+                min-height: 100vh;
+                padding: 80px 0 80px;
             }
             
             .hero-overlay {
@@ -721,12 +1003,40 @@
                 width: 180px;
                 height: 180px;
             }
+            
+            .hero-scroll-down {
+                bottom: 30px;
+            }
+            
+            .scroll-button {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .scroll-button i {
+                font-size: 1.25rem;
+            }
+            
+            .enhanced-content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-icon-container {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+                gap: 40px;
+            }
         }
         
         @media (max-width: 480px) {
             .hero {
-                min-height: 400px;
-                padding: 60px 0;
+                min-height: 100vh;
+                padding: 60px 0 70px;
             }
             
             .hero-overlay {
@@ -762,6 +1072,19 @@
             .hero-image .logo {
                 width: 150px;
                 height: 150px;
+            }
+            
+            .hero-scroll-down {
+                bottom: 25px;
+            }
+            
+            .scroll-button {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .enhanced-card {
+                padding: 40px 25px;
             }
         }
     </style>
@@ -807,6 +1130,14 @@
         </div>
 
         <div class="hero-overlay"></div>
+
+        <div class="hero-scroll-down" id="scrollDownBtn">
+            <div class="scroll-text">EXPLORE</div>
+            <div class="scroll-button">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -830,33 +1161,39 @@
         </div>
     </section>
     
-    <section id="what-is" class="section">
+    <section id="what-is" class="section decorative-bg">
         <div class="container">
             <div class="section-title">
                 <h2>Understanding Cheese Client</h2>
                 <p>Discover the revolutionary Minecraft enhancement suite that's changing how players experience the game</p>
             </div>
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="content-icon">
+
+            <div class="enhanced-content-grid">
+                <div class="enhanced-card">
+                    <div class="card-decorations"></div>
+                    <div class="card-icon-container">
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Enhanced Gameplay</h3>
-                    <p>Cheese Client transforms your Minecraft experience with powerful tools that enhance movement, combat, and exploration capabilities.</p>
+                    <p>Cheese Client transforms your Minecraft experience with powerful tools that enhance movement, combat, and exploration capabilities. Experience seamless gameplay like never before.</p>
                 </div>
-                <div class="content-card">
-                    <div class="content-icon">
+                
+                <div class="enhanced-card">
+                    <div class="card-decorations"></div>
+                    <div class="card-icon-container">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Advanced Protection</h3>
-                    <p>Built with sophisticated anti-detection systems to ensure your gameplay remains secure while using advanced features.</p>
+                    <p>Built with sophisticated anti-detection systems to ensure your gameplay remains secure while using advanced features. Stay protected with our cutting-edge security measures.</p>
                 </div>
-                <div class="content-card">
-                    <div class="content-icon">
+                
+                <div class="enhanced-card">
+                    <div class="card-decorations"></div>
+                    <div class="card-icon-container">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <h3>Performance Boost</h3>
-                    <p>Optimize your Minecraft performance with built-in tools that reduce lag and improve frame rates for smoother gameplay.</p>
+                    <p>Optimize your Minecraft performance with built-in tools that reduce lag and improve frame rates for smoother gameplay. Enjoy faster loading times and better resource management.</p>
                 </div>
             </div>
         </div>
@@ -998,7 +1335,7 @@
                 }
             });
             
-            const fadeElements = document.querySelectorAll('.content-card');
+            const fadeElements = document.querySelectorAll('.content-card, .enhanced-card');
             
             const fadeInOnScroll = () => {
                 fadeElements.forEach(element => {
@@ -1037,6 +1374,38 @@
 
             initCarousel();
             setInterval(nextSlide, slideInterval);
+            
+            const scrollDownBtn = document.getElementById('scrollDownBtn');
+            
+            if (scrollDownBtn) {
+                scrollDownBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const whatIsSection = document.getElementById('what-is');
+                    if (!whatIsSection) return;
+
+                    const sectionRect = whatIsSection.getBoundingClientRect();
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const windowHeight = window.innerHeight;
+
+                    const scrollPosition = whatIsSection.offsetTop - headerHeight + (sectionRect.height / 2) - (windowHeight / 2);
+
+                    window.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            function adjustHeroHeight() {
+                const hero = document.querySelector('.hero');
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                hero.style.minHeight = `calc(100vh - ${headerHeight}px)`;
+            }
+            
+            adjustHeroHeight();
+            window.addEventListener('resize', adjustHeroHeight);
         });
     </script>
 </body>
