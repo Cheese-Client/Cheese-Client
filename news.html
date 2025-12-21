@@ -240,7 +240,7 @@
 
         .news-image {
             width: 100%;
-            height: 280px;
+            height: 330px;
             object-fit: cover;
             display: block;
         }
@@ -515,6 +515,26 @@
         <div class="news-container">
             <main class="news-posts">
                 <article class="news-card news-card-featured">
+                    <img src="./images/image2.png" class="news-image">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> May 20, 2025</span>
+                            <span><i class="far fa-user"></i> Cheese Development Team</span>
+                            <span class="news-badge">TECHNICAL</span>
+                        </div>
+                        <h2>Cheese Client 3.1: Compatible with Both Fabric & Forge</h2>
+                        <p class="news-excerpt">We have successfully resolved the compatibility issues! The Cheese client can now seamlessly work with Fabric and Forge mods for version 1.12.2, allowing you to use your favorite mods from both ecosystems while maintaining full performance and enhanced features.</p>
+                        <div class="news-tags">
+                            <span class="news-tag">v3.1</span>
+                            <span class="news-tag">Technical</span>
+                            <span class="news-tag">mod</span>
+                            <span class="news-tag">Compatibility</span>
+                            <span class="news-tag">Major Release</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
                     <img src="./images/image1.png" class="news-image">
                     <div class="news-content">
                         <div class="news-meta">
@@ -529,22 +549,21 @@
                             <span class="news-tag">Announcement</span>
                             <span class="news-tag">Performance</span>
                             <span class="news-tag">Update</span>
-                            <span class="news-tag">Major Release</span>
+                           <span class="news-tag">Major Release</span>
                         </div>
                     </div>
-                </article>
+            </article>
 
-                <!-- Regular News Items -->
                 <article class="news-card">
                     <img src="./images/background2.png" alt="New Anti-Cheat Compatibility" class="news-image">
                     <div class="news-content">
                         <div class="news-meta">
                             <span><i class="far fa-calendar"></i> March 28, 2025</span>
-                            <span><i class="far fa-user"></i> Security Team</span>
-                            <span class="news-badge">SECURITY</span>
+                            <span><i class="far fa-user"></i> Cheese Development Team</span>
+                            <span class="news-badge">ANNOUNCEMENT</span>
                         </div>
                         <h2>Enhanced Compatibility with Latest Anti-Cheat Systems</h2>
-                        <p>Our security team has successfully updated Cheese Client's modules to maintain compatibility with the latest anti-cheat updates while preserving functionality. All users are advised to update to version 2.8.3.</p>
+                        <p>We has successfully updated Cheese Client's modules to maintain compatibility with the latest anti-cheat updates while preserving functionality. All users are advised to update to version 2.8.3.</p>
                         <div class="news-tags">
                             <span class="news-tag">Security</span>
                             <span class="news-tag">Anti-Cheat</span>
@@ -669,8 +688,7 @@
             
             fadeInOnScroll();
             window.addEventListener('scroll', fadeInOnScroll);
-            
-            // 标签点击功能已移除
+
         });
     </script>
 </body>
