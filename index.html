@@ -1384,16 +1384,35 @@
                     const whatIsSection = document.getElementById('what-is');
                     if (!whatIsSection) return;
 
-                    const sectionRect = whatIsSection.getBoundingClientRect();
                     const headerHeight = document.querySelector('header').offsetHeight;
-                    const windowHeight = window.innerHeight;
+                    const targetPosition = whatIsSection.offsetTop - headerHeight + 60;
 
-                    const scrollPosition = whatIsSection.offsetTop - headerHeight + (sectionRect.height / 2) - (windowHeight / 2);
+                    function easeInOutQuad(t) {
+                        return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+                    }
 
-                    window.scrollTo({
-                        top: scrollPosition,
-                        behavior: 'smooth'
-                    });
+                    function smoothScrollTo(target) {
+                        const startPosition = window.pageYOffset;
+                        const distance = target - startPosition;
+                        const duration = 1000;
+                        let startTime = null;
+
+                        function animation(currentTime) {
+                            if (startTime === null) startTime = currentTime;
+                            const timeElapsed = currentTime - startTime;
+                            const progress = Math.min(timeElapsed / duration, 1);
+                            const easedProgress = easeInOutQuad(progress);
+                            const currentPosition = startPosition + distance * easedProgress;
+                            window.scrollTo(0, currentPosition);
+                            if (progress < 1) {
+                                requestAnimationFrame(animation);
+                            }
+                        }
+
+                        requestAnimationFrame(animation);
+                    }
+
+                    smoothScrollTo(targetPosition);
                 });
             }
             
