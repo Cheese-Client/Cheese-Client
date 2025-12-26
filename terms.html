@@ -929,7 +929,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -938,8 +937,7 @@
                     navLinks.classList.toggle('active');
                 });
             }
-            
-            // Header scroll effect
+
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -947,8 +945,7 @@
                 } else {
                     header.classList.remove('header-scrolled');
                 }
-                
-                // Show/hide back to top button
+
                 const backToTop = document.getElementById('backToTop');
                 if (window.scrollY > 300) {
                     backToTop.classList.add('visible');
@@ -956,8 +953,7 @@
                     backToTop.classList.remove('visible');
                 }
             });
-            
-            // Back to top functionality
+
             const backToTop = document.getElementById('backToTop');
             if (backToTop) {
                 backToTop.addEventListener('click', function() {
@@ -967,8 +963,7 @@
                     });
                 });
             }
-            
-            // Table of Contents smooth scrolling
+
             document.querySelectorAll('.toc-list a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -984,8 +979,7 @@
                     }
                 });
             });
-            
-            // Agreement checkbox functionality
+
             const agreeCheckbox = document.getElementById('agree-tos');
             const continueBtn = document.getElementById('continue-btn');
             
@@ -996,14 +990,12 @@
                 
                 continueBtn.addEventListener('click', function() {
                     if (!this.disabled) {
-                        window.location.href = 'https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip';
+                        window.location.href = './download/CheeseClient.zip';
                     }
                 });
             }
-            
-            // Fade in animation on scroll
+
             const fadeElements = document.querySelectorAll('.fade-in');
-            
             const fadeInOnScroll = () => {
                 fadeElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
@@ -1014,15 +1006,11 @@
                     }
                 });
             };
-            
-            // Initialize animations
+
             fadeInOnScroll();
             window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Highlight current section in ToC
             const sections = document.querySelectorAll('.tos-section');
             const tocLinks = document.querySelectorAll('.toc-list a');
-            
             const highlightTocLink = () => {
                 let currentSection = '';
                 
