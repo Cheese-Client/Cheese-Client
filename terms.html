@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms of Service for Cheese Client - Read our terms and conditions before using the Minecraft utility mod. Understand your rights and responsibilities.">
     <title>Terms of Service - Cheese Client</title>
+    <link rel="icon" href="images/Logo.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ffb347;
             --primary-dark: #ff9800;
             --primary-light: #ffd187;
-            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --primary-gradient: linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
             --secondary: #4a5568;
             --accent: #667eea;
+            --accent-light: #7986CB;
             --bg: #f9fafc;
             --card: #fff;
             --card-hover: #fffef6;
@@ -21,10 +24,16 @@
             --text-light: #6b7280;
             --border: #e5e7eb;
             --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
             --maxw: 1200px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
-            --glow: 0 0 20px rgba(255, 179, 71, 0.2);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --shadow-game: 8px 8px 0px rgba(255, 179, 71, 0.1);
+            --shadow-game-hover: 12px 12px 0px rgba(255, 179, 71, 0.2);
+            --glow: 0 0 25px rgba(255, 179, 71, 0.3);
+            --pixel: 4px;
         }
 
         * {
@@ -34,11 +43,12 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -50,7 +60,7 @@
         header {
             background: rgba(255, 255, 255, 0.95);
             padding: 16px 0;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -84,20 +94,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: rotate(5deg) scale(1.05);
         }
 
         .logo img {
             width: 80%;
             height: 80%;
             object-fit: contain;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
         }
 
         .brand-text {
@@ -171,57 +181,17 @@
             cursor: pointer;
         }
 
-        .hero {
-            background: var(--primary-gradient);
-            padding: 100px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            color: #412200;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-        }
-
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             padding: 16px 32px;
             border-radius: 12px;
             text-decoration: none;
             color: #fff;
             font-weight: 600;
-            background: var(--primary-gradient);
+            background: var(--primary-dark);
             box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
             transition: all 0.3s ease;
             border: none;
@@ -250,6 +220,17 @@
             box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
         }
 
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
         .section {
             padding: 100px 0;
         }
@@ -264,6 +245,20 @@
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -273,162 +268,127 @@
             margin: 0 auto;
         }
 
-        /* Terms of Service Styles */
-        .tos-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--card);
-            padding: 60px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+        /* News-style page header */
+        .page-header {
+            padding: 100px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 179, 71, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
+            margin-bottom: 40px;
         }
 
-        .last-updated {
-            text-align: center;
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Terms card styling */
+        .terms-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 60px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            margin: 0 auto;
+            max-width: 1000px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .terms-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .terms-card .last-updated {
+            font-style: italic;
             color: var(--text-light);
             margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border);
-            font-style: italic;
+            font-size: 0.95rem;
+            text-align: center;
         }
 
-        .tos-section {
-            margin-bottom: 50px;
-        }
-
-        .tos-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .tos-section h3 {
-            font-size: 1.5rem;
+        .terms-card h2 {
+            font-size: 1.9rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .tos-section h3 i {
-            font-size: 1.25rem;
-        }
-
-        .tos-content {
-            color: var(--text-light);
-        }
-
-        .tos-content p {
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .tos-content ul, .tos-content ol {
-            margin-left: 24px;
-            margin-bottom: 20px;
-        }
-
-        .tos-content li {
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .important-note {
-            background: rgba(255, 179, 71, 0.1);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .important-note p {
-            margin: 0;
-            font-weight: 500;
+            margin: 50px 0 20px;
             color: var(--text);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
-        .definition-list {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin: 30px 0;
-        }
-
-        .definition-list dt {
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 8px;
-            margin-top: 20px;
-        }
-
-        .definition-list dt:first-child {
+        .terms-card h2:first-of-type {
             margin-top: 0;
         }
 
-        .definition-list dd {
-            color: var(--text-light);
-            margin-left: 20px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .agreement-checkbox {
-            background: rgba(255, 179, 71, 0.05);
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .agreement-checkbox label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-weight: 500;
+        .terms-card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 35px 0 15px;
             color: var(--text);
-            cursor: pointer;
+        }
+
+        .terms-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.75;
+            font-size: 1.05rem;
+        }
+
+        .terms-card ul, .terms-card ol {
+            color: var(--text-light);
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .terms-card li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .terms-card li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .terms-card a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-light);
+        }
+
+        .terms-card a:hover {
+            color: var(--primary);
+            border-bottom-style: solid;
+        }
+
+        /* Decorative image elements */
+        .terms-decoration {
+            display: flex;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
-        .agreement-checkbox input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
+        .terms-decoration img {
+            width: 80px;
+            height: auto;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 183, 71, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 100;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.4);
+        .terms-decoration img:hover {
+            transform: rotate(8deg);
         }
 
         footer {
@@ -514,49 +474,7 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Table of Contents */
-        .toc-container {
-            background: rgba(255, 179, 71, 0.05);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-
-        .toc-container h3 {
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .toc-list {
-            list-style: none;
-        }
-
-        .toc-list li {
-            margin-bottom: 12px;
-        }
-
-        .toc-list a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .toc-list a:hover {
-            color: var(--primary);
-        }
-
-        .toc-list i {
-            font-size: 0.875rem;
-            color: var(--primary);
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -579,11 +497,15 @@
                 display: block;
             }
             
-            .hero-content h1 {
+            .page-header {
+                padding: 80px 0 40px;
+            }
+            
+            .page-header h1 {
                 font-size: 2.5rem;
             }
             
-            .hero-content p {
+            .page-header p {
                 font-size: 1.125rem;
             }
             
@@ -591,16 +513,12 @@
                 padding: 80px 0;
             }
             
-            .section-title h2 {
-                font-size: 2.25rem;
+            .terms-card {
+                padding: 40px 30px;
             }
             
-            .tos-container {
-                padding: 30px 20px;
-            }
-            
-            .agreement-checkbox {
-                padding: 30px 20px;
+            .terms-card h2 {
+                font-size: 1.6rem;
             }
             
             .footer-bottom {
@@ -610,23 +528,19 @@
         }
         
         @media (max-width: 480px) {
-            .hero-content h1 {
+            .page-header h1 {
                 font-size: 2rem;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
+            .terms-card {
+                padding: 30px 20px;
             }
             
-            .tos-section h3 {
-                font-size: 1.25rem;
+            .terms-card h2 {
+                font-size: 1.4rem;
             }
             
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
+            .terms-card p {
                 font-size: 1rem;
             }
         }
@@ -638,7 +552,7 @@
             <div class="header-content">
                 <div class="logo-container">
                     <div class="logo">
-                        <img src="./images/Logo.png" alt="Cheese Client Logo">
+                        <img src="images/Logo.webp" alt="Cheese Client Logo">
                     </div>
                     <div class="brand-text">
                         <h1>Cheese Client</h1>
@@ -646,7 +560,7 @@
                     </div>
                 </div>
                 <nav class="nav-links">
-                    <a href="https://cheese-client.github.io/Cheese-Client/">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="features.html">Features</a>
                     <a href="download.html">Download</a>
                     <a href="changelog.html">Changelog</a>
@@ -661,240 +575,73 @@
             </div>
         </div>
     </header>
-    
-    <section class="hero">
+
+    <section class="page-header">
         <div class="container">
-            <div class="hero-content">
-                <h1>Terms of Service</h1>
-                <p>Please read these terms carefully before using Cheese Client</p>
-                <div class="last-updated fade-in">
-                    <p><strong>The most recent update:</strong> December 6, 2025</p>
-                </div>
-            </div>
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using Cheese Client</p>
         </div>
     </section>
-    
+
     <section class="section">
         <div class="container">
-            <div class="tos-container fade-in">
-                <div class="toc-container">
-                    <h3>Table of Contents</h3>
-                    <ul class="toc-list">
-                        <li><a href="#acceptance"><i class="fas fa-chevron-right"></i> 1. Acceptance of Terms</a></li>
-                        <li><a href="#description"><i class="fas fa-chevron-right"></i> 2. Service Description</a></li>
-                        <li><a href="#eligibility"><i class="fas fa-chevron-right"></i> 3. Eligibility</a></li>
-                        <li><a href="#user-responsibilities"><i class="fas fa-chevron-right"></i> 4. User Responsibilities</a></li>
-                        <li><a href="#prohibited-uses"><i class="fas fa-chevron-right"></i> 5. Prohibited Uses</a></li>
-                        <li><a href="#intellectual-property"><i class="fas fa-chevron-right"></i> 6. Intellectual Property</a></li>
-                        <li><a href="#disclaimer"><i class="fas fa-chevron-right"></i> 7. Disclaimer of Warranties</a></li>
-                        <li><a href="#limitation-liability"><i class="fas fa-chevron-right"></i> 8. Limitation of Liability</a></li>
-                        <li><a href="#termination"><i class="fas fa-chevron-right"></i> 9. Termination</a></li>
-                        <li><a href="#modifications"><i class="fas fa-chevron-right"></i> 10. Modifications to Terms</a></li>
-                        <li><a href="#governing-law"><i class="fas fa-chevron-right"></i> 11. Governing Law</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> 12. Contact Information</a></li>
-                    </ul>
+            <div class="terms-card fade-in">
+                <div class="terms-decoration">
+                    <img src="images/Logo.webp" alt="Cheese Client icon" style="width:70px;">
                 </div>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i> Last Updated: June 1, 2025 · Version 2.1
+                </div>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>By downloading, accessing, or using Cheese Client ("the Software"), you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions, you may not install, use, or distribute the Software. Cheese Client is provided as a third-party enhancement utility for Minecraft and is not affiliated with Mojang Studios or Microsoft.</p>
+
+                <h2>2. Description of Service</h2>
+                <p>Cheese Client is a free, open‑inspired Minecraft utility mod that offers various gameplay enhancements including but not limited to combat assistance, movement tweaks, visual modifications, and performance optimizations. The Software is provided "as is" and we grant you a non-exclusive, non-transferable, revocable license to use it for personal, non-commercial purposes.</p>
+
+                <h2>3. User Responsibilities</h2>
+                <p>You acknowledge that the use of enhancement clients on multiplayer servers may violate server rules. You are solely responsible for any consequences arising from your use of Cheese Client, including but not limited to account bans, reputation loss, or server restrictions. We strongly recommend that you:</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Review individual server rules before using any features.</li>
+                    <li><i class="fas fa-check-circle"></i> Use the client discreetly and responsibly.</li>
+                    <li><i class="fas fa-check-circle"></i> Keep the Software updated to the latest version.</li>
+                    <li><i class="fas fa-check-circle"></i> Never share your account credentials or claim the Software as your own.</li>
+                </ul>
+
+                <h2>4. Intellectual Property</h2>
+                <p>Cheese Client’s source code, assets, logos, and visual identity are the property of the Cheese Client development team unless otherwise noted. You may not reverse engineer, decompile, modify, or create derivative works of the Software except where explicitly permitted by applicable law. The Minecraft name, brand, and related assets are property of Mojang AB / Microsoft.</p>
+
+                <h2>5. Disclaimer of Warranties</h2>
+                <p>The Software is provided on an "AS IS" and "AS AVAILABLE" basis without any warranties of any kind, either express or implied. We do not guarantee that Cheese Client will be error‑free, secure, or compatible with all system configurations. Use of the Software is at your own risk. No oral or written information given by us shall create a warranty.</p>
+
+                <h2>6. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, in no event shall Cheese Client or its contributors be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation loss of profits, data, goodwill, or other intangible losses, resulting from (i) your use or inability to use the Software; (ii) any unauthorized access to or alteration of your data; (iii) conduct of any third party on the Software.</p>
+
+                <h2>7. Modifications to Terms</h2>
+                <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice via our website or Discord community. What constitutes a material change will be determined at our sole discretion. By continuing to access or use the Software after revisions become effective, you agree to be bound by the updated terms.</p>
+
+                <h2>8. Termination</h2>
+                <p>We may terminate or suspend your access to the Software immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Software will cease immediately. Provisions that by their nature should survive termination shall survive, including intellectual property, warranty disclaimers, and limitations of liability.</p>
+
+                <h2>9. Governing Law</h2>
+                <p>These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which the development team operates, without regard to its conflict of law provisions. Any legal disputes shall be resolved exclusively in the courts of that jurisdiction.</p>
+
+                <h2>10. Contact Information</h2>
+                <p>If you have any questions about these Terms, please reach out to us through our official Discord server or open an issue on our GitHub repository. We aim to respond within 5‑7 business days.</p>
                 
-                <div class="important-note">
-                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> By downloading, installing, or using Cheese Client, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use Cheese Client.</p>
-                </div>
-
-                <div class="tos-section" id="acceptance">
-                    <h3><i class="fas fa-check-circle"></i> 1. Acceptance of Terms</h3>
-                    <div class="tos-content">
-                        <p>These Terms of Service ("Terms") govern your access to and use of Cheese Client software, related services, and content (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
-                        <p>If you are using the Service on behalf of an organization, you are agreeing to these Terms for that organization and promising that you have the authority to bind that organization to these Terms.</p>
-                        <p>These Terms constitute a legally binding agreement between you and Cheese Client ("we," "us," or "our").</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="description">
-                    <h3><i class="fas fa-info-circle"></i> 2. Service Description</h3>
-                    <div class="tos-content">
-                        <p>Cheese Client is a third-party Minecraft enhancement suite that provides various gameplay features, tools, and utilities. The Service includes:</p>
-                        <ul>
-                            <li>The Cheese Client software application</li>
-                            <li>Updates, patches, and modifications to the software</li>
-                            <li>Documentation, guides, and support resources</li>
-                            <li>Community forums and discussion platforms</li>
-                        </ul>
-                        <div class="definition-list">
-                            <h4>Key Definitions:</h4>
-                            <dl>
-                                <dt>"Software"</dt>
-                                <dd>The Cheese Client application, including all versions, updates, and modifications.</dd>
-                                
-                                <dt>"User"</dt>
-                                <dd>Any individual who downloads, installs, or uses the Software.</dd>
-                                
-                                <dt>"Content"</dt>
-                                <dd>Any data, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Service.</dd>
-                                
-                                <dt>"Third-Party Services"</dt>
-                                <dd>Services, websites, or content operated by third parties, including but not limited to Minecraft, Mojang AB, and Microsoft Corporation.</dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="eligibility">
-                    <h3><i class="fas fa-user-check"></i> 3. Eligibility</h3>
-                    <div class="tos-content">
-                        <p>To use the Service, you must:</p>
-                        <ol>
-                            <li>Be at least 13 years of age</li>
-                            <li>Have the legal capacity to enter into a binding agreement</li>
-                            <li>Not be prohibited from receiving the Service under applicable laws</li>
-                            <li>Own a legitimate copy of Minecraft</li>
-                            <li>Use the Service only on servers where you have permission from the server administrators</li>
-                        </ol>
-                        <p>If you are under 18 years of age, you may only use the Service with the consent and supervision of a parent or legal guardian who agrees to be bound by these Terms.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="user-responsibilities">
-                    <h3><i class="fas fa-user-shield"></i> 4. User Responsibilities</h3>
-                    <div class="tos-content">
-                        <p>You are responsible for:</p>
-                        <ul>
-                            <li><strong>Compliance with Laws:</strong> Using the Service in compliance with all applicable local, state, national, and international laws and regulations.</li>
-                            <li><strong>Server Rules:</strong> Respecting and following the rules and terms of service of any Minecraft server you join.</li>
-                            <li><strong>Account Security:</strong> Maintaining the security of your Minecraft account and not sharing credentials.</li>
-                            <li><strong>Backup:</strong> Regularly backing up your Minecraft worlds and data.</li>
-                            <li><strong>Appropriate Use:</strong> Using the Service in a manner that does not interfere with other players' enjoyment of the game.</li>
-                        </ul>
-                        <div class="important-note">
-                            <p><i class="fas fa-exclamation-circle"></i> <strong>Note:</strong> You are solely responsible for any consequences that may arise from your use of Cheese Client, including but not limited to account bans, server restrictions, or other penalties imposed by third parties.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="prohibited-uses">
-                    <h3><i class="fas fa-ban"></i> 5. Prohibited Uses</h3>
-                    <div class="tos-content">
-                        <p>You agree not to use the Service to:</p>
-                        <ol>
-                            <li>Violate any laws or regulations</li>
-                            <li>Infringe upon the rights of others, including intellectual property rights</li>
-                            <li>Harass, abuse, or harm another person</li>
-                            <li>Distribute malware, viruses, or other harmful code</li>
-                            <li>Attempt to gain unauthorized access to any service, account, computer system, or network</li>
-                            <li>Use the Service for any fraudulent or malicious purpose</li>
-                            <li>Reverse engineer, decompile, or disassemble the Software except as permitted by applicable law</li>
-                            <li>Distribute modified versions of the Software without explicit written permission</li>
-                            <li>Use the Service on servers where such use is explicitly prohibited</li>
-                            <li>Create or distribute cheats, exploits, or automation software that negatively impacts other players' experiences</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="intellectual-property">
-                    <h3><i class="fas fa-copyright"></i> 6. Intellectual Property</h3>
-                    <div class="tos-content">
-                        <p><strong>Cheese Client Software:</strong> The Cheese Client software, including all associated intellectual property rights, is owned by Cheese Client. We grant you a limited, non-exclusive, non-transferable, revocable license to use the Software for personal, non-commercial purposes.</p>
-                        
-                        <p><strong>Minecraft:</strong> Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang AB or Microsoft Corporation. All rights to Minecraft belong to their respective owners.</p>
-                        
-                        <p><strong>Third-Party Components:</strong> The Software may include third-party open-source components. Their use is governed by their respective licenses.</p>
-                        
-                        <p><strong>User Content:</strong> You retain ownership of any content you create while using the Service. By submitting feedback or suggestions, you grant us the right to use and implement them without compensation.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="disclaimer">
-                    <h3><i class="fas fa-shield-alt"></i> 7. Disclaimer of Warranties</h3>
-                    <div class="tos-content">
-                        <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
-                        
-                        <p>WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE, THAT DEFECTS WILL BE CORRECTED, OR THAT THE SERVICE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.</p>
-                        
-                        <p>WE DO NOT WARRANT OR MAKE ANY REPRESENTATIONS REGARDING THE USE OR THE RESULTS OF THE USE OF THE SERVICE IN TERMS OF ITS CORRECTNESS, ACCURACY, RELIABILITY, OR OTHERWISE.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="limitation-liability">
-                    <h3><i class="fas fa-balance-scale"></i> 8. Limitation of Liability</h3>
-                    <div class="tos-content">
-                        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL CHEESE CLIENT, ITS DEVELOPERS, CONTRIBUTORS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:</p>
-                        
-                        <ul>
-                            <li>YOUR USE OR INABILITY TO USE THE SERVICE</li>
-                            <li>ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY PERSONAL INFORMATION STORED THEREIN</li>
-                            <li>ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SERVICE</li>
-                            <li>ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE THAT MAY BE TRANSMITTED TO OR THROUGH THE SERVICE</li>
-                            <li>ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE THROUGH THE SERVICE</li>
-                        </ul>
-                        
-                        <p>OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATED TO THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU HAVE PAID TO US FOR THE SERVICE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR $10, WHICHEVER IS GREATER.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="termination">
-                    <h3><i class="fas fa-times-circle"></i> 9. Termination</h3>
-                    <div class="tos-content">
-                        <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.</p>
-                        
-                        <p>Upon termination, your right to use the Service will immediately cease. If you wish to terminate your use of the Service, you may simply discontinue using the Software and delete it from your system.</p>
-                        
-                        <p>All provisions of these Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="modifications">
-                    <h3><i class="fas fa-edit"></i> 10. Modifications to Terms</h3>
-                    <div class="tos-content">
-                        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
-                        
-                        <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you must stop using the Service.</p>
-                        
-                        <p>The "Last Updated" date at the top of these Terms indicates when the latest revision was made.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="governing-law">
-                    <h3><i class="fas fa-gavel"></i> 11. Governing Law</h3>
-                    <div class="tos-content">
-                        <p>These Terms shall be governed and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions.</p>
-                        
-                        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
-                    </div>
-                </div>
-
-                <div class="tos-section" id="contact">
-                    <h3><i class="fas fa-envelope"></i> 12. Contact Information</h3>
-                    <div class="tos-content">
-                        <p>If you have any questions about these Terms, please contact us:</p>
-                        <ul>
-                            <li><strong>Discord:</strong> Join our official Discord server</li>
-                            <li><strong>GitHub:</strong> Open an issue on our GitHub repository</li>
-                        </ul>
-                        <p>We will make reasonable efforts to respond to your inquiry within a reasonable timeframe.</p>
-                    </div>
-                </div>
-
-                <div class="agreement-checkbox">
-                    <label for="agree-tos">
-                        <input type="checkbox" id="agree-tos" name="agree-tos">
-                        <span>I have read, understood, and agree to be bound by these Terms of Service</span>
-                    </label>
-                    <button id="continue-btn" class="btn" style="width: 100%;" disabled>
-                        <i class="fas fa-check"></i> Continue to Download
-                    </button>
+                <div style="margin-top: 50px; padding: 30px; background: rgba(255, 179, 71, 0.05); border-radius: var(--radius); border-left: 6px solid var(--primary);">
+                    <p style="margin-bottom: 0; font-weight: 500; color: var(--text);"><i class="fas fa-heart" style="color: var(--primary); margin-right: 10px;"></i> Cheese Client is and always will be free. These terms exist to protect both you and us — thank you for being part of our community.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Cheese Client</h3>
-                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls — 100% free.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-discord"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
@@ -909,24 +656,25 @@
                         <li><a href="features.html">Features</a></li>
                         <li><a href="changelog.html">Changelog</a></li>
                         <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="news.html">News</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="terms.html" class="active">Terms of Service</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="disclaimer.html">Disclaimer</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023-2024 Cheese Client. All rights reserved.</p>
+                <p>&copy; Cheese Client all rights reserved.</p>
                 <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -945,95 +693,20 @@
                 } else {
                     header.classList.remove('header-scrolled');
                 }
-
-                const backToTop = document.getElementById('backToTop');
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
             });
-
-            const backToTop = document.getElementById('backToTop');
-            if (backToTop) {
-                backToTop.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-
-            document.querySelectorAll('.toc-list a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            const agreeCheckbox = document.getElementById('agree-tos');
-            const continueBtn = document.getElementById('continue-btn');
-            
-            if (agreeCheckbox && continueBtn) {
-                agreeCheckbox.addEventListener('change', function() {
-                    continueBtn.disabled = !this.checked;
-                });
-                
-                continueBtn.addEventListener('click', function() {
-                    if (!this.disabled) {
-                        window.location.href = './download/CheeseClient.zip';
-                    }
-                });
-            }
 
             const fadeElements = document.querySelectorAll('.fade-in');
             const fadeInOnScroll = () => {
                 fadeElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
                     const elementVisible = 150;
-                    
                     if (elementTop < window.innerHeight - elementVisible) {
                         element.classList.add('fade-in');
                     }
                 });
             };
-
             fadeInOnScroll();
             window.addEventListener('scroll', fadeInOnScroll);
-            const sections = document.querySelectorAll('.tos-section');
-            const tocLinks = document.querySelectorAll('.toc-list a');
-            const highlightTocLink = () => {
-                let currentSection = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollY >= (sectionTop - 150)) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-                
-                tocLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                        link.style.color = 'var(--primary)';
-                        link.style.fontWeight = '600';
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', highlightTocLink);
         });
     </script>
 </body>

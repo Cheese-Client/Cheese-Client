@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disclaimer for Cheese Client – Important legal disclaimers, no warranty, Mojang affiliation, and liability limitations for our Minecraft utility mod.">
+    <title>Disclaimer - Cheese Client</title>
+    <link rel="icon" href="images/Logo.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --accent: #667eea;
+            --accent-light: #7986CB;
+            --bg: #f9fafc;
+            --card: #fff;
+            --card-hover: #fffef6;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --maxw: 1200px;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --shadow-game: 8px 8px 0px rgba(255, 179, 71, 0.1);
+            --shadow-game-hover: 12px 12px 0px rgba(255, 179, 71, 0.2);
+            --glow: 0 0 25px rgba(255, 179, 71, 0.3);
+            --pixel: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            background: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* News-style page header */
+        .page-header {
+            padding: 100px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 179, 71, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Terms card styling (reused for disclaimer) */
+        .terms-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 60px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            margin: 0 auto;
+            max-width: 1000px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .terms-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .terms-card .last-updated {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .terms-card h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .terms-card h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .terms-card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 35px 0 15px;
+            color: var(--text);
+        }
+
+        .terms-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.75;
+            font-size: 1.05rem;
+        }
+
+        .terms-card ul, .terms-card ol {
+            color: var(--text-light);
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .terms-card li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .terms-card li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .terms-card a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed var(--primary-light);
+        }
+
+        .terms-card a:hover {
+            color: var(--primary);
+            border-bottom-style: solid;
+        }
+
+        /* Decorative image elements */
+        .terms-decoration {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .terms-decoration img {
+            width: 80px;
+            height: auto;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+        }
+
+        .terms-decoration img:hover {
+            transform: rotate(8deg);
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header {
+                padding: 80px 0 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.125rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .terms-card {
+                padding: 40px 30px;
+            }
+            
+            .terms-card h2 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .terms-card {
+                padding: 30px 20px;
+            }
+            
+            .terms-card h2 {
+                font-size: 1.4rem;
+            }
+            
+            .terms-card p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="images/Logo.webp" alt="Cheese Client Logo">
+                    </div>
+                    <div class="brand-text">
+                        <h1>Cheese Client</h1>
+                        <span>Minecraft Hacked Client</span>
+                    </div>
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="features.html">Features</a>
+                    <a href="download.html">Download</a>
+                    <a href="changelog.html">Changelog</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="news.html">News</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Disclaimer</h1>
+            <p>Legal disclaimers, non-affiliation, and limitations of liability</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="terms-card fade-in">
+                <div class="terms-decoration">
+                    <img src="images/Logo.webp" alt="Cheese Client icon" style="width:70px;">
+                </div>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i> Last Updated: July 1, 2025 · Version 1.1
+                </div>
+
+                <h2>1. No Warranty – "As Is"</h2>
+                <p>Cheese Client is provided on an <strong>"AS IS" and "AS AVAILABLE"</strong> basis, without any warranties of any kind, either express or implied. We do not guarantee that the Software will be error‑free, secure, or compatible with all Minecraft versions, server configurations, or system environments. The entire risk arising out of use or performance of the client remains with you.</p>
+
+                <h2>2. Mojang / Microsoft Non‑Affiliation</h2>
+                <p>Cheese Client is an independent third‑party project. <strong>We are not affiliated, associated, authorized, endorsed by, or in any way officially connected</strong> with Mojang AB, Microsoft Corporation, or any of their subsidiaries or affiliates. "Minecraft" is a registered trademark of Mojang AB. All related names, brands, and assets are the property of their respective owners. Any references to Mojang or Microsoft are purely for descriptive purposes.</p>
+                
+                <h2>3. Use at Your Own Risk – Server Rules</h2>
+                <p>You acknowledge that utility modifications like Cheese Client may be prohibited on certain multiplayer servers. We <strong>do not encourage or promote cheating, griefing, or any violation of server terms</strong>. You are solely responsible for:</p>
+                <ul>
+                    <li><i class="fas fa-exclamation-triangle"></i> Reading and respecting individual server rules before using the client.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> We are not responsible for any property loss you may incur after using this software.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Any account penalties, bans, or restrictions imposed by server administrators.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Consequences arising from the use of specific features (e.g., automated actions, visual aids).</li>
+                </ul>
+                <p>We cannot and will not be liable for any sanctions applied to your Minecraft account.</p>
+
+                <h2>4. External Links & Third‑Party Services</h2>
+                <p>Our website, Discord server, and GitHub repository may contain links to external sites or services that are not operated by us. We have <strong>no control over the content, privacy policies, or practices</strong> of any third‑party websites and assume no responsibility for them. You access external links at your own discretion.</p>
+
+                <h2>5. Limitation of Liability</h2>
+                <p>To the fullest extent permitted by law, in no event shall Cheese Client, its contributors, or maintainers be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, goodwill, or other intangible losses, arising out of or in connection with:</p>
+                <ul>
+                    <li><i class="fas fa-times-circle"></i> Your use or inability to use the Software.</li>
+                    <li><i class="fas fa-times-circle"></i> Any unauthorized access to or alteration of your data or Minecraft account.</li>
+                    <li><i class="fas fa-times-circle"></i> Conduct of third parties on servers or community platforms.</li>
+                    <li><i class="fas fa-times-circle"></i> Bugs, glitches, or unintended behavior of the client.</li>
+                </ul>
+
+                <h2>6. Trademark & Brand Clarification</h2>
+                <p>The "Cheese Client" name, logo, and related graphical assets are the property of the Cheese Client development team. You may not redistribute or use them for commercial purposes without explicit permission. All other trademarks, service marks, and trade names referenced herein are the property of their respective owners. <strong>Minecraft® is copyright Mojang AB and Microsoft.</strong></p>
+
+                <h2>7. Changes to This Disclaimer</h2>
+                <p>We reserve the right to update or modify this Disclaimer at any time without prior notice. The "Last Updated" date at the top of this page reflects the most recent revision. Your continued use of Cheese Client after any changes constitutes acceptance of the revised disclaimer. We encourage you to review this page periodically.</p>
+
+                <h2>8. Contact Information</h2>
+                <p>If you have any questions or concerns regarding this Disclaimer, please reach out through our official <strong>Discord server</strong> or create an issue on <strong>GitHub</strong>. We are committed to transparency and will do our best to address your inquiries within a reasonable timeframe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cheese Client</h3>
+                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls — 100% free.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="download.html">Download</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="news.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Cheese Client all rights reserved.</p>
+                <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            fadeInOnScroll();
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>

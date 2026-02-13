@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download the latest version of Cheese Client for Minecraft. Get secure and fast downloads with version history, installation guides, and compatibility information for the utility mod.">
     <title>download - Cheese Client</title>
+    <link rel="icon" href="images/Logo.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -682,7 +684,7 @@
             <div class="header-content">
                 <div class="logo-container">
                     <div class="logo">
-                        <img src="images/Logo.png" alt="Cheese Client Logo">
+                        <img src="images/Logo.webp" alt="Cheese Client Logo">
                     </div>
                     <div class="brand-text">
                         <h1>Cheese Client</h1>
@@ -690,7 +692,7 @@
                     </div>
                 </div>
                 <nav class="nav-links">
-                    <a href="https://cheese-client.github.io/Cheese-Client/">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="features.html">Features</a>
                     <a href="download.html" class="active">Download</a>
                     <a href="changelog.html">Changelog</a>
@@ -732,7 +734,7 @@
                         <li><i class="fas fa-check"></i> Customizable user interface</li>
                         <li><i class="fas fa-check"></i> Active community and resources</li>
                     </ul>
-                    <a href="terms.html" class="btn">
+                    <a href="thank-you-for-downloading.html" class="btn">
                         <i class="fas fa-download"></i> Download it!
                     </a>
                 </div>
@@ -868,7 +870,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023-2025 Cheese Client. All rights reserved.</p>
+                <p>&copy;Cheese Client all rights reserved.</p>
                 <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
             </div>
         </div>
@@ -916,9 +918,23 @@
             });
             
             fadeInOnScroll();
-            
             window.addEventListener('scroll', fadeInOnScroll);
+
+            const downloadBtn = document.querySelector('.free-card .btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const downloadUrl = 'https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip';
+                    const targetUrl = this.getAttribute('href');
+                    window.open(downloadUrl, '_blank');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 50);
+                });
+            }
         });
     </script>
+
+    <link rel="prefetch" href="terms.html" as="document">
 </body>
 </html>

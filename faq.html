@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Cheese Client</title>
+    <meta name="description" content="Explore all features of Cheese Client - the ultimate Minecraft utility mod with advanced combat, movement, visual enhancements, and performance optimizations.">
+    <title>Features - Cheese Client</title>
+    <link rel="icon" href="images/Logo.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ffb347;
@@ -559,7 +561,6 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -573,78 +574,78 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 border-top: 1px solid var(--border);
             }
-            
+
             .nav-links.active {
                 display: flex;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-content p {
                 font-size: 1.125rem;
             }
-            
+
             .section {
                 padding: 80px 0;
             }
-            
+
             .section-title h2 {
                 font-size: 2.25rem;
             }
-            
+
             .category-header {
                 flex-direction: column;
                 text-align: center;
                 gap: 12px;
             }
-            
+
             .help-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
         }
-        
+
         @media (max-width: 480px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .faq-question {
                 padding: 20px;
                 font-size: 1rem;
             }
-            
+
             .faq-answer {
                 padding: 0 20px;
             }
-            
+
             .faq-item.active .faq-answer {
                 padding: 20px;
             }
         }
     </style>
-</head>
+
 <body>
     <header id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
                     <div class="logo">
-                        <img src="./images/Logo.png" alt="Cheese Client Logo">
+                        <img src="images/Logo.webp" alt="Cheese Client Logo">
                     </div>
                     <div class="brand-text">
                         <h1>Cheese Client</h1>
@@ -652,7 +653,7 @@
                     </div>
                 </div>
                 <nav class="nav-links">
-                    <a href="https://cheese-client.github.io/Cheese-Client/">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="features.html">Features</a>
                     <a href="download.html">Download</a>
                     <a href="changelog.html">Changelog</a>
@@ -667,7 +668,7 @@
             </div>
         </div>
     </header>
-    
+
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -676,11 +677,10 @@
             </div>
         </div>
     </section>
-    
+
     <section class="section">
         <div class="container">
             <div class="faq-container">
-                <!-- General Questions -->
                 <div class="faq-category fade-in">
                     <div class="category-header">
                         <div class="category-icon">
@@ -688,8 +688,8 @@
                         </div>
                         <h3>General Questions</h3>
                     </div>
-                    
-                    <div class="faq-item">
+
+                    <div class="faq-item active">
                         <div class="faq-question">
                             <span>What is Cheese Client?</span>
                             <i class="fas fa-chevron-down"></i>
@@ -698,7 +698,7 @@
                             <p>Cheese Client is a powerful Minecraft enhancement suite designed to elevate your gaming experience with advanced features, performance optimization, and intuitive controls. It provides tools for combat, movement, visual improvements, and utilities that enhance gameplay while maintaining security and stability.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Is Cheese Client free to use?</span>
@@ -709,7 +709,7 @@
                             <p>There are no plans to introduce paid versions or premium features. You get access to all features without any limitations.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Is Cheese Client safe to use?</span>
@@ -726,7 +726,7 @@
                             <p>We regularly update our security measures and encourage responsible usage.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>What Minecraft versions are supported?</span>
@@ -738,16 +738,15 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Installation & Setup -->
+
                 <div class="faq-category fade-in">
                     <div class="category-header">
                         <div class="category-icon">
                             <i class="fas fa-download"></i>
                         </div>
-                        <h3>Installation & Setup</h3>
+                        <h3>Installation &amp; Setup</h3>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>How do I install Cheese Client?</span>
@@ -756,33 +755,15 @@
                         <div class="faq-answer">
                             <p>Follow these simple steps to install Cheese Client:</p>
                             <ol>
-                                <li>Download the latest version from our Download page</li>
-                                <li>Extract the ZIP file to a folder of your choice</li>
-                                <li>Run the Cheese Client executable file</li>
-                                <li>Configure your settings in the client interface</li>
-                                <li>Launch Minecraft through the client</li>
+                                <li>Download the Cheese Client from our Download page</li>
+                                <li>Create a CheeseClient folder in the version folder</li>
+                                <li>Extract the ZIP file to the CheeseClient folder</li>
+                                <li>Start the Cheese Client using your launcher</li>
                             </ol>
                             <p>Detailed installation guides with screenshots are available in our documentation.</p>
                         </div>
                     </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Does Cheese Client work with other mods?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Cheese Client is designed to work with most popular Minecraft mods, but compatibility may vary. Here's what you should know:</p>
-                            <ul>
-                                <li><strong>OptiFine:</strong> Generally compatible, but some visual features may conflict</li>
-                                <li><strong>Forge mods:</strong> Check individual mod compatibility in our forums</li>
-                                <li><strong>Fabric mods:</strong> Limited compatibility - use with caution</li>
-                                <li><strong>Performance mods:</strong> Usually compatible, but may require configuration</li>
-                            </ul>
-                            <p>We recommend testing compatibility with your specific mod setup before regular use.</p>
-                        </div>
-                    </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>How do I update Cheese Client?</span>
@@ -801,16 +782,15 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Features & Usage -->
+
                 <div class="faq-category fade-in">
                     <div class="category-header">
                         <div class="category-icon">
                             <i class="fas fa-cogs"></i>
                         </div>
-                        <h3>Features & Usage</h3>
+                        <h3>Features &amp; Usage</h3>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>What are the most popular features?</span>
@@ -828,7 +808,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>How do I configure keybinds and settings?</span>
@@ -846,7 +826,7 @@
                             <p>You can save multiple configurations as profiles for different gameplay scenarios.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Can I get banned for using Cheese Client?</span>
@@ -864,8 +844,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Troubleshooting -->
+
                 <div class="faq-category fade-in">
                     <div class="category-header">
                         <div class="category-icon">
@@ -873,7 +852,7 @@
                         </div>
                         <h3>Troubleshooting</h3>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Cheese Client won't launch. What should I do?</span>
@@ -892,7 +871,7 @@
                             <p>If problems persist, visit our Discord community for support.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>I'm experiencing lag or low FPS. How can I fix it?</span>
@@ -911,7 +890,7 @@
                             <p>Cheese Client is optimized for performance, but some features may impact FPS on lower-end systems.</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Some features aren't working. What could be wrong?</span>
@@ -934,7 +913,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -942,10 +921,10 @@
                     <h3>Cheese Client</h3>
                     <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="index.htmlfaq#"><i class="fab fa-discord"></i></a>
+                        <a href="index.htmlfaq#"><i class="fab fa-github"></i></a>
+                        <a href="index.htmlfaq#"><i class="fab fa-youtube"></i></a>
+                        <a href="index.htmlfaq#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -955,19 +934,20 @@
                         <li><a href="features.html">Features</a></li>
                         <li><a href="changelog.html">Changelog</a></li>
                         <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="news.html">News</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="index.htmlterms.html">Terms of Service</a></li>
+                        <li><a href="index.htmlprivacy.html">Privacy Policy</a></li>
+                        <li><a href="index.htmldisclaimer.html">Disclaimer</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023-2024 Cheese Client. All rights reserved.</p>
+                <p>©Cheese Client all rights reserved.</p>
                 <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
             </div>
         </div>
@@ -975,17 +955,14 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
-            
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                 });
             }
-            
-            // Header scroll effect
+
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -994,27 +971,22 @@
                     header.classList.remove('header-scrolled');
                 }
             });
-            
-            // FAQ accordion functionality
+
             const faqItems = document.querySelectorAll('.faq-item');
             const searchInput = document.querySelector('.search-input');
-            
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 question.addEventListener('click', () => {
-                    // Close other items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('active')) {
                             otherItem.classList.remove('active');
                         }
                     });
-                    
-                    // Toggle current item
+
                     item.classList.toggle('active');
                 });
             });
-            
-            // FAQ search functionality
+
             if (searchInput) {
                 searchInput.addEventListener('input', function() {
                     const searchTerm = this.value.toLowerCase();
@@ -1029,12 +1001,10 @@
                             item.style.display = 'none';
                         }
                     });
-                    
-                    // Show/hide categories based on visible items
+
                     document.querySelectorAll('.faq-category').forEach(category => {
                         const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
                         const allItems = category.querySelectorAll('.faq-item');
-                        
                         if (visibleItems.length === 0 && searchTerm !== '') {
                             category.style.display = 'none';
                         } else {
@@ -1043,10 +1013,8 @@
                     });
                 });
             }
-            
-            // Fade in animation on scroll
+
             const fadeElements = document.querySelectorAll('.fade-in');
-            
             const fadeInOnScroll = () => {
                 fadeElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
@@ -1057,12 +1025,10 @@
                     }
                 });
             };
-            
-            // Initialize animations
+
             fadeInOnScroll();
             window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Open first FAQ item by default
+
             if (faqItems.length > 0) {
                 faqItems[0].classList.add('active');
             }
