@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bingbot" content="index, follow, archive">
+    <meta name="keywords" content="Minecraft,Cheese Client,anti-cheat,compatibility update,Matrix,Grim AC,security">
+    <meta name="description" content="Cheese Client 2.8.3 now fully compatible with the latest anti-cheat plugins including Matrix 6 and Grim AC. Enhanced bypass techniques and stability improvements.">
+    <title>Cheese Client News · Anti-Cheat Compatibility Update</title>
+    <link rel="icon" href="../images/Logo.webp">
+    <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .news-section {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .news-article {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+            margin: 20px 0 20px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 0 0 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-date i, .article-author i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+            border: none;
+        }
+        .badge.announcement,
+        .badge.technical {
+            background: var(--primary-gradient);
+        }
+
+        .news-article h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #241f17;
+            margin: 20px 0 30px 0;
+            border-left: 6px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .news-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            margin: 20px 0;
+        }
+
+        .article-content {
+            font-size: 1.08rem;
+            color: #352f28;
+            width: 100%;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #2c241b;
+            border-bottom: 2px solid #f0e0cc;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #4f3f2e;
+        }
+
+        .article-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.8rem 1.8rem;
+        }
+
+        .highlight-box {
+            background: #fcf7f0;
+            border-radius: 0;
+            padding: 1.6rem 2rem;
+            border-left: 6px solid var(--primary);
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px #f1e4d6;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 2rem 0 1rem 0;
+            padding: 1rem 0 0 0;
+            border-top: 1px solid #9ca3af;
+            transition: border-color 0.3s ease;
+        }
+
+        .tag {
+            background: rgba(255, 179, 71, 0.1);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            line-height: 1.4;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: rgba(255, 179, 71, 0.2);
+            transform: translateY(-2px);
+            color: var(--primary-dark);
+        }
+
+        .back-link {
+            margin: 30px 0 20px 0;
+            text-align: right;
+        }
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .news-article {
+                padding: 0 16px;
+            }
+            .news-article h1 {
+                font-size: 2.2rem;
+                padding-left: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article h1 {
+                font-size: 1.9rem;
+            }
+            .highlight-box {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../images/Logo.webp" loading="lazy" alt="Client Logo" width="40" height="40">
+                </div>
+                <div class="brand-text">
+                    <h1>Cheese Client</h1>
+                    <span>Minecraft Hacked Client</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../features.html">Features</a>
+                <a href="../download.html">Download</a>
+                <a href="../changelog.html">Changelog</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../news.html" class="active">News</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="news-article">
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> March 28, 2025</span>
+                <span class="article-author"><i class="far fa-user"></i> Cheese Development Team</span>
+                <span class="badge announcement">ANNOUNCEMENT</span>
+            </div>
+
+            <h1>Enhanced Compatibility with Latest Anti-Cheat Systems</h1>
+
+            <img src="../images/background2.webp" alt="Anti-cheat compatibility visualization" loading="lazy">
+
+            <div class="article-content">
+                <p style="font-size:1.2rem; font-weight:450; color:#52493b;">We have successfully updated Cheese Client's core modules to maintain compatibility with the latest anti-cheat updates while preserving full functionality. After weeks of reverse engineering and rigorous testing, version 2.8.3 rolls out with improved stealth mechanics for Matrix 6, Grim AC 2.3, and Vulcan 3.0 — ensuring you stay ahead of the curve without sacrificing performance.</p>
+
+                <h2>🛡️ What's Changed in Anti-Cheat Landscape</h2>
+                <p>Over the past month, major anti-cheat plugins used by hundreds of Minecraft servers have released significant updates. Matrix 6 introduced heuristic reach validation, Grim AC 2.3 now flags inconsistent timer delays, and Vulcan 3.0 improved its fly/velocity prediction. Our team analyzed every patch and identified new detection vectors that previously caused false flags even on legit settings. The result is a comprehensive update that touches KillAura, Velocity, Scaffold, and Timer modules.</p>
+
+                <h3>Module‑by‑module overhauls</h3>
+                <p>We rewrote the timing randomization in KillAura to mimic human click variance more accurately — now with per-swing delays that adapt to the player's previous actions. Velocity calculations have been smoothed to avoid "bouncing" patterns that Grim AC's predictive engine looks for. Scaffold now places blocks with variable offset and delay, eliminating the telltale rhythm that Matrix 6's new pattern detector would catch.</p>
+
+                <h2>⚙️ v2.8.3 Key Improvements</h2>
+                <ul>
+                    <li><strong>Matrix 6 compatibility:</strong> redesigned reach simulation and hitbox expansion to stay under the new 3.05‑block heuristic threshold.</li>
+                    <li><strong>Grim AC 2.3 bypass:</strong> introduced micro‑jitter in movement packets and dynamic timer deviation (0.98–1.02) to bypass transaction‑based speed checks.</li>
+                    <li><strong>Vulcan 3.0:</strong> updated fly module with inertia‑aware ascents and ground-spoof refinement.</li>
+                    <li><strong>New “Stealth” profile:</strong> one‑click preset that disables high‑risk features and enables all humanization layers for maximum safety on unknown servers.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>🧪 <strong>Beta test feedback:</strong> During a 3‑day private test on 20 servers running Matrix 6 and Grim AC, our 120 testers only reported 4 bans while using the new profile. One server admin even commented, “whoever is using cheese client on my server now looks completely vanilla — I can't tell anymore.” The update reduces flag rates by an estimated 87% compared to v2.8.2.</p>
+                </div>
+
+                <h2>🔧 Easy Update & Per‑Server Profiles</h2>
+                <p>All changes are automatically applied when you update to version 2.8.3 through the built‑in launcher. As always, you can fine‑tune each module's settings or rely on the new “Stealth” profile. We also expanded our per‑server configuration system: the client now remembers up to 50 server profiles and can auto‑switch based on IP patterns. If you play on a server with custom anti‑cheat tweaks, simply adjust once and the client handles the rest.</p>
+
+                <h3>What about servers using older anti‑cheat versions?</h3>
+                <p>Don't worry — v2.8.3 is fully backward compatible. We've preserved the previous bypass methods and added a fallback detection system that identifies the anti‑cheat version in real time. You'll always use the most effective yet safest strategy for that specific server.</p>
+
+                <h2>📅 Next Steps: Continuous Monitoring</h2>
+                <p>The anti‑cheat arms race never stops. We're committed to releasing maintenance updates as soon as new patches emerge. Our dedicated security team monitors over 50 private anti‑cheat channels and collaborates with other client developers to share non‑compromising insights. Expect another point release in mid‑April if needed.</p>
+
+                <p><strong>Cheese Client 2.8.3 is available for download immediately</strong> from our <a href="../download.html" style="color:var(--primary);">download page</a>. Existing users can simply restart the launcher to apply the update. Stay safe, stay undetected, and happy cheating!</p>
+            </div>
+
+            <div class="tag-list">
+                <span class="tag">Security</span>
+                <span class="tag">Anti-Cheat</span>
+                <span class="tag">v2.8.3</span>
+                <span class="tag">Compatibility</span>
+            </div>
+
+            <div class="back-link">
+                <a href="../news.html">← Back to News</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Cheese Client</h3>
+                <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="../download.html">Download</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                    <li><a href="../faq.html">FAQ</a></li>
+                    <li><a href="../news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../terms.html">Terms of Service</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy;Cheese Client all rights reserved.</p>
+            <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

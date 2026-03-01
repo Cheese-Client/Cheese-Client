@@ -359,6 +359,37 @@
             transform: translateY(-2px);
         }
 
+        /* Read more link styles */
+        .read-more-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+
+        .read-more-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .read-more-link:hover {
+            color: var(--primary);
+        }
+
+        .read-more-link i {
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .read-more-link:hover i {
+            transform: translateX(3px);
+        }
+
         footer {
             background: #111827;
             color: #fff;
@@ -558,104 +589,7 @@
     </section>
 
     <div class="news-container">
-        <div class="news-grid">
-            <article class="news-card">
-                <img src="./images/image2.webp" loading="lazy" alt="mod support" class="news-image">
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar"></i> May 20, 2025</span>
-                        <span><i class="far fa-user"></i> Cheese Development Team</span>
-                        <span class="news-badge">TECHNICAL</span>
-                    </div>
-                    <h2>Cheese Client 3.1: Compatible with Both Fabric & Forge</h2>
-                    <p class="news-excerpt">The Cheese client can now seamlessly work with Fabric and Forge mods for version 1.12.2, allowing you to use your favorite mods from both ecosystems while maintaining full performance and enhanced features.</p>
-                    <div class="news-tags">
-                        <span class="news-tag">v3.1</span>
-                        <span class="news-tag">Technical</span>
-                        <span class="news-tag">mod</span>
-                        <span class="news-tag">Compatibility</span>
-                        <span class="news-tag">Major Release</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="./images/image1.webp" loading="lazy" alt="FPS Comparison" class="news-image">
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar"></i> April 2, 2025</span>
-                        <span><i class="far fa-user"></i> Cheese Development Team</span>
-                        <span class="news-badge">ANNOUNCEMENT</span>
-                    </div>
-                    <h2>Cheese Client 3.0: Complete Rewrite & Major Performance Boost</h2>
-                    <p class="news-excerpt">Cheese Client 3.0 use a complete ground-up rewrite with a brand new rendering engine, improved anti-detection systems, and up to 200% performance improvement in certain scenarios.</p>
-                    <div class="news-tags">
-                        <span class="news-tag">v3.0</span>
-                        <span class="news-tag">Announcement</span>
-                        <span class="news-tag">Performance</span>
-                        <span class="news-tag">Update</span>
-                        <span class="news-tag">Major Release</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="./images/background2.webp" loading="lazy" alt="New Anti-Cheat Compatibility" class="news-image">
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar"></i> March 28, 2025</span>
-                        <span><i class="far fa-user"></i> Cheese Development Team</span>
-                        <span class="news-badge">ANNOUNCEMENT</span>
-                    </div>
-                    <h2>Enhanced Compatibility with Latest Anti-Cheat Systems</h2>
-                    <p class="news-excerpt">We has successfully updated Cheese Client's modules to maintain compatibility with the latest anti-cheat updates while preserving functionality. All users are advised to update to version 2.8.3.</p>
-                    <div class="news-tags">
-                        <span class="news-tag">Security</span>
-                        <span class="news-tag">Anti-Cheat</span>
-                        <span class="news-tag">v2.8.3</span>
-                        <span class="news-tag">Compatibility</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="./images/image3.png" loading="lazy" alt="New Anti-Cheat Compatibility" class="news-image">
-                <div class="no-image-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar"></i> March 22, 2025</span>
-                        <span><i class="far fa-user"></i> Cheese Team</span>
-                        <span class="news-badge">ANNOUNCEMENT</span>
-                    </div>
-                    <h2>Cheese Client Comes to China: Expanding Our Global Community</h2>
-                    <p class="news-excerpt">We're excited to announce that Cheese Client is now officially available to the massive Minecraft community in China! After months of localization work and server optimization, Chinese players can now enjoy the full Cheese Client experience with Chinese language support, local server compatibility, and dedicated community forums.</p>
-                    <div class="news-tags">
-                        <span class="news-tag">China</span>
-                        <span class="news-tag">Global</span>
-                        <span class="news-tag">Community</span>
-                        <span class="news-tag">Localization</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="./images/background1.webp" loading="lazy" alt="New Movement Module" class="news-image">
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar"></i> March 18, 2025</span>
-                        <span><i class="far fa-user"></i> Development Team</span>
-                        <span class="news-badge">TECHNICAL</span>
-                    </div>
-                    <h2>Advanced Movement Module: Parkour & Speed Enhancements</h2>
-                    <p class="news-excerpt">Our latest technical update introduces a completely redesigned movement module with improved parkour assistance, smarter speed adjustments, and more natural movement patterns that are harder to detect.</p>
-                    <div class="news-tags">
-                        <span class="news-tag">Movement</span>
-                        <span class="news-tag">Technical</span>
-                        <span class="news-tag">Parkour</span>
-                        <span class="news-tag">Speed</span>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <div class="news-grid" id="news-grid"></div>
     </div>
 
     <footer>
@@ -716,23 +650,86 @@
                     header.classList.remove('header-scrolled');
                 }
             });
-            
-            const fadeElements = document.querySelectorAll('.news-card');
-            
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('fade-in');
+
+            const newsGrid = document.getElementById('news-grid');
+
+            async function loadPosts() {
+                try {
+                    const response = await fetch('posts.json');
+                    if (!response.ok) throw new Error('Failed to load posts');
+                    const data = await response.json();
+                    renderPosts(data.posts);
+                } catch (error) {
+                    newsGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--text-light);">Unable to load news. Please try again later.</div>';
+                }
+            }
+
+            function renderPosts(posts) {
+                if (!posts || posts.length === 0) {
+                    newsGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--text-light);">No news available.</div>';
+                    return;
+                }
+
+                let html = '';
+                posts.forEach(post => {
+                    // 处理有图片的情况
+                    if (post.image) {
+                        html += `<article class="news-card">
+                            <img src="${post.image}" loading="lazy" alt="${post.title}" class="news-image">
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> ${post.date}</span>
+                                    <span><i class="far fa-user"></i> ${post.author}</span>
+                                    <span class="news-badge">${post.badge}</span>
+                                </div>
+                                <h2>${post.title}</h2>
+                                <p class="news-excerpt">${post.excerpt}</p>
+                                <div class="news-tags">
+                                    ${post.tags.map(tag => `<span class="news-tag">${tag}</span>`).join('')}
+                                </div>
+                                <div class="read-more-wrapper">
+                                    <a href="${post.link}" class="read-more-link">Read more <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>`;
+                    } else {
+                        // 无图片的情况
+                        html += `<article class="news-card">
+                            <div class="no-image-content">
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> ${post.date}</span>
+                                    <span><i class="far fa-user"></i> ${post.author}</span>
+                                    <span class="news-badge">${post.badge}</span>
+                                </div>
+                                <h2>${post.title}</h2>
+                                <p class="news-excerpt">${post.excerpt}</p>
+                                <div class="news-tags">
+                                    ${post.tags.map(tag => `<span class="news-tag">${tag}</span>`).join('')}
+                                </div>
+                                <div class="read-more-wrapper">
+                                    <a href="${post.link}" class="read-more-link">Read more <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>`;
                     }
                 });
-            };
-            
-            fadeInOnScroll();
-            window.addEventListener('scroll', fadeInOnScroll);
+                newsGrid.innerHTML = html;
 
+                const fadeElements = document.querySelectorAll('.news-card');
+                const fadeInOnScroll = () => {
+                    fadeElements.forEach(element => {
+                        const elementTop = element.getBoundingClientRect().top;
+                        const elementVisible = 150;
+                        if (elementTop < window.innerHeight - elementVisible) {
+                            element.classList.add('fade-in');
+                        }
+                    });
+                };
+                fadeInOnScroll();
+                window.addEventListener('scroll', fadeInOnScroll);
+            }
+
+            loadPosts();
         });
     </script>
 </body>

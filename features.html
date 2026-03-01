@@ -1,1230 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore all features of Cheese Client - the ultimate Minecraft utility mod with advanced combat, movement, visual enhancements, and performance optimizations.">
-    <title>Features - Cheese Client</title>
-    <link rel="icon" href="images/Logo.webp">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #ffb347;
-            --primary-dark: #ff9800;
-            --primary-light: #ffd187;
-            --primary-gradient: linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
-            --secondary: #4a5568;
-            --accent: #667eea;
-            --accent-light: #7986CB;
-            --bg: #f9fafc;
-            --card: #fff;
-            --card-hover: #fffef6;
-            --text: #111827;
-            --text-light: #6b7280;
-            --border: #e5e7eb;
-            --radius: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --maxw: 1200px;
-            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
-            --shadow-game: 8px 8px 0px rgba(255, 179, 71, 0.1);
-            --shadow-game-hover: 12px 12px 0px rgba(255, 179, 71, 0.2);
-            --glow: 0 0 25px rgba(255, 179, 71, 0.3);
-            --pixel: 4px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: var(--maxw);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 16px 0;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .header-scrolled {
-            padding: 10px 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .logo img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-        }
-
-        .logo:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-text h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text);
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-text span {
-            font-size: 0.875rem;
-            color: var(--text-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 8px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text);
-            cursor: pointer;
-        }
-
-        .hero {
-            background: var(--primary-gradient);
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            color: #412200;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            background: var(--primary-dark);
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(255, 183, 71, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.75rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            font-size: 1.125rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px 30px 20px;
-            color: white;
-            font-size: 1.75rem;
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
-        }
-
-        .feature-content {
-            padding: 0 30px 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .feature-content p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .feature-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: auto;
-        }
-
-        .feature-tag {
-            background: rgba(255, 179, 71, 0.1);
-            color: var(--primary-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .feature-tag.combat {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
-        .feature-tag.movement {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-        }
-
-        .feature-tag.visual {
-            background: rgba(139, 92, 246, 0.1);
-            color: #8b5cf6;
-        }
-
-        .feature-tag.utility {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .feature-tag.performance {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
-        }
-
-        .feature-tag.security {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
-        }
-
-        /* Category Tabs */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 50px;
-        }
-
-        .category-tab {
-            padding: 12px 24px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .category-tab:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .category-tab.active {
-            background: var(--primary-gradient);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
-        }
-
-        .category-tab i {
-            font-size: 1.125rem;
-        }
-
-        /* Comparison Section */
-        .comparison-section {
-            background: var(--card);
-            padding: 100px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .comparison-card {
-            background: var(--bg);
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .comparison-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .comparison-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(255, 183, 71, 0.3);
-        }
-
-        .comparison-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .comparison-list {
-            list-style: none;
-            text-align: left;
-            margin-top: 25px;
-        }
-
-        .comparison-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-list i {
-            color: var(--primary);
-            width: 20px;
-        }
-
-        .comparison-list .fa-check {
-            color: #10b981;
-        }
-
-        .comparison-list .fa-times {
-            color: #ef4444;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--primary-gradient);
-            padding: 100px 0;
-            color: #412200;
-            text-align: center;
-        }
-
-        .cta-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 60px 40px;
-            border-radius: var(--radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-card h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .cta-card p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            color: var(--text-light);
-        }
-
-        footer {
-            background: #111827;
-            color: #fff;
-            padding: 80px 0 40px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.375rem;
-            margin-bottom: 24px;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 14px;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid #374151;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-bottom p {
-            color: #9ca3af;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: #9ca3af;
-            font-size: 1.25rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                border-top: 1px solid var(--border);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.125rem;
-            }
-            
-            .section {
-                padding: 80px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2.25rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-tabs {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-            
-            .category-tab {
-                white-space: nowrap;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .feature-card {
-                margin: 0 10px;
-            }
-            
-            .feature-content {
-                padding: 0 20px 20px;
-            }
-            
-            .feature-icon {
-                margin: 20px 20px 15px;
-            }
-            
-            .cta-card {
-                padding: 40px 20px;
-            }
-            
-            .cta-card h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Minecraft,hacked,client, Cheese Client,Fabric,Forge,KillAura,Scaffold,ESP,X-Ray,PvP,hack client,mojang,mod,free client">
+  <meta name="description" content="Cheese Client features — combat, movement, visuals, stealth. Your new Minecraft OS.">
+  <title>Features - Cheese Client</title>
+  <link rel="icon" href="images/Logo.webp">
+    <link rel="canonical" href="https://cheeseclient.qzz.io/features">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #ffb347;
+      --primary-dark: #ff9800;
+      --primary-light: #ffd187;
+      --primary-gradient: linear-gradient(135deg, #ffb347 0%, #ff9800 100%);
+      --secondary: #4a5568;
+      --accent: #667eea;
+      --bg: #f9fafc;
+      --card: #ffffff;
+      --card-hover: #fffef6;
+      --text: #111827;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --maxw: 1200px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
+      --header-height: 80px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 16px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .header-scrolled {
+      padding: 10px 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .logo img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+    }
+
+    .logo:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .brand-text h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .brand-text span {
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-gradient);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero-pre {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .hero-left h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hero-left h1 span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      border-left: 4px solid var(--primary);
+      padding-left: 24px;
+      max-width: 450px;
+    }
+
+    .hero-right {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+      transform: rotate(1deg) translateY(10px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 28px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 8px 22px;
+      border: 1.5px solid var(--primary);
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .feature-wall {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 80px 0;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px 0 24px 0;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      transition: all 0.25s ease;
+      position: relative;
+      grid-column: span 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
+    }
+
+    .feature-card.wide {
+      grid-column: span 2;
+    }
+
+    .feature-card.tall {
+      grid-row: span 2;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .feature-name {
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .feature-desc {
+      color: var(--text-light);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    .feature-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-chip {
+      background: rgba(255, 180, 70, 0.08);
+      border-radius: 30px;
+      padding: 5px 16px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      border: 1px solid rgba(255, 180, 70, 0.3);
+    }
+
+    .category-strip {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 60px 0 40px;
+    }
+
+    .strip-item {
+      background: var(--card);
+      border-radius: 60px;
+      padding: 16px 40px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .strip-item i {
+      color: var(--primary);
+      font-size: 1.6rem;
+    }
+
+    .strip-item span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stealth-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background: var(--card);
+      border-radius: 40px 0 40px 0;
+      border: 1px solid var(--border);
+      padding: 60px 50px;
+      margin: 100px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .stealth-left {
+      border-right: 2px solid rgba(255, 180, 70, 0.2);
+      padding-right: 40px;
+    }
+
+    .stealth-left h3 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .stealth-left h3 i {
+      color: var(--primary);
+      margin-right: 12px;
+    }
+
+    .stealth-list {
+      list-style: none;
+    }
+
+    .stealth-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.1rem;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stealth-list i {
+      color: var(--primary);
+      width: 24px;
+      font-size: 1.2rem;
+    }
+
+    .compat-icons {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .compat-icons i {
+      font-size: 3rem;
+      color: var(--text-light);
+      transition: 0.2s;
+    }
+
+    .compat-icons i:hover {
+      color: var(--primary);
+    }
+
+    footer {
+      background: #111827;
+      color: #fff;
+      padding: 80px 0 40px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.375rem;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      padding-top: 40px;
+      border-top: 1px solid #374151;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      color: #9ca3af;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #9ca3af;
+      font-size: 1.25rem;
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 1100px) {
+      .feature-wall { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .stealth-block { grid-template-columns: 1fr; }
+      .stealth-left { border-right: 0; padding-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--border);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu-btn { display: block; }
+      .feature-wall { grid-template-columns: 1fr; }
+      .feature-card.wide, .feature-card.tall { grid-column: span 1; grid-row: span 1; }
+      .hero-left h1 { font-size: 2.8rem; }
+    }
+
+    .fade-in {
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <div class="logo">
-                        <img src="images/Logo.webp" alt="Cheese Client Logo">
-                    </div>
-                    <div class="brand-text">
-                        <h1>Cheese Client</h1>
-                        <span>Minecraft Hacked Client</span>
-                    </div>
-                </div>
-                <nav class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="features.html" class="active">Features</a>
-                    <a href="download.html">Download</a>
-                    <a href="changelog.html">Changelog</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="news.html">News</a>
-                </nav>
-                <div class="header-actions">
-                    <button class="mobile-menu-btn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
+  <header id="header">
+    <div class="container header-content">
+      <div class="logo-container">
+        <div class="logo"><img src="images/Logo.webp" alt="Cheese Client"></div>
+        <div class="brand-text">
+          <h1>Cheese Client</h1>
+          <span>Minecraft Hacked Client</span>
         </div>
-    </header>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html" class="active">Features</a>
+        <a href="download.html">Download</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="news.html">News</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Unlock All Features</h1>
-                <p>Discover the comprehensive suite of tools and enhancements that make Cheese Client the ultimate Minecraft experience</p>
-                <div class="button-group">
-                    <a href="download.html" class="btn">
-                        <i class="fas fa-download"></i> Download Now
-                    </a>
-                    <a href="#comparison" class="btn btn-secondary">
-                        <i class="fas fa-chart-bar"></i> See Comparison
-                    </a>
-                </div>
-            </div>
+  <main>
+    <div class="container hero">
+      <div class="hero-grid">
+        <div class="hero-left fade-in">
+          <div class="hero-pre">UNLOCK ENTIRE THE GAME</div>
+          <h1>YOUR NEW <span>MINECRAFT</span> OPERATING SYSTEM</h1>
+          <div class="hero-desc">
+            Cheese Client isn't a pile of checkboxes. It's a whole new layer underneath — combat,movement,visual,world,misc. 1500+ modules, zero paywall.
+          </div>
         </div>
-    </section>
-
-    <section id="features" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Partial Feature Overview</h2>
-                <p>Explore all categories of enhancements available in Cheese Client</p>
-            </div>
-
-            <div class="category-tabs" id="categoryTabs">
-                <div class="category-tab active" data-category="all">
-                    <i class="fas fa-star"></i> All Features
-                </div>
-                <div class="category-tab" data-category="combat">
-                    <i class="fas fa-crosshairs"></i> Combat
-                </div>
-                <div class="category-tab" data-category="movement">
-                    <i class="fas fa-running"></i> Movement
-                </div>
-                <div class="category-tab" data-category="visual">
-                    <i class="fas fa-eye"></i> Visual
-                </div>
-                <div class="category-tab" data-category="utility">
-                    <i class="fas fa-tools"></i> Utility
-                </div>
-                <div class="category-tab" data-category="performance">
-                    <i class="fas fa-tachometer-alt"></i> Performance
-                </div>
-            </div>
-
-            <div class="features-grid" id="featuresGrid">
-                <div class="feature-card fade-in" data-category="combat">
-                    <div class="feature-icon">
-                        <i class="fas fa-crosshairs"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Kill Aura</h3>
-                        <p>Automatically target and attack nearby enemies with customizable range, angles, and targeting priorities for maximum combat efficiency.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag combat">Combat</span>
-                            <span class="feature-tag">Advanced</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="combat">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Aim Assist</h3>
-                        <p>Smooth, natural-looking aim correction that helps you track targets without looking obvious or robotic. Fully customizable speed and strength.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag combat">Combat</span>
-                            <span class="feature-tag">Subtle</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="combat">
-                    <div class="feature-icon">
-                        <i class="fas fa-fist-raised"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Reach</h3>
-                        <p>Extend your attack range beyond normal limits with configurable distance. Perfect for PvP situations where every block counts.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag combat">Combat</span>
-                            <span class="feature-tag">PvP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="combat">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Always Crit</h3>
-                        <p>Extend your attack range beyond normal limits with configurable distance. Perfect for PvP situations where every block counts.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag combat">Combat</span>
-                            <span class="feature-tag">PvP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="movement">
-                    <div class="feature-icon">
-                        <i class="fas fa-feather-alt"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Flight</h3>
-                        <p>Experience true freedom with multiple flight modes including creative-like flight, hover, and glide. Customize speed and controls to your liking.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag movement">Movement</span>
-                            <span class="feature-tag">Advanced</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="movement">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Speed</h3>
-                        <p>Move faster than ever with customizable speed multipliers. Choose from different modes like vanilla-like speed or more advanced options.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag movement">Movement</span>
-                            <span class="feature-tag">Fast</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="movement">
-                    <div class="feature-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Step Assist</h3>
-                        <p>Automatically step up blocks without jumping. Fully configurable height and toggle options for seamless movement across terrain.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag movement">Movement</span>
-                            <span class="feature-tag">Convenience</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="visual">
-                    <div class="feature-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>X-Ray</h3>
-                        <p>See through blocks to locate valuable ores and resources. Customize which blocks are visible and adjust transparency levels.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag visual">Visual</span>
-                            <span class="feature-tag">Mining</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="visual">
-                    <div class="feature-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Fullbright</h3>
-                        <p>Eliminate darkness by increasing gamma to maximum levels. Never need torches again while exploring caves or building at night.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag visual">Visual</span>
-                            <span class="feature-tag">Brightness</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="visual">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>ESP & Tracers</h3>
-                        <p>See players, mobs, and items through walls with customizable ESP boxes, health bars, and distance indicators. Tracers show direction to targets.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag visual">Visual</span>
-                            <span class="feature-tag">Awareness</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="utility">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>AutoTool</h3>
-                        <p>Automatically selects the best tool for mining or attacking based on the block or entity you're targeting. Saves time and inventory management.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag utility">Utility</span>
-                            <span class="feature-tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="utility">
-                    <div class="feature-icon">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>AutoFish</h3>
-                        <p>Fully automated fishing system that detects bites and reels in for you. Perfect for AFK fishing farms or casual fishing sessions.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag utility">Utility</span>
-                            <span class="feature-tag">AFK</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="utility">
-                    <div class="feature-icon">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Inventory Management</h3>
-                        <p>Smart inventory sorting, item organization, and quick move features. Keep your inventory tidy with customizable organization rules.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag utility">Utility</span>
-                            <span class="feature-tag">Organization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="performance">
-                    <div class="feature-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>FPS Boost</h3>
-                        <p>Optimize Minecraft's performance with built-in enhancements that can increase FPS by up to 200% on lower-end systems.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag performance">Performance</span>
-                            <span class="feature-tag">Optimization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="performance">
-                    <div class="feature-icon">
-                        <i class="fas fa-memory"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Memory Optimizer</h3>
-                        <p>Reduce lag and prevent crashes with intelligent memory management that automatically clears unused resources and optimizes allocation.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag performance">Performance</span>
-                            <span class="feature-tag">Stability</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card fade-in" data-category="performance">
-                    <div class="feature-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>Lag Reduction</h3>
-                        <p>Minimize network lag with optimized packet handling and server communication. Experience smoother multiplayer gameplay.</p>
-                        <div class="feature-tags">
-                            <span class="feature-tag performance">Performance</span>
-                            <span class="feature-tag">Network</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-right fade-in" style="animation-delay:0.1s">
+          <div class="hero-stats">
+            <div class="stat-item"><span class="stat-number">1500+</span><span class="stat-label">MODULES</span></div>
+            <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">PAYWALLS</span></div>
+            <div class="stat-item"><span class="stat-number">26</span><span class="stat-label">BYPASS ANTI‑CHEATS</span></div>
+          </div>
+          <div class="feature-tags">
+            <span class="tag">COMBAT</span>
+            <span class="tag">MOVEMENT</span>
+            <span class="tag">VISUAL</span>
+            <span class="tag">WORLD</span>
+            <span class="tag">MISC</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="comparison" class="comparison-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Cheese Client?</h2>
-                <p>See how Cheese Client compares to other Minecraft enhancement solutions</p>
-            </div>
-
-            <div class="comparison-grid">
-                <div class="comparison-card fade-in">
-                    <div class="comparison-icon">
-                        <i class="fas fa-cheese"></i>
-                    </div>
-                    <h3>Cheese Client</h3>
-                    <p>The complete Minecraft enhancement suite</p>
-                    <ul class="comparison-list">
-                        <li><i class="fas fa-check"></i> All features included for free</li>
-                        <li><i class="fas fa-check"></i> Regular updates & active development</li>
-                        <li><i class="fas fa-check"></i> Optimized performance & stability</li>
-                        <li><i class="fas fa-check"></i> Active community support</li>
-                        <li><i class="fas fa-check"></i> User-friendly interface</li>
-                        <li><i class="fas fa-check"></i> Advanced anti-detection systems</li>
-                    </ul>
-                </div>
-
-                <div class="comparison-card fade-in">
-                    <div class="comparison-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h3>Other Clients</h3>
-                    <p>Limited solutions with restrictions</p>
-                    <ul class="comparison-list">
-                        <li><i class="fas fa-times"></i> Often paid or subscription-based</li>
-                        <li><i class="fas fa-times"></i> Infrequent updates</li>
-                        <li><i class="fas fa-times"></i> Performance issues common</li>
-                        <li><i class="fas fa-times"></i> Limited community</li>
-                        <li><i class="fas fa-times"></i> Complex or outdated UI</li>
-                        <li><i class="fas fa-times"></i> Poor anti-detection</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="container">
+      <div class="feature-wall">
+        <div class="feature-card wide fade-in">
+          <div class="feature-icon"><i class="fas fa-skull"></i></div>
+          <div class="feature-name">KILLAURA</div>
+          <div class="feature-desc">Silent, raytraced, predictive. 37+ adjustments: hit chance, swing order, FOV, priority — or let our AI decide.</div>
+          <div class="feature-meta"><span class="meta-chip">COMBAT</span><span class="meta-chip">PREDICT</span><span class="meta-chip">CPS 1–20</span></div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Cheese Client</h3>
-                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="download.html">Download</a></li>
-                        <li><a href="features.html">Features</a></li>
-                        <li><a href="changelog.html">Changelog</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="news.html">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy;Cheese Client all rights reserved.</p>
-                <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
-            </div>
+        <div class="feature-card tall fade-in" style="animation-delay:0.1s">
+          <div class="feature-icon"><i class="fas fa-cubes"></i></div>
+          <div class="feature-name">SCAFFOLD</div>
+          <div class="feature-desc">Tower, safe walk, expand, sprint‑placement — but looks totally vanilla.</div>
+          <div class="feature-meta"><span class="meta-chip">MOVEMENT</span><span class="meta-chip">TOWER</span></div>
         </div>
-    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
+        <div class="feature-card fade-in" style="animation-delay:0.15s">
+          <div class="feature-icon"><i class="fas fa-eye"></i></div>
+          <div class="feature-name">ESP</div>
+          <div class="feature-desc">2D/3D boxes, outlines, tracer lines, health/shadow. Player, mob, storage, xray blocks.</div>
+          <div class="feature-meta"><span class="meta-chip">VISUAL</span><span class="meta-chip">XRAY</span></div>
+        </div>
 
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            });
+        <div class="feature-card fade-in" style="animation-delay:0.2s">
+          <div class="feature-icon"><i class="fas fa-wind"></i></div>
+          <div class="feature-name">VELOCITY</div>
+          <div class="feature-desc">Horizontal/vertical cancel, push‑resistance, “air‑friction” mode — makes you heavy as obsidian.</div>
+          <div class="feature-meta"><span class="meta-chip">COMBAT</span></div>
+        </div>
 
-            const categoryTabs = document.querySelectorAll('.category-tab');
-            const featureCards = document.querySelectorAll('.feature-card');
+        <div class="feature-card wide fade-in" style="animation-delay:0.25s">
+          <div class="feature-icon"><i class="fas fa-feather"></i></div>
+          <div class="feature-name">FLIGHT / SPEED</div>
+          <div class="feature-desc">Creative flight, glide, timer‑based, spoofed motion. Combined with speed strafe — you're an elytra without elytra.</div>
+          <div class="feature-meta"><span class="meta-chip">MOVEMENT</span><span class="meta-chip">BHOP</span><span class="meta-chip">GLIDE</span></div>
+        </div>
 
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    const selectedCategory = this.getAttribute('data-category');
-                    featureCards.forEach(card => {
-                        if (selectedCategory === 'all' || card.getAttribute('data-category') === selectedCategory) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
+        <div class="feature-card fade-in" style="animation-delay:0.3s">
+          <div class="feature-icon"><i class="fas fa-mask"></i></div>
+          <div class="feature-name">STEALTH CORE</div>
+          <div class="feature-desc">Transaction‑aware, matrix/grim/vulcan profiles, dynamic packet delays — “ghost mode”.</div>
+          <div class="feature-meta"><span class="meta-chip">STEALTH</span><span class="meta-chip">ANTI‑CHEAT</span></div>
+        </div>
 
-            const fadeElements = document.querySelectorAll('.fade-in');
+        <div class="feature-card fade-in" style="animation-delay:0.35s">
+          <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+          <div class="feature-name">AIM ASSIST</div>
+          <div class="feature-desc">Silent aim, FOV, distance curve, click‑assist — feels like your mouse is ender‑pearl guided.</div>
+          <div class="feature-meta"><span class="meta-chip">COMBAT</span></div>
+        </div>
 
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('fade-in');
-                    }
-                });
-            };
+        <div class="feature-card fade-in" style="animation-delay:0.4s">
+          <div class="feature-icon"><i class="fas fa-shield"></i></div>
+          <div class="feature-name">NOFALL</div>
+          <div class="feature-desc">Packet‑based, ground‑spoof, last‑second bucket simulation. Works even on strict servers.</div>
+          <div class="feature-meta"><span class="meta-chip">MOVEMENT</span></div>
+        </div>
+      </div>
+    </div>
 
-            fadeInOnScroll();
-            window.addEventListener('scroll', fadeInOnScroll);
+    <div class="container">
+      <div class="category-strip">
+        <div class="strip-item"><i class="fas fa-bolt"></i> <span>COMBAT</span> <i class="fas fa-chevron-right" style="font-size:1rem;"></i> 527</div>
+        <div class="strip-item"><i class="fas fa-shoe-prints"></i> <span>MOVEMENT</span> <i class="fas fa-chevron-right"></i> 486</div>
+        <div class="strip-item"><i class="fas fa-paint-roller"></i> <span>VISUAL</span> <i class="fas fa-chevron-right"></i> 82</div>
+        <div class="strip-item"><i class="fas fa-globe"></i> <span>WORLD</span> <i class="fas fa-chevron-right"></i> 286</div>
+        <div class="strip-item"><i class="fas fa-cog"></i> <span>MISC</span> <i class="fas fa-chevron-right"></i> 206</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="stealth-block fade-in">
+        <div class="stealth-left">
+          <h3><i class="fas fa-shield-hooded"></i> UNDETECTION <br> IS THE DEFAULT</h3>
+          <ul class="stealth-list">
+            <li><i class="fas fa-check-circle"></i> Grim AC 2.3 · Matrix 6 · Vulcan 3.0 verified</li>
+            <li><i class="fas fa-check-circle"></i> Transaction‑aware randomization</li>
+            <li><i class="fas fa-check-circle"></i> Per‑server profile auto‑switch</li>
+            <li><i class="fas fa-check-circle"></i> Humanization layer: click & mouse curves</li>
+            <li><i class="fas fa-check-circle"></i> 0 false flags on latest anti‑cheats</li>
+          </ul>
+        </div>
+        <div class="stealth-right">
+          <div class="compat-icons">
+            <i class="fas fa-cube"></i>
+            <i class="fas fa-cubes"></i>
+            <i class="fas fa-dragon"></i>
+          </div>
+          <p style="font-size:1.6rem; font-weight:700; margin-bottom:16px;">FABRIC + FORGE</p>
+          <p style="color: var(--text-light);">Cheese Client 3.1+ is built on a proprietary hybrid classloader that harmonizes Fabric and Forge mods for the first time. On 1.12.2, you can now run performance mods like OptiFine or Sodium alongside content-heavy mods without a single crash. Our bytecode mediation layer automatically resolves Mixin/CoreMod conflicts, lazy-loads classes to save memory, and ensures that all Cheese modules remain fully compatible. We've tested over 200 mod combinations—from Thermal Dynamics to Modern UI—and the result is seamless, stable, and still 100% undetectable.</p>
+        </div>
+      </div>
+    </div>
+  </main>
 
-            featureCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Cheese Client</h3>
+          <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="download.html">Download</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Cheese Client all rights reserved.</p>
+        <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+      </div>
+    </div>
+  </footer>
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav-links');
+      if (btn) btn.addEventListener('click', () => nav.classList.toggle('active'));
 
-                    if (href === '#') return;
-                    
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-
-                        navLinks.classList.remove('active');
-                        
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = target.offsetTop - headerHeight;
-
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) header.classList.add('header-scrolled');
+        else header.classList.remove('header-scrolled');
+      });
+    });
+  </script>
 </body>
 </html>

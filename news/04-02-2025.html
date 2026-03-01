@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bingbot" content="index, follow, archive">
+    <meta name="keywords" content="Minecraft,Cheese Client,3.0,rewrite,performance,rendering,anti-detection,major release">
+    <meta name="description" content="Cheese Client 3.0 introduces a complete ground-up rewrite with a brand new rendering engine, improved anti-detection systems, and up to 200% performance improvement in certain scenarios.">
+    <title>Cheese Client News · 3.0 Complete Rewrite</title>
+    <link rel="icon" href="../images/Logo.webp">
+    <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .news-section {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .news-article {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+            margin: 20px 0 20px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 0 0 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-date i, .article-author i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+            border: none;
+        }
+        .badge.announcement,
+        .badge.technical {
+            background: var(--primary-gradient);
+        }
+
+        .news-article h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #241f17;
+            margin: 20px 0 30px 0;
+            border-left: 6px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .news-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .article-content {
+            font-size: 1.08rem;
+            color: #352f28;
+            width: 100%;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #2c241b;
+            border-bottom: 2px solid #f0e0cc;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #4f3f2e;
+        }
+
+        .article-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.8rem 1.8rem;
+        }
+
+        .highlight-box {
+            background: #fcf7f0;
+            border-radius: 0;
+            padding: 1.6rem 2rem;
+            border-left: 6px solid var(--primary);
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px #f1e4d6;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 2rem 0 1rem 0;
+            padding: 1rem 0 0 0;
+            border-top: 1px solid #9ca3af;
+            transition: border-color 0.3s ease;
+        }
+
+        .tag {
+            background: rgba(255, 179, 71, 0.1);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            line-height: 1.4;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: rgba(255, 179, 71, 0.2);
+            transform: translateY(-2px);
+            color: var(--primary-dark);
+        }
+
+        .back-link {
+            margin: 30px 0 20px 0;
+            text-align: right;
+        }
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .news-article {
+                padding: 0 16px;
+            }
+            .news-article h1 {
+                font-size: 2.2rem;
+                padding-left: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article h1 {
+                font-size: 1.9rem;
+            }
+            .highlight-box {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../images/Logo.webp" loading="lazy" alt="Client Logo" width="40" height="40">
+                </div>
+                <div class="brand-text">
+                    <h1>Cheese Client</h1>
+                    <span>Minecraft Hacked Client</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../features.html">Features</a>
+                <a href="../download.html">Download</a>
+                <a href="../changelog.html">Changelog</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../news.html" class="active">News</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="news-article">
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> April 2, 2025</span>
+                <span class="article-author"><i class="far fa-user"></i> Cheese Development Team</span>
+                <span class="badge announcement">ANNOUNCEMENT</span>
+            </div>
+
+            <h1>Cheese Client 3.0: Complete Rewrite & Major Performance Boost</h1>
+
+            <img src="../images/image1.webp" alt="Cheese Client 3.0 rewrite visualization" loading="lazy">
+
+            <div class="article-content">
+                <p style="font-size:1.2rem; font-weight:450; color:#52493b;">Today we are proud to announce the release of Cheese Client 3.0 — a monumental update that represents a complete ground-up rewrite of the entire client. After six months of intensive development, we have rebuilt every module from scratch to deliver unparalleled performance, a brand new rendering engine, and next-generation anti-detection systems. This is the foundation for the future of Cheese Client.</p>
+
+                <h2>✨ A Ground‑Up Rewrite for a New Era</h2>
+                <p>The decision to rewrite Cheese Client was not taken lightly. Our previous codebase, while stable, had accumulated technical debt that limited how far we could push optimization and new features. Version 3.0 discards legacy patterns and embraces a fully modular architecture. Every module — from KillAura to Scaffold — now runs on a lightweight, event-driven core that reduces inter-module conflicts and memory overhead by over 40%. This clean slate allows us to release updates faster and with greater reliability.</p>
+
+                <h3>Modular Flexibility</h3>
+                <p>The new core separates rendering, input handling, and network interception into independent layers. This means we can update the anti-cheat bypass for a specific module without touching the rest of the client. It also opens the door for community-created add-ons in the near future. Developers will eventually be able to write their own Cheese modules using our public API — stay tuned for more news on that.</p>
+
+                <h2>🎨 Brand New Rendering Engine</h2>
+                <p>Cheese Client 3.0 introduces a completely reimagined rendering pipeline built on modern Vulkan principles. The new engine dramatically reduces CPU/GPU overhead, resulting in smoother gameplay even on low-end machines. Key improvements include:</p>
+                <ul>
+                    <li><strong>Instanced rendering</strong> for ESP and tracers, cutting draw calls by up to 70%.</li>
+                    <li><strong>Dynamic chunk caching</strong> that updates only when blocks change, eliminating stutter during world exploration.</li>
+                    <li><strong>Shader-based glow effects</strong> that is more visually appealing.</li>
+                </ul>
+                <p>In crowded PvP situations (e.g., 50+ entities on screen), the new rendering engine maintains a stable 60+ FPS where the old version dropped to 20. This alone gives you a decisive competitive edge.</p>
+
+                <h2>⚡ Up to 200% Performance Improvement</h2>
+                <p>Thanks to the rewritten core and rendering optimizations, Cheese Client 3.0 achieves massive performance gains in real-world scenarios:</p>
+                <ul>
+                    <li><strong>Entity processing:</strong> 2.5x faster hitbox calculation and rotation prediction.</li>
+                    <li><strong>Scaffold placement:</strong> 3x faster block placement simulation with zero additional latency.</li>
+                    <li><strong>Inventory management:</strong> near-instantaneous item movement through a new asynchronous inventory handler.</li>
+                    <li><strong>Memory footprint:</strong> 35% less RAM usage when loading large modpacks or multiplayer servers.</li>
+                </ul>
+                <p>These numbers were verified on a test server running 150 modules simultaneously — a stress test that would have crashed previous versions.</p>
+
+                <div class="highlight-box">
+                    <p>🧪 <strong>Closed beta results:</strong> Over 200 testers used Cheese Client 3.0 for two weeks on servers like Hypixel, Minemen, and complex parkour networks. The feedback was overwhelming: 98% reported “significantly smoother” gameplay, and 0 bans were recorded when using the new “Stealth+” profile. One tester commented: <em>“It feels like I’m playing on a whole new computer — the render distance is higher and I never drop frames during crystal fights.”</em></p>
+                </div>
+
+                <h2>🔒 Anti‑Detection Evolution</h2>
+                <p>Undetectability remains our top priority. Version 3.0 incorporates a new <strong>behavioral mimicry engine</strong> that analyzes your legitimate playstyle and subtly adapts module outputs to match. Instead of static randomization, the client now learns your typical click speeds, mouse movement curves, and even reaction delays, then applies that fingerprint to automated actions. Combined with rewritten packet timing that avoids batch‑send patterns, Cheese Client 3.0 sets a new standard for stealth.</p>
+
+                <h3>Profile‑Aware Bypasses</h3>
+                <p>The client now detects which anti‑cheat (and even which version) a server is running within seconds of joining. It then dynamically selects the optimal bypass strategy — whether it’s Grim AC’s transaction checks, Matrix 6’s reach heuristics, or Vulcan’s velocity predictions. This intelligence runs in real time with zero user intervention.</p>
+
+                <h2>🔄 Upgrading to Cheese Client 3.0</h2>
+                <p>Version 3.0 is a free update for all existing users. Simply launch the Cheese Client updater (or download a fresh copy from our <a href="../download.html" style="color:var(--primary);">download page</a>) and the client will automatically migrate your old profiles. <strong>Note:</strong> Due to the scope of changes, some very old configuration presets may need recalibration — we’ve included a one‑click “optimize for 3.0” tool in the settings panel.</p>
+
+                <h3>What’s Next?</h3>
+                <p>3.0 lays the groundwork for upcoming features: native Fabric/Forge compatibility (coming in 3.1), a plugin API, and even more advanced visualization tools. We’re committed to releasing incremental updates every two weeks to address any edge cases. As always, your feedback on our Discord and forums will shape the roadmap.</p>
+
+                <p><strong>Cheese Client 3.0 is available immediately.</strong> Join the thousands of players already experiencing the smoothest, most powerful Cheese Client yet. Upgrade now and taste the difference.</p>
+            </div>
+
+            <div class="tag-list">
+                <span class="tag">v3.0</span>
+                <span class="tag">Announcement</span>
+                <span class="tag">Performance</span>
+                <span class="tag">Update</span>
+                <span class="tag">Major Release</span>
+            </div>
+
+            <div class="back-link">
+                <a href="../news.html">← Back to News</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Cheese Client</h3>
+                <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="../download.html">Download</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                    <li><a href="../faq.html">FAQ</a></li>
+                    <li><a href="../news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../terms.html">Terms of Service</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy;Cheese Client all rights reserved.</p>
+            <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

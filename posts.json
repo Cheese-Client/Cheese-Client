@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "image": "./images/image2.webp",
+      "date": "May 20, 2025",
+      "author": "Cheese Development Team",
+      "badge": "TECHNICAL",
+      "title": "Cheese Client 3.1: Compatible with Both Fabric & Forge",
+      "excerpt": "The Cheese client can now seamlessly work with Fabric and Forge mods for version 1.12.2, allowing you to use your favorite mods from both ecosystems while maintaining full performance and enhanced features.",
+      "tags": ["v3.1", "Technical", "mod", "Compatibility", "Major Release"],
+      "link": "news/05-20-2025.html"
+    },
+    {
+      "image": "./images/image1.webp",
+      "date": "April 2, 2025",
+      "author": "Cheese Development Team",
+      "badge": "ANNOUNCEMENT",
+      "title": "Cheese Client 3.0: Complete Rewrite & Major Performance Boost",
+      "excerpt": "Cheese Client 3.0 use a complete ground-up rewrite with a brand new rendering engine, improved anti-detection systems, and up to 200% performance improvement in certain scenarios.",
+      "tags": ["v3.0", "Announcement", "Performance", "Update", "Major Release"],
+      "link": "news/04-02-2025.html"
+    },
+    {
+      "image": "./images/background2.webp",
+      "date": "March 28, 2025",
+      "author": "Cheese Development Team",
+      "badge": "ANNOUNCEMENT",
+      "title": "Enhanced Compatibility with Latest Anti-Cheat Systems",
+      "excerpt": "We has successfully updated Cheese Client's modules to maintain compatibility with the latest anti-cheat updates while preserving functionality. All users are advised to update to version 2.8.3.",
+      "tags": ["Security", "Anti-Cheat", "v2.8.3", "Compatibility"],
+      "link": "news/03-28-2025.html"
+    },
+    {
+      "image": "./images/image3.png",
+      "date": "March 22, 2025",
+      "author": "Cheese Team",
+      "badge": "ANNOUNCEMENT",
+      "title": "Cheese Client Comes to China: Expanding Our Global Community",
+      "excerpt": "We're excited to announce that Cheese Client is now officially available to the massive Minecraft community in China! After months of localization work and server optimization, Chinese players can now enjoy the full Cheese Client experience with Chinese language support, local server compatibility, and dedicated community forums.",
+      "tags": ["China", "Global", "Community", "Localization"],
+      "link": "news/03-22-2025.html"
+    },
+    {
+      "image": "./images/background1.webp",
+      "date": "March 18, 2025",
+      "author": "Development Team",
+      "badge": "TECHNICAL",
+      "title": "Advanced Movement Module: Parkour & Speed Enhancements",
+      "excerpt": "Our latest technical update introduces a completely redesigned movement module with improved parkour assistance, smarter speed adjustments, and more natural movement patterns that are harder to detect.",
+      "tags": ["Movement", "Technical", "Parkour", "Speed"],
+      "link": "news/03-18-2025.html"
+    }
+  ]
+}

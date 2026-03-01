@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bingbot" content="index, follow, archive">
+    <meta name="keywords" content="Minecraft,Cheese Client,news,parkour,movement update,advanced movement">
+    <meta name="description" content="Cheese Client introduces a completely redesigned movement module with smarter parkour, adaptive speed control and natural motion patterns.">
+    <title>Cheese Client News · Advanced Movement Module</title>
+    <link rel="icon" href="../images/Logo.webp">
+    <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .news-section {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .news-article {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+            margin: 20px 0 20px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 0 0 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-date i, .article-author i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+            border: none;
+        }
+        .badge.announcement,
+        .badge.technical {
+            background: var(--primary-gradient);
+        }
+
+        .news-article h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #241f17;
+            margin: 20px 0 30px 0;
+            border-left: 6px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .news-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .article-content {
+            font-size: 1.08rem;
+            color: #352f28;
+            width: 100%;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #2c241b;
+            border-bottom: 2px solid #f0e0cc;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #4f3f2e;
+        }
+
+        .article-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.8rem 1.8rem;
+        }
+
+        .highlight-box {
+            background: #fcf7f0;
+            border-radius: 0;
+            padding: 1.6rem 2rem;
+            border-left: 6px solid var(--primary);
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px #f1e4d6;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 2rem 0 1rem 0;
+            padding: 1rem 0 0 0;
+            border-top: 1px solid #9ca3af;
+            transition: border-color 0.3s ease;
+        }
+
+        .tag {
+            background: rgba(255, 179, 71, 0.1);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            line-height: 1.4;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: rgba(255, 179, 71, 0.2);
+            transform: translateY(-2px);
+            color: var(--primary-dark);
+        }
+
+        .back-link {
+            margin: 30px 0 20px 0;
+            text-align: right;
+        }
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .news-article {
+                padding: 0 16px;
+            }
+            .news-article h1 {
+                font-size: 2.2rem;
+                padding-left: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article h1 {
+                font-size: 1.9rem;
+            }
+            .highlight-box {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../images/Logo.webp" loading="lazy" alt="Client Logo" width="40" height="40">
+                </div>
+                <div class="brand-text">
+                    <h1>Cheese Client</h1>
+                    <span>Minecraft Hacked Client</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../features.html">Features</a>
+                <a href="../download.html">Download</a>
+                <a href="../changelog.html">Changelog</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../news.html" class="active">News</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="news-article">
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> March 18, 2025</span>
+                <span class="article-author"><i class="far fa-user"></i> Development Team</span>
+                <span class="badge">TECHNICAL</span>
+            </div>
+
+            <h1>Advanced Movement Module:<br>Parkour & Speed Enhancements</h1>
+
+            <img src="../images/background1.webp" alt="Parkour visualization">
+
+            <div class="article-content">
+                <p style="font-size:1.2rem; font-weight:450; color:#52493b;">We are thrilled to unveil the latest technical evolution in Cheese Client: a completely redesigned movement module that sets a new standard for agility and stealth. This update focuses on three core pillars—parkour assistance, intelligent speed control, and natural motion simulation—to give you an unparalleled edge in both PvP and parkour scenarios.</p>
+
+                <h2>🧀 Smarter Parkour Assistance</h2>
+                <p>Our new parkour system goes beyond simple auto‑jump. It now evaluates block geometry, edge distances, and landing momentum in real time. The module can chain jumps across tricky gaps, automatically sprint-jump on optimal ticks, and even handle multi-level ascents like spiral staircases with zero input. During internal tests on competitive parkour servers, users cleared courses <strong>15–20% faster</strong> while using 30% fewer actions — making movement flow much more naturally.</p>
+
+                <h3>Precision edge detection</h3>
+                <p>By scanning blocks up to 4 blocks ahead, the movement assistant predicts the exact take‑off point for maximum jump efficiency. It adapts to slabs, trapdoors, and even soul sand, reducing the risk of “sticky” landings. All this runs within the new <strong>predictive trajectory engine</strong> introduced in v3.1 core.</p>
+
+                <h2>⚡ Adaptive Speed Control</h2>
+                <p>Speed enhancements are no longer a blunt “toggle max velocity”. We developed an <strong>inertia‑aware speed governor</strong> that dynamically scales your velocity based on server TPS, surrounding entities, and turning radius. In open corridors you'll feel a responsive boost; in tight spaces or crowded servers the module eases off to avoid collision flags. The result is a speed that feels both powerful and human-like, drastically reducing anti‑cheat violations.</p>
+
+                <div class="highlight-box">
+                    <p>✨ <strong>Did you know?</strong> The new speed algorithm uses a feedback loop similar to cruise control. It continuously adjusts to keep you within 98–102% of the vanilla max speed while making micro‑adjustments that mimic mouse‑turning inconsistencies. Perfect for servers running NoCheatPlus or AAC.</p>
+                </div>
+
+                <h2>🎯 Natural Movement Patterns & Smoothing</h2>
+                <p>Perhaps the most sophisticated addition is the <strong>humanization layer</strong>. The module interpolates your input to remove robotic snapping — strafes become rounded, jump arcs gain slight variation, and landing impacts are cushioned with subtle “pre‑movement”. This isn't just visual; it alters packet timing to replicate the tiny delays of a real player. Combined with the new <strong>buffered sprint</strong> system, you'll be nearly indistinguishable from a high‑skill vanilla user.</p>
+
+                <h3>Configurable profiles for every playstyle</h3>
+                <p>All features are adjustable via the Cheese Client settings panel (or the in‑game HUD). You can dial in the level of assistance: from a light nudge for legit players to an advanced “flow” mode for speedrunners. And like every Cheese module, it supports per‑server profiles so you never have to re‑tweak after switching gamemodes.</p>
+            </div>
+
+            <div class="tag-list">
+                <span class="tag">Movement</span>
+                <span class="tag">Technical</span>
+                <span class="tag">Parkour</span>
+                <span class="tag">Speed</span>
+            </div>
+
+            <div class="back-link">
+                <a href="../news.html">← Back to News</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Cheese Client</h3>
+                <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="../download.html">Download</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                    <li><a href="../faq.html">FAQ</a></li>
+                    <li><a href="../news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../terms.html">Terms of Service</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy;Cheese Client all rights reserved.</p>
+            <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
