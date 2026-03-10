@@ -380,6 +380,12 @@
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--text);
+            max-width: 85%;
+            line-height: 1.3;
+        }
+
+        .version-card:nth-child(even) .version-title {
+            margin-left: auto;
         }
 
         .change-list {
@@ -404,11 +410,17 @@
             font-size: 0.875rem;
             margin-top: 4px;
             flex-shrink: 0;
+            min-width: 18px;
         }
 
         .change-text {
             color: var(--text-light);
-            max-width: 300px;
+            max-width: 280px;
+            line-height: 1.5;
+        }
+
+        .version-tags {
+            margin-bottom: 15px;
         }
 
         .version-tag {
@@ -551,6 +563,9 @@
                 width: calc(50% - 30px);
                 padding: 30px;
             }
+            .change-text {
+                max-width: 240px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -624,6 +639,14 @@
                 text-align: left;
             }
 
+            .version-title {
+                max-width: 100%;
+            }
+
+            .change-text {
+                max-width: none;
+            }
+
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
@@ -651,6 +674,7 @@
 
             .version-title {
                 font-size: 1.25rem;
+                max-width: 100%;
             }
 
             .highlight-grid {
@@ -697,8 +721,205 @@
             </div>
 
             <div class="changelog-timeline">
+                <!-- v3.1.0 - May 20, 2025 (Latest) -->
                 <div class="version-card fade-in">
                     <div class="version-content latest-version">
+                        <div class="version-header">
+                            <div class="version-number">v3.1.0</div>
+                            <div class="version-date">May 20, 2025</div>
+                        </div>
+                        <h3 class="version-title">Unified Mod Compatibility Update</h3>
+                        <div class="version-tags">
+                            <span class="version-tag tag-new"><i class="fas fa-plus"></i> New</span>
+                            <span class="version-tag tag-improved"><i class="fas fa-tachometer-alt"></i> Improved</span>
+                            <span class="version-tag tag-update"><i class="fas fa-sync"></i> Major</span>
+                        </div>
+                        <ul class="change-list">
+                            <li>
+                                <span class="change-icon"><i class="fas fa-plus"></i></span>
+                                <span class="change-text">Added support for both Fabric and Forge mods simultaneously on 1.12.2</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-code"></i></span>
+                                <span class="change-text">Introduced hybrid classloader to resolve Mixin/CoreMod conflicts</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="change-text">Reduced memory usage by 30% when running both mod loaders</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-plus"></i></span>
+                                <span class="change-text">Added built-in mod compatibility checker</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-shield-alt"></i></span>
+                                <span class="change-text">Enhanced anti-detection for modded server environments</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="version-marker"></div>
+                </div>
+
+                <!-- v3.0.0 - April 2, 2025 -->
+                <div class="version-card fade-in">
+                    <div class="version-content">
+                        <div class="version-header">
+                            <div class="version-number">v3.0.0</div>
+                            <div class="version-date">April 2, 2025</div>
+                        </div>
+                        <h3 class="version-title">Complete Ground-Up Rewrite</h3>
+                        <div class="version-tags">
+                            <span class="version-tag tag-new"><i class="fas fa-plus"></i> New</span>
+                            <span class="version-tag tag-improved"><i class="fas fa-tachometer-alt"></i> Performance</span>
+                            <span class="version-tag tag-update"><i class="fas fa-sync"></i> Major</span>
+                        </div>
+                        <ul class="change-list">
+                            <li>
+                                <span class="change-icon"><i class="fas fa-code-branch"></i></span>
+                                <span class="change-text">Complete codebase rewrite with modular event-driven architecture</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-paint-brush"></i></span>
+                                <span class="change-text">Brand new rendering engine with Vulkan-based optimizations</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="change-text">Up to 200% performance improvement in entity-dense scenarios</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-microchip"></i></span>
+                                <span class="change-text">35% reduction in memory footprint for modded environments</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-shield-alt"></i></span>
+                                <span class="change-text">Introduced behavioral mimicry engine for enhanced stealth</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-sync"></i></span>
+                                <span class="change-text">Real-time anti-cheat version detection and adaptive bypasses</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="version-marker"></div>
+                </div>
+
+                <!-- v2.8.3 - March 28, 2025 -->
+                <div class="version-card fade-in">
+                    <div class="version-content">
+                        <div class="version-header">
+                            <div class="version-number">v2.8.3</div>
+                            <div class="version-date">March 28, 2025</div>
+                        </div>
+                        <h3 class="version-title">Anti-Cheat Compatibility Update</h3>
+                        <div class="version-tags">
+                            <span class="version-tag tag-fixed"><i class="fas fa-bug"></i> Fixed</span>
+                            <span class="version-tag tag-improved"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
+                        <ul class="change-list">
+                            <li>
+                                <span class="change-icon"><i class="fas fa-shield-alt"></i></span>
+                                <span class="change-text">Updated modules for Matrix 6, Grim AC 2.3, and Vulcan 3.0 compatibility</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-random"></i></span>
+                                <span class="change-text">Rewrote KillAura timing randomization for human-like click patterns</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="change-text">Introduced dynamic timer deviation (0.98–1.02) to bypass speed checks</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-plus"></i></span>
+                                <span class="change-text">Added "Stealth" profile for maximum safety on unknown servers</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-database"></i></span>
+                                <span class="change-text">Expanded per-server profile system to support up to 50 configurations</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="version-marker"></div>
+                </div>
+
+                <!-- v2.8.1 - March 22, 2025 (China Launch) -->
+                <div class="version-card fade-in">
+                    <div class="version-content">
+                        <div class="version-header">
+                            <div class="version-number">v2.8.1</div>
+                            <div class="version-date">March 22, 2025</div>
+                        </div>
+                        <h3 class="version-title">China Localization Release</h3>
+                        <div class="version-tags">
+                            <span class="version-tag tag-new"><i class="fas fa-plus"></i> New</span>
+                            <span class="version-tag tag-update"><i class="fas fa-globe"></i> Localization</span>
+                        </div>
+                        <ul class="change-list">
+                            <li>
+                                <span class="change-icon"><i class="fas fa-language"></i></span>
+                                <span class="change-text">Added Simplified Chinese language support throughout the client</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-server"></i></span>
+                                <span class="change-text">Developed smart routing system for Chinese players (reduced latency)</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-gamepad"></i></span>
+                                <span class="change-text">Added pre-configured profiles for major Chinese Minecraft networks</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-book-open"></i></span>
+                                <span class="change-text">Integrated Chinese knowledge base and video tutorials</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-users"></i></span>
+                                <span class="change-text">Established dedicated Chinese community spaces with native moderators</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="version-marker"></div>
+                </div>
+
+                <!-- v2.8.2 - March 18, 2025 (Movement Overhaul) -->
+                <div class="version-card fade-in">
+                    <div class="version-content">
+                        <div class="version-header">
+                            <div class="version-number">v2.8.2</div>
+                            <div class="version-date">March 18, 2025</div>
+                        </div>
+                        <h3 class="version-title">Advanced Movement Overhaul</h3>
+                        <div class="version-tags">
+                            <span class="version-tag tag-new"><i class="fas fa-plus"></i> New</span>
+                            <span class="version-tag tag-improved"><i class="fas fa-tachometer-alt"></i> Improved</span>
+                        </div>
+                        <ul class="change-list">
+                            <li>
+                                <span class="change-icon"><i class="fas fa-arrows-alt"></i></span>
+                                <span class="change-text">Redesigned movement module with intelligent parkour assistance</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-brain"></i></span>
+                                <span class="change-text">Added predictive trajectory engine for edge detection up to 4 blocks ahead</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-gauge-high"></i></span>
+                                <span class="change-text">Implemented inertia-aware speed governor with dynamic scaling</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-robot"></i></span>
+                                <span class="change-text">Introduced humanization layer for natural movement patterns</span>
+                            </li>
+                            <li>
+                                <span class="change-icon"><i class="fas fa-sliders"></i></span>
+                                <span class="change-text">Added configurable movement profiles for different playstyles</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="version-marker"></div>
+                </div>
+
+                <!-- v2.1.0 - March 15, 2024 -->
+                <div class="version-card fade-in">
+                    <div class="version-content">
                         <div class="version-header">
                             <div class="version-number">v2.1.0</div>
                             <div class="version-date">March 15, 2024</div>
@@ -735,6 +956,7 @@
                     <div class="version-marker"></div>
                 </div>
 
+                <!-- v2.0.3 - February 28, 2024 -->
                 <div class="version-card fade-in">
                     <div class="version-content">
                         <div class="version-header">
@@ -764,6 +986,7 @@
                     <div class="version-marker"></div>
                 </div>
 
+                <!-- v2.0.0 - January 20, 2024 -->
                 <div class="version-card fade-in">
                     <div class="version-content">
                         <div class="version-header">
@@ -798,6 +1021,7 @@
                     <div class="version-marker"></div>
                 </div>
 
+                <!-- v1.5.2 - December 5, 2023 -->
                 <div class="version-card fade-in">
                     <div class="version-content">
                         <div class="version-header">
@@ -831,6 +1055,7 @@
                     <div class="version-marker"></div>
                 </div>
 
+                <!-- v1.5.0 - November 10, 2023 -->
                 <div class="version-card fade-in">
                     <div class="version-content">
                         <div class="version-header">
@@ -864,6 +1089,7 @@
                     <div class="version-marker"></div>
                 </div>
 
+                <!-- v1.0.0 - October 1, 2023 -->
                 <div class="version-card fade-in">
                     <div class="version-content">
                         <div class="version-header">

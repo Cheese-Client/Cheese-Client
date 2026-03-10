@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "image": "./images/image4.png",
+      "date": "July 15, 2025",
+      "author": "Cheese Development Team",
+      "badge": "ANNOUNCEMENT",
+      "title": "Cheese Client 3.2: Unleash Your Creativity with Visual Scripting",
+      "excerpt": "Version 3.2 introduces a revolutionary Visual Scripting API, allowing users to create custom automated routines and module behaviors through an intuitive, node-based editor—no coding required.",
+      "tags": ["v3.2", "Announcement", "API", "Scripting", "Major Release"],
+      "link": "news/07-15-2025.html"
+    },
+    {
       "image": "./images/image2.webp",
       "date": "May 20, 2025",
       "author": "Cheese Development Team",

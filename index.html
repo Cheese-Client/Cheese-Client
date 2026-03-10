@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="bingbot" content="index, follow, archive">
-    <meta name="keywords" content="Minecraft,hack,Github,client,open source,explore,YouTube,mojang,game,Cheese">
+    <meta name="keywords" content="Minecraft hacks,hack client,open source,GitHub client,Minecraft cheats,client">
     <meta name="description" content="Cheese Client is a powerful Minecraft hacked client featuring Kill Aura, Flight, ESP, and performance boosts. Explore all features and download now.">
     <title>Cheese Client - The Minecraft Hack Client</title>
     <link rel="icon" href="images/Logo.webp">
     <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="canonical" href="https://cheeseclient.qzz.io/">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
 
@@ -24,7 +22,7 @@
       "name": "Cheese Client",
       "description": "Free Minecraft hacked client with combat, movement, visual and performance features. Undetected Kill Aura, Flight, ESP, X-Ray, FPS Boost.",
       "applicationCategory": "GameApplication",
-      "operatingSystem": "Windows, macOS, Linux",
+      "operatingSystem": "Windows",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -313,7 +311,7 @@
     .hero-text p {
         font-size: 1.25rem;
         margin-bottom: 32px;
-        max-width: 5000px;
+        max-width: 500px;
         font-weight: 400;
     }
 
@@ -441,254 +439,203 @@
         max-width: 600px;
         margin: 0 auto;
     }
-
-    .enhanced-content-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        margin-top: 60px;
-    }
-
-    .enhanced-card {
+    
+    .modern-carousel-section {
         background: var(--card);
-        padding: 50px 35px;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow-md);
-        border: 1px solid var(--border);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .enhanced-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--primary-gradient);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: 1;
-    }
-
-    .enhanced-card:hover::before {
-        opacity: 0.05;
-    }
-
-    .enhanced-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: var(--primary-gradient);
-        transform: scaleY(0);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .enhanced-card:hover::after {
-        transform: scaleY(1);
-    }
-
-    .enhanced-card:hover {
-        transform: translateY(-12px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary-light);
-    }
-
-    .card-icon-container {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: var(--primary-gradient);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 30px;
-        color: #fff;
-        font-size: 2.5rem;
-        box-shadow: 0 10px 25px rgba(255, 183, 71, 0.3);
-        position: relative;
-        z-index: 2;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .card-icon-container::before {
-        content: '';
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-        border-radius: 50%;
-        background: var(--primary-gradient);
-        opacity: 0.2;
-        z-index: -1;
-        transition: all 0.4s ease;
-    }
-
-    .enhanced-card:hover .card-icon-container {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 15px 35px rgba(255, 183, 71, 0.4);
-    }
-
-    .enhanced-card:hover .card-icon-container::before {
-        transform: scale(1.1);
-        opacity: 0.3;
-    }
-
-    .enhanced-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        font-weight: 700;
-        color: var(--text);
-        position: relative;
-        z-index: 2;
-    }
-
-    .enhanced-card p {
-        color: var(--text-light);
-        line-height: 1.7;
-        position: relative;
-        z-index: 2;
-        font-size: 1.05rem;
-    }
-
-    .card-decorations {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .card-decorations::before,
-    .card-decorations::after {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: var(--primary-light);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .card-decorations::before {
-        top: 20px;
-        right: 20px;
-    }
-
-    .card-decorations::after {
-        bottom: 20px;
-        left: 20px;
-    }
-
-    .enhanced-card:hover .card-decorations::before,
-    .enhanced-card:hover .card-decorations::after {
-        opacity: 0.2;
-    }
-
-    .decorative-bg {
         position: relative;
         overflow: hidden;
     }
 
-    .decorative-bg::before {
+    .modern-carousel-section:nth-child(even) {
+        background: var(--bg);
+    }
+
+    .modern-carousel-section::before {
         content: '';
         position: absolute;
         top: -100px;
         right: -100px;
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
         background: var(--primary-gradient);
         border-radius: 50%;
         opacity: 0.05;
         z-index: 0;
     }
 
-    .decorative-bg::after {
-        content: '';
-        position: absolute;
-        bottom: -150px;
-        left: -150px;
-        width: 400px;
-        height: 400px;
-        background: var(--primary-gradient);
-        border-radius: 50%;
-        opacity: 0.03;
-        z-index: 0;
-    }
-
-    .content-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-    }
-
-    .content-card {
-        background: var(--card);
-        padding: 40px 30px;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow-md);
-        border: 1px solid var(--border);
-        transition: all 0.3s ease;
-        text-align: center;
+    .split-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
         position: relative;
-        overflow: hidden;
+        z-index: 1;
+        min-height: 500px;
     }
 
-    .content-card::before {
-        content: '';
+    .split-layout.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .split-content {
+        flex: 1;
+    }
+
+    .split-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .carousel-text-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .carousel-text-item {
         position: absolute;
         top: 0;
         left: 0;
-        width: 4px;
-        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .carousel-text-item.active {
+        position: relative;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+        visibility: visible;
+    }
+
+    .carousel-text-item h3 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 24px;
+        color: var(--text);
+        line-height: 1.2;
+    }
+
+    .carousel-text-item p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    .visual-placeholder {
+        width: 350px;
+        height: 350px;
         background: var(--primary-gradient);
-        transform: scaleY(0);
-        transition: transform 0.3s ease;
-    }
-
-    .content-card:hover::before {
-        transform: scaleY(1);
-    }
-
-    .content-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .content-icon {
-        width: 70px;
-        height: 70px;
-        border-radius: 16px;
-        background: var(--primary-gradient);
+        border-radius: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 24px;
         color: #fff;
-        font-size: 1.75rem;
-        box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+        font-size: 150px;
+        box-shadow: 0 30px 60px rgba(255, 179, 71, 0.25);
+        position: relative;
+        transition: transform 0.5s ease;
+    }
+    
+    .split-visual:hover .visual-placeholder {
+        transform: scale(1.05) rotate(3deg);
     }
 
-    .content-card h3 {
-        font-size: 1.375rem;
-        margin-bottom: 16px;
-        font-weight: 700;
+    .visual-placeholder::before {
+        content: '';
+        position: absolute;
+        inset: -15px;
+        border-radius: 50px;
+        border: 2px dashed var(--primary-light);
+        opacity: 0.5;
     }
 
-    .content-card p {
-        color: var(--text-light);
+    .carousel-visual-item {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-visual-item.active {
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+    }
+
+    .carousel-nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .nav-arrow {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: var(--text);
+    }
+
+    .nav-arrow:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: #fff;
+        transform: scale(1.1);
+    }
+
+    .nav-dots {
+        display: flex;
+        gap: 12px;
+    }
+
+    .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background: var(--border);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+        width: 30px;
+        background: var(--primary-gradient);
+    }
+    
+    @media (max-width: 900px) {
+        .split-layout, .split-layout.reverse {
+            flex-direction: column;
+            gap: 50px;
+        }
+        
+        .split-visual {
+            order: -1;
+        }
+        
+        .carousel-text-item h3 {
+            font-size: 2rem;
+        }
+        
+        .visual-placeholder {
+            width: 250px;
+            height: 250px;
+            font-size: 100px;
+        }
     }
 
     .about-section {
@@ -885,6 +832,97 @@
         box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.08);
     }
 
+    /* --- New Rights Section Styles --- */
+    .rights-grid-section {
+        background: var(--bg); /* Light grey background to distinguish from white sections */
+        position: relative;
+    }
+
+    .rights-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .right-card {
+        background: var(--card);
+        padding: 50px 30px;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .right-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--primary-gradient);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+    }
+
+    .right-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .right-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-light);
+    }
+
+    .right-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 30px;
+        background: rgba(255, 179, 71, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-dark);
+        font-size: 2.25rem;
+        transition: all 0.4s ease;
+    }
+
+    .right-card:hover .right-icon {
+        background: var(--primary-gradient);
+        color: #fff;
+        transform: scale(1.1) rotate(10deg);
+        box-shadow: 0 10px 20px rgba(255, 179, 71, 0.3);
+    }
+
+    .right-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--text);
+    }
+
+    .right-card p {
+        color: var(--text-light);
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+        .rights-grid {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
     .cta-section {
         background: var(--primary-gradient);
         color: #412200;
@@ -1048,9 +1086,6 @@
         .section-title h2 {
             font-size: 2.25rem;
         }
-        .content-grid {
-            grid-template-columns: 1fr;
-        }
         .footer-bottom {
             flex-direction: column;
             text-align: center;
@@ -1068,13 +1103,6 @@
         }
         .scroll-button i {
             font-size: 1.25rem;
-        }
-        .enhanced-content-grid {
-            grid-template-columns: 1fr;
-        }
-        .card-icon-container {
-            width: 80px;
-            height: 80px;
         }
         .about-container {
             flex-direction: column;
@@ -1125,15 +1153,12 @@
             width: 45px;
             height: 45px;
         }
-        .enhanced-card {
-            padding: 40px 25px;
-        }
     }
     </style>
 
     <style>
         .hero {
-            padding-bottom: 100px !important; 
+            padding-bottom: 110px !important; 
         }
 
         .hero-scroll-down {
@@ -1141,93 +1166,55 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 30px;
-            background: var(--bg);
+            height: 40px;
+            background: linear-gradient(to bottom, #F9FAFC 0%, var(--bg) 60%, var(--bg) 100%);
             border-radius: 40px 40px 0 0;
             z-index: 20;
             transition: background 0.3s ease;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
             display: flex;
             justify-content: center;
         }
 
         .hero-scroll-down:hover {
-            background: #eef0f3;
+            background: linear-gradient(to bottom, #F9FAFC 0%, var(--bg) 60%, var(--bg) 100%);
         }
 
         .scroll-semicircle {
             position: absolute;
-            top: -27px;
+            top: -63px;
             left: 50%;
             transform: translateX(-50%);
-            width: 54px;
-            height: 27px;
-            background: var(--bg);
-            border-radius: 30px 30px 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 5px;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-            transition: background 0.3s ease;
+            width: 200px;
+            height: 100px;
+            background: url('images/button.png') no-repeat center center;
+            background-size: contain;
+            display: block;
             cursor: pointer;
+            background-color: transparent;
+            pointer-events: auto;
         }
 
         .hero-scroll-down:hover .scroll-semicircle {
-            background: #eef0f3;
+            filter: none;
         }
 
-        .scroll-button {
-            background: transparent;
-            border: none;
-            padding: 0;
-            line-height: 1;
-        }
-
-        .scroll-button i {
-            font-size: 1.2rem;
-            color: #412200;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-scroll-down:hover .scroll-button i {
-            transform: translateY(3px);
-        }
-
-        .scroll-text {
-            position: absolute;
-            top: -55px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            font-weight: 700;
-            color: #412200;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .scroll-text, .scroll-button, .scroll-button i {
+            display: none;
         }
 
         @media (max-width: 768px) {
             .hero {
-                padding-bottom: 90px !important;
+                padding-bottom: 100px !important;
             }
             .hero-scroll-down {
-                height: 40px;
+                height: 45px;
                 border-radius: 30px 30px 0 0;
             }
             .scroll-semicircle {
-                width: 50px;
-                height: 25px;
-                top: -25px;
-                border-radius: 25px 25px 0 0;
-            }
-            .scroll-text {
-                top: -45px;
-                font-size: 0.9rem;
-            }
-            .scroll-button i {
-                font-size: 1rem;
+                width: 100px;
+                height: 50px;
+                top: -28px;
+                background-size: contain;
             }
         }
     </style>
@@ -1235,6 +1222,8 @@
     <noscript>
         <style>
             .fade-in { animation: none; opacity: 1; }
+            .carousel-text-item { position: relative; opacity: 1; visibility: visible; transform: none; }
+            .carousel-visual-item { opacity: 1; transform: none; }
         </style>
     </noscript>
 </head>
@@ -1281,12 +1270,7 @@
         <div class="hero-overlay"></div>
         
         <div class="hero-scroll-down" id="scrollDownBtn">
-            <div class="scroll-text">EXPLORE</div>
-            <div class="scroll-semicircle">
-                <div class="scroll-button">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
+            <div class="scroll-semicircle"></div>
         </div>
 
         <div class="container">
@@ -1312,39 +1296,47 @@
         </div>
     </section>
 
-    <section id="what-is" class="section decorative-bg">
+    <section id="what-is" class="section modern-carousel-section">
         <div class="container">
             <div class="section-title">
                 <h2>Understanding Cheese Client</h2>
                 <p>Discover the revolutionary Minecraft enhancement suite that's changing how players experience the game</p>
             </div>
 
-            <div class="enhanced-content-grid">
-                <div class="enhanced-card">
-                    <div class="card-decorations"></div>
-                    <div class="card-icon-container">
-                        <i class="fas fa-rocket"></i>
+            <div class="split-layout">
+                <div class="split-content">
+                    <div class="carousel-text-wrapper">
+                        <div class="carousel-text-item active">
+                            <h3>Enhanced Gameplay</h3>
+                            <p>Powerful Minecraft hacks for movement, combat, and exploration. Our hack client delivers seamless gameplay with tools you can actually control. Experience the game like never before with features designed to give you the competitive edge.</p>
+                        </div>
+                        <div class="carousel-text-item">
+                            <h3>Advanced Protection</h3>
+                            <p>Sophisticated anti-detection keeps your gameplay secure. As an open source GitHub client, our code is transparent and community-reviewed. Play with confidence knowing your account safety is our top priority.</p>
+                        </div>
+                        <div class="carousel-text-item">
+                            <h3>Performance Boost</h3>
+                            <p>Reduce lag and boost FPS with built-in optimization tools. Smoother gameplay, faster loading—without sacrificing advanced features. Optimized for high-performance gaming on any hardware.</p>
+                        </div>
                     </div>
-                    <h3>Enhanced Gameplay</h3>
-                    <p>Cheese Client transforms your Minecraft experience with powerful tools that enhance movement, combat, and exploration capabilities. Experience seamless gameplay like never before.</p>
+
+                    <div class="carousel-nav">
+                        <div class="nav-arrow prev-btn"><i class="fas fa-arrow-left"></i></div>
+                        <div class="nav-dots">
+                            <span class="nav-dot active" data-index="0"></span>
+                            <span class="nav-dot" data-index="1"></span>
+                            <span class="nav-dot" data-index="2"></span>
+                        </div>
+                        <div class="nav-arrow next-btn"><i class="fas fa-arrow-right"></i></div>
+                    </div>
                 </div>
 
-                <div class="enhanced-card">
-                    <div class="card-decorations"></div>
-                    <div class="card-icon-container">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="split-visual">
+                    <div class="visual-placeholder">
+                        <div class="carousel-visual-item active"><i class="fas fa-rocket"></i></div>
+                        <div class="carousel-visual-item"><i class="fas fa-shield-alt"></i></div>
+                        <div class="carousel-visual-item"><i class="fas fa-tachometer-alt"></i></div>
                     </div>
-                    <h3>Advanced Protection</h3>
-                    <p>Built with sophisticated anti-detection systems to ensure your gameplay remains secure while using advanced features. Stay protected with our cutting-edge security measures.</p>
-                </div>
-
-                <div class="enhanced-card">
-                    <div class="card-decorations"></div>
-                    <div class="card-icon-container">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Performance Boost</h3>
-                    <p>Optimize your Minecraft performance with built-in tools that reduce lag and improve frame rates for smoother gameplay. Enjoy faster loading times and better resource management.</p>
                 </div>
             </div>
         </div>
@@ -1355,8 +1347,8 @@
             <div class="about-container">
                 <div class="about-info">
                     <h2>Built By Gamers, For Gamers</h2>
-                    <p>Wе'rе nоt sоmе fаcеlеss cоrpоrаtiоn - wе'rе Minеcrаft plаyеrs whо ɡоt tirеd оf clunky, buɡɡy cliеnts. Сhееsе Сlіеnt stаrtеd аs а pаssіоn prоjеct іn 2021 аnd hаs ɡrоwn іntо thе mоst rеliаblе hаck cliеnt оut thеrе.</p>
-                    <p>Wе tеst еνеry fеаturе in rеаl ɡаmеplаy scеnаriоs. Ιf it fееls chееsy оr brеаks immеrsiоn, іt dоеsn't mаkе thе cut. Οur philоsоphy is simplе: еnhаncе thе ехpеriеncе, dоn't rеplаcе іt.</p>
+                    <p>We're not some faceless corporation - we're Minecraft players who got tired of clunky, buggy clients. Cheese Client started as a passion project in 2021 and has grown into the most reliable hack client out there, fully open source on GitHub.</p>
+                    <p>We test every feature in real gameplay scenarios. If it feels cheesy or breaks immersion, it doesn't make the cut. Our philosophy is simple: enhance the experience, don't replace it.</p>
                     <a href="features.html" class="btn">
                         <i class="fas fa-arrow-right"></i> Learn More About Features
                     </a>
@@ -1379,33 +1371,37 @@
         </div>
     </section>
 
-    <section id="rights" class="section">
+    <!-- Redesigned Rights Section -->
+    <section id="rights" class="section rights-grid-section">
         <div class="container">
             <div class="section-title">
                 <h2>Your Rights with Cheese Client</h2>
                 <p>We believe in empowering players with the tools they need to enhance their Minecraft experience</p>
             </div>
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="content-icon">
+
+            <div class="rights-grid">
+                <div class="right-card">
+                    <div class="right-icon">
                         <i class="fas fa-unlock"></i>
                     </div>
                     <h3>Full Access</h3>
-                    <p>Gain complete access to all Cheese Client features without any restrictions or limitations.</p>
+                    <p>Gain complete access to all Cheese Client features without any restrictions or limitations. This open source client ensures transparency, giving you the freedom to modify and understand every aspect of the software you use.</p>
                 </div>
-                <div class="content-card">
-                    <div class="content-icon">
+
+                <div class="right-card">
+                    <div class="right-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Community Powered</h3>
-                    <p>Join a thriving community of players who contribute to the development and improvement of Cheese Client.</p>
+                    <p>Join a thriving community of players who contribute to the development and improvement of this GitHub client. Your feedback directly shapes future updates, ensuring our hack client evolves to meet your needs.</p>
                 </div>
-                <div class="content-card">
-                    <div class="content-icon">
+
+                <div class="right-card">
+                    <div class="right-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Transparent Development</h3>
-                    <p>Our development process is open and transparent, with regular updates and community feedback.</p>
+                    <p>Our development process is open and transparent, with regular updates driven by community feedback. As a leading open source hack client, we believe transparency builds trust—and better software.</p>
                 </div>
             </div>
         </div>
@@ -1414,13 +1410,13 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-card">
-                <h2>Page ends here,but our exploration of Minecraft never ends</h2>
-                <p>Join thousands of players who have already transformed their gameplay with Cheese Client</p>
+                <h2>Page ends here, but our exploration of Minecraft never ends</h2>
+                <p>Join thousands of players who have already transformed their gameplay with Cheese Client. Experience the most reliable features in a hack client built by players, for players.</p>
                 <div class="button-group-center">
                     <a href="download.html" class="btn">
                         <i class="fas fa-download"></i> View download
                     </a>
-                    <a href="download.html" class="btn btn-secondary">
+                    <a href="features.html" class="btn btn-secondary">
                         <i class="fas fa-cube"></i> Explore Features
                     </a>
                 </div>
@@ -1433,7 +1429,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Cheese Client</h3>
-                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                    <p>Enhancing your Minecraft experience with powerful features and intuitive controls. We're an open source GitHub client dedicated to giving players more control over how they play.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
                         <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -1475,6 +1471,45 @@
         const scrollSemicircle = document.querySelector('.scroll-semicircle');
         const carouselSlides = document.querySelectorAll('.carousel-slide');
         const fadeElements = document.querySelectorAll('.content-card, .enhanced-card');
+        
+        const modernCarousels = document.querySelectorAll('.modern-carousel-section');
+        
+        modernCarousels.forEach(carousel => {
+            const texts = carousel.querySelectorAll('.carousel-text-item');
+            const visuals = carousel.querySelectorAll('.carousel-visual-item');
+            const dots = carousel.querySelectorAll('.nav-dot');
+            const prevBtn = carousel.querySelector('.prev-btn');
+            const nextBtn = carousel.querySelector('.next-btn');
+            let currentIndex = 0;
+            const totalSlides = texts.length;
+
+            function goToSlide(index) {
+                if (index >= totalSlides) index = 0;
+                if (index < 0) index = totalSlides - 1;
+
+                texts.forEach(t => t.classList.remove('active'));
+                visuals.forEach(v => v.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                texts[index].classList.add('active');
+                visuals[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                currentIndex = index;
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+            }
+            
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goToSlide(i));
+            });
+        });
+
         const snapSections = [
             document.querySelector('.hero'),
             document.getElementById('what-is'),
@@ -1482,6 +1517,7 @@
             document.getElementById('rights'),
             document.querySelector('.cta-section')
         ].filter(section => section !== null);
+        
         let isScrolling = false;
         let lastHeaderHeight = header.offsetHeight;
 

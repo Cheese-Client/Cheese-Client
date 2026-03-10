@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bingbot" content="index, follow, archive">
+    <meta name="keywords" content="Minecraft,Cheese Client,API,scripting,automation,visual scripting,3.2">
+    <meta name="description" content="Cheese Client 3.2 introduces a revolutionary visual scripting API, allowing users to create custom automated routines and module behaviors without writing a single line of code.">
+    <title>Cheese Client News · 3.2 Visual Scripting API</title>
+    <link rel="icon" href="../images/Logo.webp">
+    <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+
+    <style>
+        :root {
+            --primary: #ffb347;
+            --primary-dark: #ff9800;
+            --primary-light: #ffd187;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --secondary: #4a5568;
+            --text: #111827;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 16px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .brand-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .news-section {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .news-article {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+            margin: 20px 0 20px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 0 0 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-date i, .article-author i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .badge {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+            border: none;
+        }
+        .badge.announcement,
+        .badge.technical {
+            background: var(--primary-gradient);
+        }
+
+        .news-article h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #241f17;
+            margin: 20px 0 30px 0;
+            border-left: 6px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .news-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .article-content {
+            font-size: 1.08rem;
+            color: #352f28;
+            width: 100%;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #2c241b;
+            border-bottom: 2px solid #f0e0cc;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #4f3f2e;
+        }
+
+        .article-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.8rem 1.8rem;
+        }
+
+        .highlight-box {
+            background: #fcf7f0;
+            border-radius: 0;
+            padding: 1.6rem 2rem;
+            border-left: 6px solid var(--primary);
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px #f1e4d6;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 2rem 0 1rem 0;
+            padding: 1rem 0 0 0;
+            border-top: 1px solid #9ca3af;
+            transition: border-color 0.3s ease;
+        }
+
+        .tag {
+            background: rgba(255, 179, 71, 0.1);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            line-height: 1.4;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background: rgba(255, 179, 71, 0.2);
+            transform: translateY(-2px);
+            color: var(--primary-dark);
+        }
+
+        .back-link {
+            margin: 30px 0 20px 0;
+            text-align: right;
+        }
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #111827;
+            color: #fff;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.375rem;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .news-article {
+                padding: 0 16px;
+            }
+            .news-article h1 {
+                font-size: 2.2rem;
+                padding-left: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article h1 {
+                font-size: 1.9rem;
+            }
+            .highlight-box {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../images/Logo.webp" loading="lazy" alt="Client Logo" width="40" height="40">
+                </div>
+                <div class="brand-text">
+                    <h1>Cheese Client</h1>
+                    <span>Minecraft Hacked Client</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../features.html">Features</a>
+                <a href="../download.html">Download</a>
+                <a href="../changelog.html">Changelog</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../news.html" class="active">News</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="news-article">
+            <div class="article-meta">
+                <span class="article-date"><i class="far fa-calendar-alt"></i> July 15, 2025</span>
+                <span class="article-author"><i class="far fa-user"></i> Cheese Development Team</span>
+                <span class="badge">ANNOUNCEMENT</span>
+            </div>
+
+            <h1>Cheese Client 3.2: Unleash Your Creativity with Visual Scripting</h1>
+
+            <img src="../images/image4.png" alt="Visual Scripting Interface Preview" loading="lazy">
+
+            <div class="article-content">
+                <p style="font-size:1.2rem; font-weight:450; color:#52493b;">Today marks a monumental step in the evolution of Cheese Client. We are proud to introduce version 3.2, featuring a brand-new <strong>Visual Scripting API</strong>. This revolutionary tool empowers you to create custom automated routines and module behaviors through an intuitive, node-based editor—no programming knowledge required. We're handing you the keys to build the ultimate, personalized client experience.</p>
+
+                <h2>🎨 Introducing the Visual Scripting Workshop</h2>
+                <p>For years, the most advanced client customizations were locked behind lines of code. Cheese Client 3.2 shatters that barrier. Accessible directly from the client's main menu, the new <strong>Scripting Workshop</strong> provides a clean, node-based interface. You can now design complex logic by simply dragging and connecting nodes that represent actions, conditions, and events. Imagine building a PvP routine that switches between modules based on an enemy's armor, or a parkour script that reacts to specific block types—all without typing a single line of Java.</p>
+
+                <h3>How It Works: Nodes, Wires, and Logic</h3>
+                <p>The visual scripting system is built on a powerful, yet simple, metaphor. <strong>Event Nodes</strong> (like "On Player Hit" or "On Block Change") start your script. These connect through <strong>Action Nodes</strong> (such as "Activate KillAura" or "Sprint") and <strong>Condition Nodes</strong> (like "Is Health < 10" or "Is Target Visible"). You weave them together with virtual "wires" to create a flow. The system compiles this visual graph into optimized bytecode in real-time, ensuring your custom scripts run with the same lightning-fast performance as our built-in modules.</p>
+
+                <h2>⚡ Pre-Built Templates & Community Sharing</h2>
+                <p>We know starting from a blank canvas can be daunting. That's why version 3.2 ships with a library of pre-built script templates created by our development team. You'll find templates for advanced "pop" PvP tactics, automated crystal placement sequences, and even complex parkour macros. More importantly, we've integrated a <strong>script sharing hub</strong> directly into the client. You can now browse, download, and rate scripts created by other Cheese Client users, fostering a new ecosystem of community-driven innovation.</p>
+
+                <div class="highlight-box">
+                    <p>🧪 <strong>Early Access Tester Feedback:</strong> "I've always wanted to tweak the client to my exact playstyle, but I'm not a coder. The visual scripting changed everything. I built a script that automatically rotates my view and places a scaffold block when I'm falling near lava—it saved me twice in one hour!" — Beta Tester 'MineCrafterPro'. During our beta, over 300 custom scripts were created, with 0 reported stability issues.</p>
+                </div>
+
+                <h2>🔒 Undetectability by Design</h2>
+                <p>A valid concern with any user-generated content is the risk of creating detectable patterns. Our scripting engine runs entirely within the client's existing secure framework. All actions performed by a script are routed through our core modules and inherit the same advanced anti-detection systems, including the behavioral mimicry engine and packet randomization. This means your custom "Auto-Trap" script will be just as hard to distinguish from human input as our official "Scaffold" module.</p>
+
+                <h3>Script Sandboxing & Performance</h3>
+                <p>Every script runs in a secure, isolated sandbox. This prevents a poorly designed or malicious script from interfering with other modules or the client's core functions. The sandbox also enforces strict performance budgets; if a script attempts to perform too many actions in a single tick, the engine will automatically optimize the execution order. You get limitless creativity without ever compromising on the smooth, high-FPS experience you expect from Cheese Client.</p>
+
+                <h2>🔄 Upgrading & The Future of Scripting</h2>
+                <p><strong>Cheese Client 3.2 is a free upgrade for all existing users.</strong> Simply launch your client and the automatic updater will handle the rest. Your existing profiles and settings will be fully compatible.</p>
+
+                <p>This is just the beginning for our scripting API. In future updates, we plan to introduce nodes that interface with more game data, support for external JavaScript for advanced users, and even deeper integration with the Fabric/Forge mod ecosystem we unified in 3.1. The future of Cheese Client is in your hands.</p>
+
+                <p><strong>Join the Scripting Revolution.</strong> Whether you're a PvP veteran looking for an edge or a creative player wanting to automate the mundane, Cheese Client 3.2's Visual Scripting API is your new best friend. Download the update today and start building your perfect Minecraft experience.</p>
+            </div>
+
+            <div class="tag-list">
+                <span class="tag">v3.2</span>
+                <span class="tag">Announcement</span>
+                <span class="tag">API</span>
+                <span class="tag">Scripting</span>
+                <span class="tag">Major Release</span>
+            </div>
+
+            <div class="back-link">
+                <a href="../news.html">← Back to News</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Cheese Client</h3>
+                <p>Enhancing your Minecraft experience with powerful features and intuitive controls.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="../download.html">Download</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../changelog.html">Changelog</a></li>
+                    <li><a href="../faq.html">FAQ</a></li>
+                    <li><a href="../news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../terms.html">Terms of Service</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy;Cheese Client all rights reserved.</p>
+            <p>Minecraft is a trademark of Mojang AB. Cheese Client is not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
