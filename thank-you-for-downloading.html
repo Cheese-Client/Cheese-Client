@@ -184,7 +184,7 @@
 
         .hero {
             background: var(--primary-gradient);
-            padding: 100px 0 80px;
+            padding: 120px 0 100px;
             position: relative;
             overflow: hidden;
         }
@@ -194,9 +194,68 @@
             position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 30%);
+            animation: bgPulse 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill-opacity="0.1"><path d="M0 0h100v100H0z"/><path d="M0 0h100v100H0z" fill="white"/></svg>');
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .hero-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        .hero-decoration-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -50px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .hero-decoration-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: 10%;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        .hero-decoration-3 {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 5%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         .hero-content {
@@ -207,18 +266,59 @@
         }
 
         .hero-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .hero-icon-inner {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
             color: #412200;
-            text-shadow: 0 5px 15px rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: iconPop 0.6s ease-out forwards, iconPulse 2s ease-in-out infinite 1s;
+            transform: scale(0);
+        }
+
+        @keyframes iconPop {
+            0% { transform: scale(0) rotate(-10deg); }
+            60% { transform: scale(1.1) rotate(3deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2), 0 0 0 10px rgba(255, 255, 255, 0.1); }
+        }
+
+        .hero-icon-check {
+            animation: checkDraw 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        @keyframes checkDraw {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.1;
             letter-spacing: -1px;
+            animation: slideUp 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
         .hero-content p {
@@ -228,18 +328,46 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 400;
+            animation: slideUp 0.8s ease-out 0.5s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .file-info {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.25);
             backdrop-filter: blur(8px);
             display: inline-block;
-            padding: 8px 24px;
-            border-radius: 40px;
+            padding: 10px 28px;
+            border-radius: 50px;
             margin-bottom: 32px;
-            font-weight: 500;
+            font-weight: 600;
             border: 1px solid rgba(255,255,255,0.5);
             color: #412200;
+            animation: slideUp 0.8s ease-out 0.6s forwards, shimmer 3s ease-in-out infinite;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-info::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmerMove 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmerMove {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
         }
 
         .btn {
@@ -290,6 +418,7 @@
 
         .btn-secondary:hover {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background: #fff;
         }
 
         .button-group {
@@ -297,10 +426,40 @@
             gap: 16px;
             flex-wrap: wrap;
             justify-content: center;
+            animation: slideUp 0.8s ease-out 0.7s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .download-hint {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.9s forwards;
+        }
+
+        .download-hint small {
+            opacity: 0.85;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
         }
 
         .section {
             padding: 100px 0;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 179, 71, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .section-title {
@@ -353,10 +512,27 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary-light);
         }
@@ -373,6 +549,13 @@
             color: white;
             font-size: 1.75rem;
             box-shadow: 0 8px 20px rgba(255, 183, 71, 0.3);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(255, 183, 71, 0.4);
         }
 
         .feature-content {
@@ -411,21 +594,65 @@
             color: var(--primary);
         }
 
+        .feature-card.fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .feature-card.fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .manual-download-note {
             background: var(--card);
-            padding: 40px;
-            border-radius: var(--radius);
+            padding: 48px;
+            border-radius: var(--radius-lg);
             text-align: center;
             max-width: 700px;
             margin: 60px auto 0;
-            border: 1px dashed var(--primary);
-            box-shadow: var(--shadow-sm);
+            border: 2px dashed var(--primary-light);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manual-download-note::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 179, 71, 0.03) 0%, transparent 50%);
+            animation: rotateBg 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .manual-download-note i {
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 16px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .manual-download-note h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .manual-download-note p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            position: relative;
         }
 
         .manual-download-note a {
@@ -433,6 +660,7 @@
             font-weight: 700;
             text-decoration: underline;
             text-underline-offset: 4px;
+            position: relative;
         }
 
         footer {
@@ -514,10 +742,6 @@
             }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
         @media (max-width: 1024px) {
             .features-grid {
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -557,6 +781,10 @@
             .hero-content p {
                 font-size: 1.125rem;
             }
+
+            .hero-decoration {
+                display: none;
+            }
             
             .section {
                 padding: 80px 0;
@@ -574,11 +802,24 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .manual-download-note {
+                padding: 32px 24px;
+            }
         }
         
         @media (max-width: 480px) {
             .hero-content h1 {
                 font-size: 2rem;
+            }
+
+            .hero-icon {
+                width: 90px;
+                height: 90px;
+            }
+
+            .hero-icon-inner {
+                font-size: 2.8rem;
             }
             
             .section-title h2 {
@@ -595,6 +836,14 @@
             
             .feature-icon {
                 margin: 20px 20px 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -630,14 +879,22 @@
     </header>
 
     <section class="hero">
+        <div class="hero-decoration hero-decoration-1"></div>
+        <div class="hero-decoration hero-decoration-2"></div>
+        <div class="hero-decoration hero-decoration-3"></div>
+        
         <div class="container">
             <div class="hero-content">
                 <div class="hero-icon">
-                    <i class="fas fa-check-circle"></i>
+                    <div class="hero-icon-inner">
+                        <i class="fas fa-check hero-icon-check"></i>
+                    </div>
                 </div>
                 <h1>Thank You for Downloading!</h1>
                 <p>Your journey with Cheese Client is about to begin.</p>
-                </span>
+                <div class="file-info">
+                    <i class="fas fa-file-archive"></i> Cheese-client.zip
+                </div>
                 <div class="button-group">
                     <a href="https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip" class="btn" target="_blank">
                         <i class="fas fa-download"></i> Download Manually
@@ -646,8 +903,8 @@
                         <i class="fas fa-home"></i> Back to Home
                     </a>
                 </div>
-                <div style="margin-top: 20px;">
-                    <small style="opacity: 0.9;">Download didn't start? Use the manual button above.</small>
+                <div class="download-hint">
+                    <small>Download didn't start? Use the manual button above.</small>
                 </div>
             </div>
         </div>
@@ -693,7 +950,7 @@
                     </div>
                     <div class="feature-content">
                         <h3>Latest News</h3>
-                        <p>Stay up‑to‑date with version releases, feature previews, community events, and official announcements – all in one place.</p>
+                        <p>Stay up-to-date with version releases, feature previews, community events, and official announcements – all in one place.</p>
                         <a href="news.html" class="feature-link">
                             Read News <i class="fas fa-arrow-right"></i>
                         </a>
@@ -703,10 +960,10 @@
 
             <div class="manual-download-note fade-in">
                 <i class="fas fa-life-ring"></i>
-                <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-weight: 700;">Need help with installation?</h3>
-                <p style="color: var(--text-light); margin-bottom: 20px;">Our FAQ covers common issues like Java setup, antivirus warnings, and version compatibility.</p>
-                <a href="faq.html" style="color: var(--primary-dark); font-weight: 700; text-decoration: underline; font-size: 1.1rem;">
-                    Visit FAQ <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                <h3>Need help with installation?</h3>
+                <p>Our FAQ covers common issues like Java setup, antivirus warnings, and version compatibility.</p>
+                <a href="faq.html">
+                    Visit FAQ <i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-left: 4px;"></i>
                 </a>
             </div>
         </div>
@@ -772,23 +1029,33 @@
             });
 
             const fadeElements = document.querySelectorAll('.fade-in');
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('fade-in');
-                    }
-                });
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
             };
 
-            fadeInOnScroll();
-            window.addEventListener('scroll', fadeInOnScroll);
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry, index) {
+                    if (entry.isIntersecting) {
+                        const delay = Array.from(fadeElements).indexOf(entry.target) * 150;
+                        setTimeout(function() {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeElements.forEach(function(el) {
+                observer.observe(el);
+            });
+
             const cards = document.querySelectorAll('.feature-card');
-            cards.forEach(card => {
+            cards.forEach(function(card) {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
+                    this.style.transform = 'translateY(-8px)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
@@ -796,7 +1063,7 @@
                 });
             });
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     if (href === '#') return;

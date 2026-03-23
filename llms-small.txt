@@ -1,0 +1,9 @@
+# Cheese Client
+
+Free, open-source Minecraft utility mod (hacked client). Combat, movement, visual enhancements. Not affiliated with Mojang.
+
+- Home: [index.html](index.html)
+- Download: [download.html](download.html)
+- Features: [features.html](features.html)
+- FAQ: [faq.html](faq.html)
+- Full docs: [llms.txt](llms.txt) | [llms-full.txt](llms-full.txt)

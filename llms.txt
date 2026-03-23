@@ -1,0 +1,64 @@
+# Cheese Client
+
+Cheese Client is a **free, open-source Minecraft enhancement suite** (often referred to as a "hacked client") designed to elevate gameplay with advanced combat, movement, visual, and performance features. It is not affiliated with Mojang or Microsoft.
+
+- **Project Type:** Minecraft Utility Mod
+- **License:** Open Source (GitHub)
+- **Core Philosophy:** Free forever, community-driven, transparent development.
+
+## Key Features
+
+Cheese Client offers a wide array of modules to enhance your Minecraft experience, including:
+
+- **Combat:** Advanced systems like KillAura, Aim Assist, and Velocity control for PvP dominance.
+- **Movement:** Enhanced mobility with Flight, Speed, Parkour assistance, and NoFall.
+- **Visuals:** ESP, X-Ray, Fullbright, and Tracers to improve situational awareness.
+- **Performance:** FPS boost and optimization tools for smoother gameplay.
+- **Utility:** Auto-totem, inventory management, and scaffolding for building.
+- **Stealth:** Advanced anti-detection systems (bypasses for Matrix, Grim AC, Vulcan) and a "behavioral mimicry engine" to appear human-like.
+
+For a complete list, see the [Features](features.html) page.
+
+## Getting Started
+
+### Download
+The client is **100% free** with no hidden costs or premium tiers.
+- Download the latest version from the [Download](download.html) page.
+- The direct download link is: `https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip`
+
+### Installation
+1.  Download the `Cheese-client.zip` file.
+2.  Create a `CheeseClient` folder in your Minecraft versions directory.
+3.  Extract the ZIP contents into the `CheeseClient` folder.
+4.  Select the Cheese Client version from your Minecraft launcher and launch.
+
+For detailed help, refer to the [Installation FAQ](faq.html#installation).
+
+## Recent Major Updates
+
+- **v3.2 (July 2025):** Introduced a **Visual Scripting API**, allowing users to create custom module behaviors with a node-based editor—no coding required.
+- **v3.1 (May 2025):** Achieved **Fabric and Forge mod compatibility**, allowing users to run mods from both ecosystems simultaneously.
+- **v3.0 (April 2025):** A complete ground-up rewrite featuring a new rendering engine, up to 200% performance improvement, and a behavioral mimicry engine for enhanced stealth.
+
+Full changelog is available on the [Changelog](changelog.html) page.
+
+## Community & Support
+
+- **News:** Stay updated with announcements and technical deep-dives on the [News](news.html) page.
+- **FAQ:** Find answers to common questions about usage, safety, and troubleshooting on the [FAQ](faq.html) page.
+- **Source Code:** The project is open source and available on GitHub.
+
+## Legal Information
+
+Cheese Client is an independent project and is **not affiliated, associated, authorized, endorsed by, or in any way officially connected** with Mojang AB, Microsoft Corporation, or any of their subsidiaries.
+
+The software is provided "AS IS" without warranty. Users are responsible for complying with the rules of the servers they join.
+
+- [Terms of Service](terms.html)
+- [Privacy Policy](privacy.html)
+- [Disclaimer](disclaimer.html)
+
+## Additional Resources
+
+- [llms-full.txt](llms-full.txt) – Complete website content in a single file
+- [llms-small.txt](llms-small.txt) – Minimal site information for quick reference

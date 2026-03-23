@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="bingbot" content="index, follow, archive">
-    <meta name="keywords" content="Minecraft hacks,hack client,open source,GitHub client,Minecraft cheats,client">
-    <meta name="description" content="Cheese Client is a powerful Minecraft hacked client featuring Kill Aura, Flight, ESP, and performance boosts. Explore all features and download now.">
+    
+    <meta name="keywords" content="Cheese Client, Minecraft hacked client, Minecraft cheats, free Minecraft client, Kill Aura, Flight, ESP, X-Ray, PvP client, open source client">
+    
+    <meta name="description" content="Cheese Client is a free Minecraft hack client. Featuring powerful modules like Kill Aura, Flight and ESP.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cheese-client.github.io/Cheese-Client/">
+    <meta property="og:site_name" content="Cheese client">
+    <meta property="og:title" content="Cheese Client - The Minecraft Hack Client">
+    <meta property="og:description" content="Dominate Minecraft with the most powerful free hacked client. Features Kill Aura, Flight, ESP and more.">
+    <meta property="og:image" content="https://cheese-client.github.io/Cheese-Client/images/background2.webp">
+    
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cheese Client">
-    <meta name="twitter:description" content="Cheese Client:A free minecraft hack client designed.">
+    <meta name="twitter:title" content="Cheese Client - The Powerful Minecraft Hack Client">
+    <meta name="twitter:description" content="Cheese Client: A free & powerful minecraft hacked client designed for domination.">
     <meta name="twitter:image" content="https://cheese-client.github.io/Cheese-Client/images/background2.webp">
+    
     <title>Cheese Client - The Minecraft Hack Client</title>
     <link rel="icon" href="images/Logo.webp">
     <link rel="preload" href="https://fonts.bunny.net/inter/files/inter-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="canonical" href="https://cheeseclient.qzz.io/">
+    
+    <link rel="canonical" href="https://cheese-client.github.io/Cheese-Client/">
+    
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -144,7 +158,7 @@
         flex-direction: column;
     }
 
-    .brand-text h1 {
+    .brand-text .brand-name {
         font-size: 1.5rem;
         font-weight: 800;
         color: var(--text);
@@ -251,43 +265,14 @@
         overflow: hidden;
     }
 
-    .hero-carousel {
+    .hero-bg-image {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-    .carousel-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1.5s ease;
-    }
-
-    .carousel-slide.active {
-        opacity: 1;
-    }
-
-    .carousel-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        background: linear-gradient(90deg, rgba(255, 179, 71, 1) 30%, rgba(255, 179, 71, 0.9) 50%, rgba(255, 179, 71, 0.6) 60%, rgba(255, 179, 71, 0.3) 70%, rgba(255, 179, 71, 0.1) 80%, rgba(255, 179, 71, 0) 90%);
+        z-index: 1;
     }
 
     .hero-content {
@@ -304,43 +289,133 @@
         color: #412200;
     }
 
-    .hero-text h2 {
+    .hero-title-wrapper {
+        margin-bottom: 24px;
+        position: relative;
+    }
+
+    .hero-title-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 179, 71, 0.2);
+        border: 1px solid rgba(255, 152, 0, 0.3);
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #b36b00;
+        margin-bottom: 16px;
+        backdrop-filter: blur(4px);
+        animation: badgeFloat 3s ease-in-out infinite;
+    }
+
+    .hero-title-badge i {
+        font-size: 0.7rem;
+    }
+
+    @keyframes badgeFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    .hero-text h1 {
         font-size: 3.5rem;
         font-weight: 800;
-        margin-bottom: 20px;
+        margin-bottom: 0;
         line-height: 1.1;
         letter-spacing: -1px;
+        max-width: 600px;
+        background: linear-gradient(135deg, #fea000 0%, #fbc100 50%, #ffb100 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        display: inline-block;
+    }
+
+    .hero-text h1::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 120px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 50%, transparent 100%);
+        border-radius: 2px;
+        animation: lineGrow 1.5s ease-out forwards;
+    }
+
+    @keyframes lineGrow {
+        from { width: 0; opacity: 0; }
+        to { width: 120px; opacity: 1; }
     }
 
     .hero-text p {
         font-size: 1.25rem;
         margin-bottom: 32px;
-        max-width: 500px;
+        max-width: 580px;
         font-weight: 400;
     }
 
-    .hero-image {
-        flex: 1;
-        display: flex;
-        justify-content: center;
+    .hero-description {
+        font-size: 1.15rem;
+        margin-bottom: 36px;
+        max-width: 560px;
+        font-weight: 400;
+        line-height: 2;
+        color: rgba(65, 34, 0, 0.85);
         position: relative;
+        padding: 28px 32px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 250, 240, 0.95));
+        border-radius: 20px;
+        border: 1px solid rgba(255, 179, 71, 0.2);
+        box-shadow: 0 10px 40px rgba(255, 179, 71, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
     }
 
-    .hero-image .logo {
-        width: 240px;
-        height: 240px;
-        border-radius: 24px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        animation: float 6s ease-in-out infinite;
+    .hero-description::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 5px;
+        background: linear-gradient(180deg, var(--primary), var(--primary-dark), var(--primary-light));
+        border-radius: 20px 0 0 20px;
     }
 
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-15px);
-        }
+    .hero-description::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 179, 71, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .hero-description strong {
+        color: #b36b00;
+        font-weight: 700;
+        position: relative;
+        padding: 0 4px;
+        background: linear-gradient(90deg, rgba(255, 179, 71, 0.15), rgba(255, 179, 71, 0.05));
+        border-radius: 4px;
+    }
+
+    .hero-description strong::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 4px;
+        right: 4px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), transparent);
+        opacity: 0.6;
+        border-radius: 1px;
     }
 
     .btn {
@@ -1085,24 +1160,18 @@
     }
 
     @media (max-width: 1024px) {
-        .hero-overlay {
-            background: linear-gradient(90deg, rgba(255, 179, 71, 1) 0%, rgba(255, 179, 71, 1) 35%, rgba(255, 179, 71, 0.8) 45%, rgba(255, 179, 71, 0.5) 55%, rgba(255, 179, 71, 0.2) 65%, rgba(255, 179, 71, 0) 80%);
-        }
         .hero-content {
             gap: 40px;
         }
     }
 
     @media (max-width: 768px) {
-        .hero-overlay {
-            background: linear-gradient(90deg, rgba(255, 179, 71, 1) 0%, rgba(255, 179, 71, 1) 30%, rgba(255, 179, 71, 0.8) 40%, rgba(255, 179, 71, 0.5) 50%, rgba(255, 179, 71, 0.2) 60%, rgba(255, 179, 71, 0) 70%);
-        }
         .hero-content {
             flex-direction: column;
             text-align: center;
             gap: 50px;
         }
-        .hero-text h2 {
+        .hero-text h1 {
             font-size: 2.5rem;
         }
         .hero-text p {
@@ -1136,10 +1205,6 @@
             flex-direction: column;
             text-align: center;
         }
-        .hero-image .logo {
-            width: 180px;
-            height: 180px;
-        }
         .hero-scroll-down {
             bottom: 30px;
         }
@@ -1168,13 +1233,24 @@
         .about-info .btn:hover {
             transform: translateY(-5px) scale(1.05);
         }
+        .hero-title-wrapper {
+            text-align: center;
+        }
+        .hero-text h1 {
+            max-width: 100%;
+        }
+        .hero-text h1::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hero-description {
+            padding: 22px 24px;
+            font-size: 1.05rem;
+        }
     }
 
     @media (max-width: 480px) {
-        .hero-overlay {
-            background: linear-gradient(90deg, rgba(255, 179, 71, 1) 0%, rgba(255, 179, 71, 1) 25%, rgba(255, 179, 71, 0.7) 35%, rgba(255, 179, 71, 0.4) 45%, rgba(255, 179, 71, 0.1) 55%, rgba(255, 179, 71, 0) 65%);
-        }
-        .hero-text h2 {
+        .hero-text h1 {
             font-size: 2rem;
         }
         .section-title h2 {
@@ -1188,16 +1264,17 @@
             width: 100%;
             justify-content: center;
         }
-        .hero-image .logo {
-            width: 150px;
-            height: 150px;
-        }
         .hero-scroll-down {
             bottom: 25px;
         }
         .scroll-button {
             width: 45px;
             height: 45px;
+        }
+        .hero-description {
+            padding: 18px 20px;
+            font-size: 1rem;
+            line-height: 1.9;
         }
     }
     </style>
@@ -1279,15 +1356,15 @@
             <div class="header-content">
                 <div class="logo-container">
                     <div class="logo">
-                        <img src="images/Logo.webp" loading="lazy" alt="Client Logo" width="40" height="40">
+                        <img src="images/Logo.webp" fetchpriority="high" alt="Cheese Client Logo" width="40" height="40">
                     </div>
                     <div class="brand-text">
-                        <h1>Cheese Client</h1>
+                        <div class="brand-name">Cheese Client</div>
                         <span>Minecraft Hacked Client</span>
                     </div>
                 </div>
-                <nav class="nav-links">
-                    <a href="index.html" class="active">Home</a>
+                <nav class="nav-links" aria-label="Main Navigation">
+                    <a href="index.html" class="active" aria-current="page">Home</a>
                     <a href="features.html">Features</a>
                     <a href="download.html">Download</a>
                     <a href="changelog.html">Changelog</a>
@@ -1295,7 +1372,7 @@
                     <a href="news.html">News</a>
                 </nav>
                 <div class="header-actions">
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -1303,28 +1380,166 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-carousel">
-            <div class="carousel-slide active">
-                <img src="./images/background1.webp" loading="lazy" alt="The Minecraft Background 1" class="carousel-image" width="1920" height="1080">
-            </div>
-            <div class="carousel-slide">
-                <img src="./images/background2.webp" loading="lazy" alt="The Minecraft Background 2" class="carousel-image" width="1920" height="1080">
-            </div>
-        </div>
+    <main id="main-content">
+        <section class="hero" aria-label="Introduction">
+            <img src="./images/background.webp" alt="Minecraft Cheese Client Background" class="hero-bg-image">
 
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-scroll-down" id="scrollDownBtn">
-            <div class="scroll-semicircle"></div>
-        </div>
+            <div class="hero-scroll-down" id="scrollDownBtn" role="button" tabindex="0" aria-label="Scroll to next section">
+                <div class="scroll-semicircle"></div>
+            </div>
 
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h2>What is Cheese Client?</h2>
-                    <p>A powerful & open source hack client on GitHub that elevate your gaming experience with advanced features, performance optimization.</p>
-                    <div class="button-group">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-title-wrapper">
+                            <h1>What is Cheese Client?</h1>
+                        </div>
+                        <p class="hero-description">A <strong>powerful & open source</strong> hack client on GitHub that <strong>elevates your gaming experience</strong> with <strong>advanced features</strong> and <strong>performance optimization</strong>.</p>
+                        <div class="button-group">
+                            <a href="download.html" class="btn">
+                                <i class="fas fa-download"></i> View download
+                            </a>
+                            <a href="features.html" class="btn btn-secondary">
+                                <i class="fas fa-cube"></i> Explore Features
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-is" class="section product-section" aria-labelledby="what-is-title">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="what-is-title">Understanding Cheese Client</h2>
+                    <p>Discover the revolutionary Minecraft enhancement suite that's changing how players experience the game</p>
+                </div>
+
+                <div class="product-layout">
+                    <div class="product-visual-area">
+                        <div class="product-visual-wrapper">
+                            <div class="product-bg-board"></div>
+                            <div class="product-slide active" data-index="0">
+                                <div class="product-visual-content">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            <div class="product-slide" data-index="1">
+                                <div class="product-visual-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                            </div>
+                            <div class="product-slide" data-index="2">
+                                <div class="product-visual-content" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info-area">
+                        <div class="product-info-item active" data-index="0">
+                            <h3 class="product-title">Enhanced Gameplay</h3>
+                            <p class="product-desc">Dominate every server with our suite of powerful Minecraft hacks designed for movement and combat. Features like Kill Aura give you the upper hand in PVP, while Flight allows for unparalleled exploration. As a premium hack client, we ensure every module is intuitive, giving you seamless control over your gameplay experience.</p>
+                        </div>
+                        <div class="product-info-item" data-index="1">
+                            <h3 class="product-title">Advanced Protection</h3>
+                            <p class="product-desc">Stay safe with sophisticated anti-detection measures that keep your account secure. Because we are an open source GitHub client, our code is fully transparent and community-reviewed. Trust in a hacked client designed to remain undetected, letting you play with confidence and peace of mind.</p>
+                        </div>
+                        <div class="product-info-item" data-index="2">
+                            <h3 class="product-title">Performance Boost</h3>
+                            <p class="product-desc">Don't let lag hold you back. Our client includes built-in optimization tools to significantly reduce lag and boost FPS. Experience smoother gameplay and faster loading times, proving that a high-performance Minecraft client doesn't need to sacrifice advanced features for speed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-nav" role="tablist">
+                    <div class="product-nav-item active" data-index="0" role="tab" tabindex="0">
+                        <i class="fas fa-rocket"></i>
+                        Enhanced Gameplay
+                    </div>
+                    <div class="product-nav-item" data-index="1" role="tab" tabindex="0">
+                        <i class="fas fa-shield-alt"></i>
+                        Advanced Protection
+                    </div>
+                    <div class="product-nav-item" data-index="2" role="tab" tabindex="0">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Performance Boost
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-info">
+                        <h2 id="about-title">Built By Gamers, For Gamers</h2>
+                        <p>We're not some faceless corporation - we're Minecraft players who got tired of clunky, buggy clients. Cheese Client started as a passion project in 2021 and has grown into the most reliable hack client out there, fully open source on GitHub.</p>
+                        <p>We test every feature in real gameplay scenarios. If it feels cheesy or breaks immersion, it doesn't make the cut. Our philosophy is simple: enhance the experience, don't replace it.</p>
+                        <a href="features.html" class="btn">
+                            <i class="fas fa-arrow-right"></i> Learn More About Features
+                        </a>
+                    </div>
+                    <div class="about-card">
+                        <h3><i class="fas fa-star"></i> Key Highlights</h3>
+                        <ul class="about-list">
+                            <li><i class="fas fa-check"></i> Sophisticated movement tools</li>
+                            <li><i class="fas fa-check"></i> Visual and rendering improvements</li>
+                            <li><i class="fas fa-check"></i> Customizable user interface</li>
+                            <li><i class="fas fa-check"></i> Regular updates and support</li>
+                            <li><i class="fas fa-check"></i> Active community and resources</li>
+                            <li><i class="fas fa-check"></i> High-quality YouTube videos about it</li>
+                        </ul>
+                        <a href="download.html" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Get Started Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rights" class="section rights-grid-section" aria-labelledby="rights-title">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="rights-title">Your Rights with Cheese Client</h2>
+                    <p>We believe in empowering players with the tools they need to enhance their Minecraft experience</p>
+                </div>
+
+                <div class="rights-grid">
+                    <article class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <h3>Full Access</h3>
+                        <p>Gain complete access to all Cheese Client features without any restrictions or limitations. This open source client ensures transparency, giving you the freedom to modify and understand every aspect of the software you use.</p>
+                    </article>
+
+                    <article class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Powered</h3>
+                        <p>Join a thriving community of players who contribute to the development and improvement of this GitHub client. Your feedback directly shapes future updates, ensuring our hack client evolves to meet your needs.</p>
+                    </article>
+
+                    <article class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Transparent Development</h3>
+                        <p>Our development process is open and transparent, with regular updates driven by community feedback. As a leading open source hack client, we believe transparency builds trust—and better software.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Call to Action">
+            <div class="container">
+                <div class="cta-card">
+                    <h2>Page ends here, but our exploration of Minecraft never ends</h2>
+                    <p>Join thousands of players who have already transformed their gameplay with Cheese Client. Experience the most reliable features in a hack client built by players, for players.</p>
+                    <div class="button-group-center">
                         <a href="download.html" class="btn">
                             <i class="fas fa-download"></i> View download
                         </a>
@@ -1333,157 +1548,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="logo">
-                        <img src="images/Logo.webp" loading="lazy" alt="Client Logo" width="192" height="192">
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <section id="what-is" class="section product-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Understanding Cheese Client</h2>
-                <p>Discover the revolutionary Minecraft enhancement suite that's changing how players experience the game</p>
-            </div>
-
-            <div class="product-layout">
-                <div class="product-visual-area">
-                    <div class="product-visual-wrapper">
-                        <div class="product-bg-board"></div>
-                        <div class="product-slide active" data-index="0">
-                            <div class="product-visual-content">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                        </div>
-                        <div class="product-slide" data-index="1">
-                            <div class="product-visual-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                        </div>
-                        <div class="product-slide" data-index="2">
-                            <div class="product-visual-content" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                                <i class="fas fa-tachometer-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-info-area">
-                    <div class="product-info-item active" data-index="0">
-                        <h3 class="product-title">Enhanced Gameplay</h3>
-                        <p class="product-desc">Dominate every server with our suite of powerful Minecraft hacks designed for movement and combat. Features like Kill Aura give you the upper hand in PVP, while Flight allows for unparalleled exploration. As a premium hack client, we ensure every module is intuitive, giving you seamless control over your gameplay experience.</p>
-                    </div>
-                    <div class="product-info-item" data-index="1">
-                        <h3 class="product-title">Advanced Protection</h3>
-                        <p class="product-desc">Stay safe with sophisticated anti-detection measures that keep your account secure. Because we are an open source GitHub client, our code is fully transparent and community-reviewed. Trust in a hacked client designed to remain undetected, letting you play with confidence and peace of mind.</p>
-                    </div>
-                    <div class="product-info-item" data-index="2">
-                        <h3 class="product-title">Performance Boost</h3>
-                        <p class="product-desc">Don't let lag hold you back. Our client includes built-in optimization tools to significantly reduce lag and boost FPS. Experience smoother gameplay and faster loading times, proving that a high-performance Minecraft client doesn't need to sacrifice advanced features for speed.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-nav">
-                <div class="product-nav-item active" data-index="0">
-                    <i class="fas fa-rocket"></i>
-                    Enhanced Gameplay
-                </div>
-                <div class="product-nav-item" data-index="1">
-                    <i class="fas fa-shield-alt"></i>
-                    Advanced Protection
-                </div>
-                <div class="product-nav-item" data-index="2">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Performance Boost
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-section">
-        <div class="container">
-            <div class="about-container">
-                <div class="about-info">
-                    <h2>Built By Gamers, For Gamers</h2>
-                    <p>We're not some faceless corporation - we're Minecraft players who got tired of clunky, buggy clients. Cheese Client started as a passion project in 2021 and has grown into the most reliable hack client out there, fully open source on GitHub.</p>
-                    <p>We test every feature in real gameplay scenarios. If it feels cheesy or breaks immersion, it doesn't make the cut. Our philosophy is simple: enhance the experience, don't replace it.</p>
-                    <a href="features.html" class="btn">
-                        <i class="fas fa-arrow-right"></i> Learn More About Features
-                    </a>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-star"></i> Key Highlights</h3>
-                    <ul class="about-list">
-                        <li><i class="fas fa-check"></i> Sophisticated movement tools</li>
-                        <li><i class="fas fa-check"></i> Visual and rendering improvements</li>
-                        <li><i class="fas fa-check"></i> Customizable user interface</li>
-                        <li><i class="fas fa-check"></i> Regular updates and support</li>
-                        <li><i class="fas fa-check"></i> Active community and resources</li>
-                        <li><i class="fas fa-check"></i> High-quality YouTube videos about it</li>
-                    </ul>
-                    <a href="download.html" class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Get Started Today
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="rights" class="section rights-grid-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Your Rights with Cheese Client</h2>
-                <p>We believe in empowering players with the tools they need to enhance their Minecraft experience</p>
-            </div>
-
-            <div class="rights-grid">
-                <div class="right-card">
-                    <div class="right-icon">
-                        <i class="fas fa-unlock"></i>
-                    </div>
-                    <h3>Full Access</h3>
-                    <p>Gain complete access to all Cheese Client features without any restrictions or limitations. This open source client ensures transparency, giving you the freedom to modify and understand every aspect of the software you use.</p>
-                </div>
-
-                <div class="right-card">
-                    <div class="right-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Community Powered</h3>
-                    <p>Join a thriving community of players who contribute to the development and improvement of this GitHub client. Your feedback directly shapes future updates, ensuring our hack client evolves to meet your needs.</p>
-                </div>
-
-                <div class="right-card">
-                    <div class="right-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Transparent Development</h3>
-                    <p>Our development process is open and transparent, with regular updates driven by community feedback. As a leading open source hack client, we believe transparency builds trust—and better software.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <h2>Page ends here, but our exploration of Minecraft never ends</h2>
-                <p>Join thousands of players who have already transformed their gameplay with Cheese Client. Experience the most reliable features in a hack client built by players, for players.</p>
-                <div class="button-group-center">
-                    <a href="download.html" class="btn">
-                        <i class="fas fa-download"></i> View download
-                    </a>
-                    <a href="features.html" class="btn btn-secondary">
-                        <i class="fas fa-cube"></i> Explore Features
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -1530,7 +1597,6 @@
         const navLinks = document.querySelector('.nav-links');
         const header = document.getElementById('header');
         const scrollSemicircle = document.querySelector('.scroll-semicircle');
-        const carouselSlides = document.querySelectorAll('.carousel-slide');
         const fadeElements = document.querySelectorAll('.content-card, .enhanced-card');
 
         const productSection = document.querySelector('.product-section');
@@ -1640,6 +1706,8 @@
         if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
                 setTimeout(adjustFullpageSections, 10);
             });
         }
@@ -1663,18 +1731,12 @@
                     scrollToSection(1);
                 }
             });
-        }
-
-        if (carouselSlides.length > 0) {
-            let currentSlide = 0;
-            const slideCount = carouselSlides.length;
-            const slideInterval = 4500;
-            carouselSlides[currentSlide].classList.add('active');
-            setInterval(() => {
-                carouselSlides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slideCount;
-                carouselSlides[currentSlide].classList.add('active');
-            }, slideInterval);
+            scrollSemicircle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                     e.preventDefault();
+                     if (snapSections.length > 1) scrollToSection(1);
+                }
+            });
         }
 
         const fadeInOnScroll = () => {

@@ -1,0 +1,309 @@
+# Cheese Client – Complete Documentation
+
+This file contains the complete textual content of the Cheese Client website, organized for easy consumption by large language models. For navigation, the sections follow the structure of the site.
+
+---
+
+## 1. About Cheese Client
+
+**Project name:** Cheese Client  
+**Type:** Free, open-source Minecraft enhancement suite (utility mod)  
+**License:** Open source (GitHub)  
+**Affiliation:** Not affiliated with Mojang AB or Microsoft
+
+**Core philosophy:** Enhance Minecraft gameplay with powerful features, maintain 100% free access, and keep development transparent and community-driven.
+
+**Main features:**
+- Combat enhancements (KillAura, Aim Assist, Velocity)
+- Movement boosts (Flight, Speed, Parkour, NoFall)
+- Visual improvements (ESP, X-Ray, Fullbright, Tracers)
+- Performance optimizations (FPS boost, lag reduction)
+- Utility tools (Auto-totem, inventory management, Scaffold)
+- Stealth systems (behavioral mimicry, anti-cheat bypasses for Matrix, Grim AC, Vulcan)
+
+**Recent major versions:**
+- v3.2 (July 2025): Visual Scripting API – node-based editor for custom automations
+- v3.1 (May 2025): Fabric & Forge mod compatibility for 1.12.2
+- v3.0 (April 2025): Complete rewrite with new rendering engine and up to 200% performance boost
+
+---
+
+## 2. Home Page – Introduction
+
+**What is Cheese Client?**  
+A powerful & open-source hack client on GitHub that elevates your gaming experience with advanced features and performance optimization.
+
+**Enhanced Gameplay**  
+Dominate servers with movement and combat features like Kill Aura, Flight, and intuitive controls.
+
+**Advanced Protection**  
+Sophisticated anti-detection measures keep your account secure. Code is transparent and community-reviewed.
+
+**Performance Boost**  
+Built-in optimization tools reduce lag and boost FPS, ensuring smooth gameplay.
+
+**Built by gamers, for gamers**  
+Started as a passion project in 2021, Cheese Client is now the most reliable hack client, fully open source on GitHub.
+
+**Key highlights:**
+- Sophisticated movement tools
+- Visual and rendering improvements
+- Customizable user interface
+- Regular updates and support
+- Active community and resources
+- High-quality YouTube content
+
+**Your rights with Cheese Client:**
+- **Full access:** No restrictions, open source.
+- **Community powered:** Your feedback shapes updates.
+- **Transparent development:** Open process builds trust.
+
+---
+
+## 3. Features
+
+Cheese Client offers over 1500 modules across five categories: Combat, Movement, Visual, World, Misc.
+
+### Combat
+- **KillAura** – Silent, predictive with 37+ adjustments (hit chance, swing order, FOV, priority). AI-assisted decision making.
+- **Velocity** – Horizontal/vertical cancellation, push resistance, "air‑friction" mode.
+- **Aim Assist** – Silent aim, FOV, distance curve, click‑assist.
+
+### Movement
+- **Scaffold** – Tower, safe walk, sprint‑placement – looks totally vanilla.
+- **Flight / Speed** – Creative flight, glide, timer‑based, spoofed motion; combined with speed strafe.
+- **NoFall** – Packet‑based, ground‑spoof, last‑second bucket simulation.
+
+### Visual
+- **ESP** – 2D/3D boxes, outlines, tracer lines, health/shadow for players, mobs, storage, xray blocks.
+
+### Stealth
+- **Stealth Core** – Transaction‑aware, matrix/grim/vulcan profiles, dynamic packet delays – "ghost mode".
+- **Undetection by default** – Grim AC 2.3, Matrix 6, Vulcan 3.0 verified; transaction‑aware randomization; per‑server profile auto‑switch; humanization layer.
+
+### Compatibility
+- **Fabric + Forge** (v3.1+) – Hybrid classloader harmonizes both mod loaders on 1.12.2; resolves Mixin/CoreMod conflicts; tested with over 200 mod combinations.
+
+### Statistics
+- Combat modules: 527
+- Movement modules: 486
+- Visual modules: 82
+- World modules: 286
+- Misc modules: 206
+
+---
+
+## 4. Download
+
+**Cheese Client is 100% free forever.** No hidden costs, subscriptions, or premium tiers.
+
+**Download link:**  
+https://github.com/Cheese-Client/Cheese-Client/releases/download/file/Cheese-client.zip
+
+**Installation steps:**
+1. Download the ZIP file.
+2. Create a `CheeseClient` folder in your Minecraft versions directory.
+3. Extract the ZIP contents into that folder.
+4. Launch the client from your Minecraft launcher.
+
+**Why we're free:**
+- **The people first** – Powerful tools should be accessible to all.
+- **Made with love** – Developed by Minecraft enthusiasts.
+- **Complete openness** – All features without restrictions.
+
+**Frequently Asked Questions about download:**
+- *Is it really free?* Yes, completely free.
+- *Will it always be free?* Yes, committed to free forever.
+- *Any limitations?* None – full features, regular updates, community support.
+
+---
+
+## 5. Frequently Asked Questions
+
+### General Questions
+
+**Q: What is Cheese Client?**  
+A: A powerful Minecraft enhancement suite with advanced combat, movement, visual improvements, and utilities.
+
+**Q: Is Cheese Client free?**  
+A: Yes, completely free with no hidden costs or premium tiers.
+
+**Q: Is Cheese Client safe?**  
+A: Developed with security in mind. Only download from official sources; use antivirus; respect server rules.
+
+**Q: What Minecraft versions are supported?**  
+A: Currently 1.16.5 through 1.20.4. Check changelog for specific compatibility.
+
+### Installation & Setup
+
+**Q: How do I install?**  
+A: Download ZIP, extract to `CheeseClient` folder, launch from launcher.
+
+**Q: How do I update?**  
+A: Download latest version, extract to same folder, launch updated client.
+
+### Features & Usage
+
+**Q: What are the most popular features?**  
+A: Combat system, movement enhancements (flight, speed, no fall), visual improvements (X-ray, ESP), utilities (auto inventory, fishing), performance boost.
+
+**Q: How to configure keybinds?**  
+A: Press RIGHT SHIFT (default) to open main menu; navigate to Modules; click on module to configure; go to Keybinds to assign shortcuts.
+
+**Q: Can I get banned for using Cheese Client?**  
+A: Risk exists on multiplayer servers. Use responsibly; respect server rules; anti-detection features help but no client is 100% undetectable.
+
+### Troubleshooting
+
+**Q: Won't launch?**  
+A: Check Java 8+, update graphics drivers, reinstall, check antivirus, run as administrator, check logs.
+
+**Q: Lag or low FPS?**  
+A: Disable resource-intensive features, allocate more RAM, update Java, lower in-game settings, close background apps.
+
+**Q: Some features not working?**  
+A: Ensure module is enabled, check keybinds, update client, verify server compatibility, reinstall.
+
+---
+
+## 6. Changelog
+
+### v3.2 – July 15, 2025
+- Introduced Visual Scripting API – node-based editor for custom routines
+- Pre-built templates and community script sharing hub
+- Script sandboxing with performance budgets
+- Enhanced undetectability for user-generated scripts
+
+### v3.1 – May 20, 2025
+- Added support for both Fabric and Forge mods simultaneously on 1.12.2
+- Hybrid classloader resolves Mixin/CoreMod conflicts
+- Reduced memory usage by 30% when running both loaders
+- Built-in mod compatibility checker
+- Enhanced anti-detection for modded server environments
+
+### v3.0 – April 2, 2025
+- Complete ground-up rewrite with modular event-driven architecture
+- New rendering engine with Vulkan-based optimizations
+- Up to 200% performance improvement in entity-dense scenarios
+- 35% reduction in memory footprint
+- Behavioral mimicry engine for enhanced stealth
+- Real-time anti-cheat version detection and adaptive bypasses
+
+### v2.8.3 – March 28, 2025
+- Updated for Matrix 6, Grim AC 2.3, Vulcan 3.0 compatibility
+- Rewrote KillAura timing randomization
+- Dynamic timer deviation (0.98–1.02) to bypass speed checks
+- Added "Stealth" profile
+- Expanded per-server profiles to 50 configurations
+
+### v2.8.1 – March 22, 2025
+- Added Simplified Chinese language support
+- Smart routing system for Chinese players
+- Pre-configured profiles for major Chinese Minecraft networks
+- Chinese knowledge base and video tutorials
+- Dedicated Chinese community spaces
+
+### v2.8.2 – March 18, 2025
+- Redesigned movement module with intelligent parkour assistance
+- Predictive trajectory engine for edge detection up to 4 blocks ahead
+- Inertia-aware speed governor with dynamic scaling
+- Humanization layer for natural movement patterns
+- Configurable movement profiles
+
+### v2.1.0 – March 15, 2024
+- New Advanced Combat System
+- 40% rendering performance improvement
+- Customizable HUD with drag-and-drop
+- Memory leak fixes
+- Improved chunk loading
+
+### v2.0.3 – February 28, 2024
+- Fixed crash with certain resource packs
+- Resolved GUI scaling issues on high-DPI displays
+- Optimized network handling
+
+### v2.0.0 – January 20, 2024
+- Complete plugin architecture redesign
+- 15+ new movement and combat modules
+- 60% performance improvement
+- Profile system for different playstyles
+
+### v1.5.2 – December 5, 2023
+- Enhanced anti-detection for popular servers
+- Fixed memory allocation issues
+- Optimized ESP and tracers
+- Mod compatibility fixes
+
+### v1.5.0 – November 10, 2023
+- Added Auto Building system
+- Smart Inventory Management
+- Customizable themes
+- Keybind configuration system
+
+### v1.0.0 – October 1, 2023
+- Initial public release with basic combat, movement, visual, and utility features
+
+---
+
+## 7. News & Announcements
+
+### Cheese Client 3.2: Visual Scripting API (July 15, 2025)
+Version 3.2 introduces a revolutionary Visual Scripting API, allowing users to create custom automated routines and module behaviors through an intuitive, node-based editor—no coding required. The Scripting Workshop provides event nodes, action nodes, condition nodes, and a community sharing hub. Scripts run in a secure sandbox and inherit the client's anti-detection systems.
+
+### Cheese Client 3.1: Fabric & Forge Compatibility (May 20, 2025)
+Cheese Client 3.1 now seamlessly works with both Fabric and Forge mods for version 1.12.2, allowing you to use your favorite mods from both ecosystems while maintaining full performance and enhanced features. A custom hybrid classloader reconciles conflicts, reduces memory usage by 30%, and includes a built-in mod compatibility checker.
+
+### Cheese Client 3.0: Complete Rewrite & Major Performance Boost (April 2, 2025)
+Cheese Client 3.0 is a complete ground-up rewrite with a brand new rendering engine, improved anti-detection systems, and up to 200% performance improvement in certain scenarios. The update features a modular event-driven core, behavioral mimicry engine, and real-time anti-cheat version detection.
+
+### Enhanced Compatibility with Latest Anti-Cheat Systems (March 28, 2025)
+We have successfully updated Cheese Client's modules to maintain compatibility with the latest anti-cheat updates while preserving functionality. Version 2.8.3 includes improved stealth mechanics for Matrix 6, Grim AC 2.3, and Vulcan 3.0, along with a new "Stealth" profile and expanded per-server configurations.
+
+### Cheese Client Comes to China (March 22, 2025)
+Cheese Client is now officially available to the Chinese Minecraft community with full Simplified Chinese localization, smart routing for lower latency, pre-configured profiles for major Chinese networks, and dedicated community spaces with native-speaking moderators.
+
+### Advanced Movement Module: Parkour & Speed Enhancements (March 18, 2025)
+A completely redesigned movement module introduces intelligent parkour assistance, predictive trajectory engine, inertia-aware speed governor, and a humanization layer for natural movement patterns. All features are configurable via the settings panel and support per-server profiles.
+
+---
+
+## 8. Legal Information
+
+### Terms of Service (Last Updated: June 1, 2025)
+Cheese Client is provided "AS IS" without warranties. Users are responsible for respecting server rules and any consequences of use. The client is not affiliated with Mojang or Microsoft. Intellectual property belongs to the development team. We reserve the right to modify terms; continued use constitutes acceptance.
+
+### Privacy Policy (Last Updated: July 1, 2025)
+We collect very limited information: anonymous usage statistics, crash reports, and voluntary feedback. Data is used only to improve the client and provide support. We do not sell or rent personal data. You may opt out of anonymous collection in client settings. Cookies are limited to essential website functions.
+
+### Disclaimer (Last Updated: July 1, 2025)
+Cheese Client is provided "AS IS" without warranty. We are not affiliated with Mojang AB or Microsoft. Use at your own risk; you are solely responsible for compliance with server rules. We are not liable for any account penalties or damages arising from use. External links are not controlled by us.
+
+---
+
+## 9. Thank You for Downloading Page
+
+After downloading, users are directed to a thank-you page with the following information:
+
+- **Download started:** If not, use the manual button.
+- **Get started:** Links to installation guide, features, and latest news.
+- **Need help?** Visit the FAQ for common issues (Java setup, antivirus warnings, version compatibility).
+
+---
+
+## 10. Complete Navigation Links
+
+For further details, refer to the individual pages:
+
+- Home: [index.html](https://cheese-client.github.io/Cheese-Client/index.html)
+- Features: [features.html](https://cheese-client.github.io/Cheese-Client/features.html)
+- Download: [download.html](https://cheeseclient.qzz.io/download.html)
+- Changelog: [changelog.html](https://cheeseclient.qzz.io/changelog.html)
+- FAQ: [faq.html](https://cheese-client.github.io/Cheese-Client/faq.html)
+- News: [news.html](https://cheese-client.github.io/Cheese-Client/news.html)
+- Terms of Service: [terms.html](https://cheese-client.github.io/Cheese-Client/terms.html)
+- Privacy Policy: [privacy.html](https://cheese-client.github.io/Cheese-Client/privacy.html)
+- Disclaimer: [disclaimer.html](https://cheese-client.github.io/Cheese-Client/disclaimer.html)
+
+---
+
+**End of Documentation**
